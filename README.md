@@ -1,1 +1,3 @@
 This project is for selling files and it is from Laravel and modular
+
+I will provide a complete explanation soon ...
