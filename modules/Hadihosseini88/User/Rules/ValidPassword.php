@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Rules;
+namespace Hadihosseini88\User\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class ValidMobile implements Rule
+class ValidPassword implements Rule
 {
     /**
      * Create a new rule instance.
@@ -19,13 +19,13 @@ class ValidMobile implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^9[0-9]{9}/', $value);
+        return preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/', $value);
     }
 
     /**
@@ -35,6 +35,6 @@ class ValidMobile implements Rule
      */
     public function message()
     {
-        return 'فرمت موبایل نا معتبر است و باید شبیه 9129876543 باشد.';
+        return 'رمز عبور قوی نیست طبق راهنمای زیر تایید رمز عبور انجام دهید.';
     }
 }

@@ -1,4 +1,4 @@
-@extends('auth.master')
+@extends('User::Front.master')
 
 @section('content')
     <form class="form" method="POST" action="{{ route('password.update') }}">

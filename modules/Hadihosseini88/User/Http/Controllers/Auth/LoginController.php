@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Hadihosseini88\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -49,6 +49,11 @@ class LoginController extends Controller
             $field => $username,
             'password' => $request->password,
         ];
-//        dd($username, $field);
+
+    }
+
+    public function showLoginForm()
+    {
+        return view('User::Front.login');
     }
 }
