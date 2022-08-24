@@ -514,8 +514,6 @@ a, span {
 }
 
 
-
-
 .posts, .articles {
     display: -ms-flexbox;
     display: -webkit-box;
@@ -2140,7 +2138,8 @@ footer {
     align-items: center;
     padding: 0 20px;
 }
-.act .form{
+
+.act .form {
     padding: 2em 0 !important;
 }
 
@@ -3664,13 +3663,30 @@ textarea {
     max-width: 100% !important;
     transition: all 200ms ease;
 }
-.mrt-150{
+
+.mrt-150 {
     margin-top: 150px;
-}.mrt-205{
+}
+
+.mrt-205 {
     margin-top: 205px;
 }
- .mrt-110{
-     margin-top:110px;
- } .mrt-170{
-     margin-top:170px;
- }
+
+.mrt-110 {
+    margin-top: 110px;
+}
+
+.mrt-170 {
+    margin-top: 170px;
+}
+
+.invalid-feedback {
+    font-family: irs;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: darkred;
+}
+
+.is-invalid {
+    border: 1px solid red;
+}

@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \Hadihosseini88\User\Providers\UserServiceProvider::class,
 
         /*
          * Package Service Providers...

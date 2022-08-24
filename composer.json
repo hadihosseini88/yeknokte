@@ -36,7 +36,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Hadihosseini88\\User\\": "modules/Hadihosseini88/User/"
         },
         "classmap": [
             "database/seeds",

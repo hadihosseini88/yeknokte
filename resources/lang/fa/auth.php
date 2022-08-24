@@ -17,8 +17,9 @@ return [
     'Before proceeding, please check your email for a verification link.' => 'قبل از ادامه، لطفاً ایمیل خود را برای لینک تأیید بررسی کنید.',
     'If you did not receive the email'=>'اگر ایمیل را دریافت نکردید',
     'click here to request another'=>'ارسال لینک تایید جدید',
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'مشخصات وارد شده با اطلاعات ما سازگار نیست.',
+    'throttle' => 'دفعات تلاش شما برای ورود بیش از حد مجاز است. لطفا پس از :seconds ثانیه مجددا تلاش فرمایید.',
 
 
 ];
+
