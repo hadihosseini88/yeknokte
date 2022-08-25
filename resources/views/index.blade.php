@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0;">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>وب آموز | آموزش برنامه‌ نویسی و طراحی وب</title>
+    <title>یک نکته | آموزش برنامه‌ نویسی و طراحی وب</title>
     <meta name="description"
-          content="وب آموز وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین">
+          content="یک نکته وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین">
     <meta name="keywords"
-          content="آموزش طراحی سایت,آموزش برنامه نویسی,طراحی وب,ساخت وب سایت,آموزش git,آموزش لاراول,آموزش php,آموزش react,آموزش پی اچ پی,آموزش laravel,آموزش جاوا اسکریپت,آموزش ساخت وب سایت,آموزش mvc,آموزش React Native,وب آموز , وب اموز">
-    <link rel="canonical" href="https://webamooz.net"/>
-    <meta property="og:title" content="وب آموز | آموزش برنامه‌ نویسی و طراحی وب"/>
+          content="آموزش طراحی سایت,آموزش برنامه نویسی,طراحی وب,ساخت وب سایت,آموزش git,آموزش لاراول,آموزش php,آموزش react,آموزش پی اچ پی,آموزش laravel,آموزش جاوا اسکریپت,آموزش ساخت وب سایت,آموزش mvc,آموزش React Native,یک نکته , یکنکته">
+    <link rel="canonical" href="https://yeknokte.ir"/>
+    <meta property="og:title" content="یک نکته | آموزش برنامه‌ نویسی و طراحی وب"/>
     <meta property="og:description"
-          content="وب آموز وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین"/>
-    <meta property="og:url" content="https://webamooz.net"/>
-    <meta property="og:site_name" content="وبسایت آموزشی وب آموز"/>
-    <meta property="og:brand" content="وب آموز"/>
+          content="یک نکته وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین"/>
+    <meta property="og:url" content="https://yeknokte.ir"/>
+    <meta property="og:site_name" content="وبسایت آموزشی یک نکته"/>
+    <meta property="og:brand" content="یک نکته"/>
     <meta property="og:locale" content="fa"/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font/font.css">
@@ -49,7 +49,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -60,7 +60,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>laravel course</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -71,7 +71,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -82,7 +82,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -93,7 +93,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -104,7 +104,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -115,7 +115,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -126,7 +126,7 @@
                                     <div class="t-header-search-result-right">
                                         <p>دوره ساخت فریم ورک مشابه لاراول</p>
                                         <p class="t-header-search-result-right-info">
-                                            مدرس دوره : محمد نیکو
+                                            مدرس دوره : سیدهادی حسینی
                                         </p>
                                     </div>
                                     <div class="t-header-search-result-left">
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="join-teachers">
-                    <a href="become-a-teacher.html">تدریس در وب آموز</a>
+                    <a href="become-a-teacher.html">تدریس در یک نکته</a>
                 </div>
                 <!--                                <div class="user-menu-account">-->
                 <!--                                    <div class="user-image">-->
@@ -208,8 +208,8 @@
                 <li class="main-menu"><a href="#">کسب و کار</a></li>
                 <li class="main-menu d-none"><a href="#">درباره ما</a></li>
                 <li class="main-menu"><a href="contact-us.html">تماس ما</a></li>
-                <li class="main-menu join-teachers-li"><a href="become-a-teacher.html">تدریس در وب آموز</a></li>
-                <li class="main-menu"><a href="https://www.webamooz.net/blog">مقالات</a></li>
+                <li class="main-menu join-teachers-li"><a href="become-a-teacher.html">تدریس در یک نکته</a></li>
+                <li class="main-menu"><a href="https://www.yeknokte.ir/blog">مقالات</a></li>
             </ul>
 
             <div class="dark-light">
@@ -283,8 +283,8 @@
                         <div class="card-img"><img src="img/banner/reactjs.png" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدماتی تا پیشرفته reactJs</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -304,8 +304,8 @@
                         <div class="card-img"><img src="img/banner/php.png" alt="php"></div>
                         <div class="card-title"><h2>php course</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -326,8 +326,8 @@
                         <div class="card-title"><h2>دوره ساخت پیام رسان تحت وب مشابه Telegram با Laravel و ReactJs و
                                 WebSocket به صورت Spa</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -347,8 +347,8 @@
                         <div class="card-img"><img src="img/banner/angularjs.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدمات تا پیشرفته انگولار به همراه پروژه فروشگاهی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -371,8 +371,8 @@
                         <div class="card-img"><img src="img/banner/restfull-lara.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره تولید و توسعه وب سرویس با </h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -392,8 +392,8 @@
                         <div class="card-img"><img src="img/banner/php.png" alt="php"></div>
                         <div class="card-title"><h2>دوره متخصص php بخش مقدماتی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -413,8 +413,8 @@
                         <div class="card-img"><img src="img/banner/lara.png" alt="laravel"></div>
                         <div class="card-title"><h2>دوره مقدماتی تا پیشرفته لاراول</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -434,8 +434,8 @@
                         <div class="card-img"><img src="img/banner/angularjs.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدمات تا پیشرفته انگولار به همراه پروژه فروشگاهی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -466,8 +466,8 @@
                         <div class="card-img"><img src="img/banner/reactjs.png" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدماتی تا پیشرفته reactJs</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -487,8 +487,8 @@
                         <div class="card-img"><img src="img/banner/php.png" alt="php"></div>
                         <div class="card-title"><h2>دوره متخصص php بخش مقدماتی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -509,8 +509,8 @@
                         <div class="card-title"><h2>دوره ساخت پیام رسان تحت وب مشابه Telegram با Laravel و ReactJs و
                                 WebSocket به صورت Spa</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -530,8 +530,8 @@
                         <div class="card-img"><img src="img/banner/angularjs.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدمات تا پیشرفته انگولار به همراه پروژه فروشگاهی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -554,8 +554,8 @@
                         <div class="card-img"><img src="img/banner/restfull-lara.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره تولید و توسعه وب سرویس با </h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -575,8 +575,8 @@
                         <div class="card-img"><img src="img/banner/php.png" alt="php"></div>
                         <div class="card-title"><h2>دوره متخصص php بخش مقدماتی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -596,8 +596,8 @@
                         <div class="card-img"><img src="img/banner/lara.png" alt="laravel"></div>
                         <div class="card-title"><h2>دوره مقدماتی تا پیشرفته لاراول</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -617,8 +617,8 @@
                         <div class="card-img"><img src="img/banner/angularjs.jpg" alt="reactjs"></div>
                         <div class="card-title"><h2>دوره مقدمات تا پیشرفته انگولار به همراه پروژه فروشگاهی</h2></div>
                         <div class="card-body">
-                            <img src="img/profile.jpg" alt="محمد نیکو">
-                            <span>محمد نیکو</span>
+                            <img src="img/profile.jpg" alt="سیدهادی حسینی">
+                            <span>سیدهادی حسینی</span>
                         </div>
                         <div class="card-details">
                             <div class="time">135:40:00</div>
@@ -635,7 +635,7 @@
     <article class="container blog">
         <div class="b-head">
             <h2>آخرین مقالات</h2>
-            <a href="https://webamooz.net/blog">مشاهده همه</a>
+            <a href="https://yeknokte.ir/blog">مشاهده همه</a>
         </div>
         <div class="articles">
             <div class="col">
@@ -718,7 +718,7 @@
         <div class="f-about">
             <div class="col--8">
                 <p>
-                    وب اموز مرجعی تخصصی برای یادگیری طراحی و برنامه نویسی وب و موبایل است. ما در وب اموز با بهره گیری از
+                    یک نکته مرجعی تخصصی برای یادگیری طراحی و برنامه نویسی وب و موبایل است. ما در یک نکته با بهره گیری از
                     نیروهای متخصص، باتجربه تمام تلاش خود را برای تهیه و تولید آموزش های با کیفیت و کامل و حرفه ای انجام
                     می دهیم. باور ما اینست که کاربران ایرانی لایق بهترین ها هستند و باید بهترین و بروزترین فیلم های
                     آموزشی، در اختیار آنها قرار بگیرد تا بتوانند به سرعت پیشرفت کنند و جزء بهترین ها شوند. امید است که
@@ -728,10 +728,10 @@
             </div>
         </div>
     </div>
-    <div class="webamooz">
+    <div class="hadi">
         طراحی و توسعه با لاراول توسط تیم
-        <a href="https://webamooz.net">وب آموز</a>
-        © 1399
+        <a href="https://yeknokte.ir">یک نکته</a>
+        © 1401
     </div>
 </footer>
 <div class="overlay"></div>
