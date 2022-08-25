@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/font/font.css">
     <link rel="stylesheet" href="css/responsive.css" media="(max-width:991px)">
 </head>
-<body >
+<body>
 <header class="t-header">
     <div class="campaign">
         <div class="container">
@@ -164,7 +164,7 @@
                 <!--                                </div>-->
                 <div class="login-register-btn ">
                     <div><a class="btn-login" href="login.html">ورود</a></div>
-                    <div><a class="btn-register" href="register.html">ثبت نام</a></div>
+                    <div><a class="btn-register" href="{{route('register')}}">ثبت نام</a></div>
                 </div>
 
             </div>
@@ -181,7 +181,7 @@
         <!---->
         <div class="login-register-btn d-none">
             <div><a class="btn-login" href="login.html">ورود</a></div>
-            <div><a class="btn-register" href="register.html">ثبت نام</a></div>
+            <div><a class="btn-register" href="{{route('register')}}">ثبت نام</a></div>
         </div>
         <div class="container">
             <ul class="nav">
@@ -218,7 +218,8 @@
                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
                 </svg>
                 <svg class="sun" fill="#ffce45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M277.3 32h-42.7v64h42.7V32zm129.1 43.7L368 114.1l29.9 29.9 38.4-38.4-29.9-29.9zm-300.8 0l-29.9 29.9 38.4 38.4 29.9-29.9-38.4-38.4zM256 128c-70.4 0-128 57.6-128 128s57.6 128 128 128 128-57.6 128-128-57.6-128-128-128zm224 106.7h-64v42.7h64v-42.7zm-384 0H32v42.7h64v-42.7zM397.9 368L368 397.9l38.4 38.4 29.9-29.9-38.4-38.4zm-283.8 0l-38.4 38.4 29.9 29.9 38.4-38.4-29.9-29.9zm163.2 48h-42.7v64h42.7v-64z"></path>
+                    <path
+                        d="M277.3 32h-42.7v64h42.7V32zm129.1 43.7L368 114.1l29.9 29.9 38.4-38.4-29.9-29.9zm-300.8 0l-29.9 29.9 38.4 38.4 29.9-29.9-38.4-38.4zM256 128c-70.4 0-128 57.6-128 128s57.6 128 128 128 128-57.6 128-128-57.6-128-128-128zm224 106.7h-64v42.7h64v-42.7zm-384 0H32v42.7h64v-42.7zM397.9 368L368 397.9l38.4 38.4 29.9-29.9-38.4-38.4zm-283.8 0l-38.4 38.4 29.9 29.9 38.4-38.4-29.9-29.9zm163.2 48h-42.7v64h42.7v-64z"></path>
                 </svg>
             </div>
 
