@@ -33,7 +33,7 @@
     <div class="container">
         <div class="t-header-row">
             <div class="t-header-right">
-                <div class="t-header-logo"><a href="index.html"></a></div>
+                <div class="t-header-logo"><a href="./"></a></div>
                 <div class="t-header-search">
                     <div class="t-header-searchbox">
                         <input type="text" placeholder="جستجو دوره / مقاله / مدرس">
@@ -163,7 +163,7 @@
                 <!--                                    </div>-->
                 <!--                                </div>-->
                 <div class="login-register-btn ">
-                    <div><a class="btn-login" href="login.html">ورود</a></div>
+                    <div><a class="btn-login" href="{!! route('login') !!}">ورود</a></div>
                     <div><a class="btn-register" href="{{route('register')}}">ثبت نام</a></div>
                 </div>
 
@@ -180,7 +180,7 @@
         </div>
         <!---->
         <div class="login-register-btn d-none">
-            <div><a class="btn-login" href="login.html">ورود</a></div>
+            <div><a class="btn-login" href="{!! route('login') !!}">ورود</a></div>
             <div><a class="btn-register" href="{{route('register')}}">ثبت نام</a></div>
         </div>
         <div class="container">
