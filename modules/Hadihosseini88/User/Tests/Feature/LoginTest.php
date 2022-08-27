@@ -1,11 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Hadihosseini88\User\Tests\Feature;
 
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use function bcrypt;
+use function route;
 
 class LoginTest extends TestCase
 {
