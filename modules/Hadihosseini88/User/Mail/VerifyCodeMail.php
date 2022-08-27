@@ -14,7 +14,6 @@ class VerifyCodeMail extends Mailable
     /**
      * @var User
      */
-    public $user;
     public $code;
 
     /**
@@ -22,10 +21,8 @@ class VerifyCodeMail extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $code)
+    public function __construct($code)
     {
-        //
-        $this->user = $user;
         $this->code = $code;
     }
 

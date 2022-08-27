@@ -45,9 +45,9 @@ class VerifyMailNotification extends Notification
     {
         $code = VerifyCodeService::generate();
 
-        VerifyCodeService::store($notifiable,$code);
+        VerifyCodeService::store($notifiable->id,$code);
 
-        return (new VerifyCodeMail($notifiable, $code))
+        return (new VerifyCodeMail($code))
             ->to($notifiable->email);
 
     }

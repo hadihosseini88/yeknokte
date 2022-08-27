@@ -10,8 +10,20 @@ class VerifyCodeService
         return random_int(100000, 999999);
     }
 
-    public static function store($notifiable,$code)
+    public static function store($id,$code)
     {
-        cache()->set('verify_code_' . $notifiable->id, $code,now()->addDay());
+        cache()->set('verify_code_' . $id, $code,now()->addDay());
     }
+
+    public static function get($id)
+    {
+        return cache()->get('verify_code_' . $id);
+    }
+
+    public static function delete(int $id)
+    {
+        return cache()->delete('verify_code_' . $id);
+    }
+
+
 }
