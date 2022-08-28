@@ -3690,3 +3690,10 @@ textarea {
 .is-invalid {
     border: 1px solid red;
 }
+
+.a-btn-danger {
+    color: #ffffff !important;
+    background: #f0b646;
+    display:block;
+    border-bottom:unset !important;
+}

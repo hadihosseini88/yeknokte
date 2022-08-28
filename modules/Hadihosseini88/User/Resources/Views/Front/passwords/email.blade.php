@@ -3,9 +3,9 @@
 
 @section('content')
 
-    <form class="form" method="POST" action="{{ route('password.email') }}">
-        @csrf
-        <a class="account-logo" href="index.html">
+    <form class="form" method="get" action="{{ route('password.sendVerifyCodeEmail') }}">
+{{--        @csrf--}}
+        <a class="account-logo" href="/">
             <img src="/img/weblogo.png" alt="">
         </a>
         @if (session('status'))

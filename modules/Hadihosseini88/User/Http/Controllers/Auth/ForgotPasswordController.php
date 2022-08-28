@@ -3,6 +3,8 @@
 namespace Hadihosseini88\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Hadihosseini88\User\Http\Requests\SendResetPasswordVerifyCodeRequest;
+use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
@@ -20,8 +22,18 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function showLinkRequestForm()
+    public function showVerifyCodeRequestForm()
     {
         return view('User::Front.passwords.email');
     }
+
+    public function sendVerifyCodeEmail(SendResetPasswordVerifyCodeRequest $request)
+    {
+        //todo use UserRepository
+        $user = User::query()->where('email', $request->email)->first();
+        if ($user){
+            $user->sendResetPasswordRequestNotification();
+        }
+    }
+
 }

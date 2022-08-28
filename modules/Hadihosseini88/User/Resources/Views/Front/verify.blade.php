@@ -8,7 +8,7 @@
             <img src="/img/weblogo.png" alt="">
         </a>
         <div class="card-header">
-            <p class="activation-code-title">کد فرستاده شده به ایمیل  <span>Mohammadniko3@gmail.com</span>
+            <p class="activation-code-title">کد فرستاده شده به ایمیل  <span>{{auth()->user()->email}}</span>
                 را وارد کنید . ممکن است ایمیل به پوشه spam فرستاده شده باشد
             </p>
         </div>
@@ -21,12 +21,18 @@
             @enderror
             <br>
             <button class="btn i-t">تایید</button>
+            <a class="btn i-t a-btn-danger" href="#" onclick="
+            event.preventDefault();
+            document.getElementById('resend-code').submit();"
+            >ارسال مجدد کدفعالسازی</a>
 
         </div>
         <div class="form-footer">
             <a href="{{route('register')}}">صفحه ثبت نام</a>
         </div>
     </form>
+
+    <form id="resend-code" action="{{route('verification.resend')}}" method="POST" hidden>@csrf</form>
 @endsection
 
 @section('js')
