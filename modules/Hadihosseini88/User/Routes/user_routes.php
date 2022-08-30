@@ -5,7 +5,7 @@ Route::group([
     'middleware' => 'web'
 ], function ($router) {
 //    Auth::routes(['verify' => true]);
-    
+
     Route::post('/email/verify', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
