@@ -5,8 +5,7 @@ Route::group([
     'middleware' => 'web'
 ], function ($router) {
 //    Auth::routes(['verify' => true]);
-
-
+    
     Route::post('/email/verify', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
@@ -19,15 +18,19 @@ Route::group([
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //reset password
-    Route::get('/password/reset', 'Auth\ForgotPasswordController@showVerifyCodeRequestForm')->name('password.request');
-    Route::get('/password/reset/send', 'Auth\ForgotPasswordController@sendVerifyCodeEmail')->name('password.sendVerifyCodeEmail');
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@showVerifyCodeRequestForm')
+        ->name('password.request');
+    Route::get('/password/reset/send', 'Auth\ForgotPasswordController@sendVerifyCodeEmail')
+        ->name('password.sendVerifyCodeEmail');
     Route::post('/password/reset/check-verify-code', 'Auth\ForgotPasswordController@checkVerifyCode')
         ->name('password.checkVerifyCode')
         ->middleware('throttle:5,1');
 
-    Route::get('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('/password/change', 'Auth\ResetPasswordController@showResetForm')
+        ->middleware('auth')
+        ->name('password.showResetForm');
     Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
 
     //register
     Route::post('/register', 'Auth\RegisterController@register');
