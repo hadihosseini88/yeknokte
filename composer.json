@@ -37,7 +37,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Hadihosseini88\\User\\": "modules/Hadihosseini88/User/"
+            "Hadihosseini88\\User\\": "modules/Hadihosseini88/User/",
+            "Hadihosseini88\\Dashboard\\": "modules/Hadihosseini88/Dashboard/"
         },
         "classmap": [
             "database/seeds",
