@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Dashboard" isTestSource="false" packagePrefix="Hadihosseini88\Dashboard\" />
+      <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Category" isTestSource="false" packagePrefix="Hadihosseini88\Category\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />

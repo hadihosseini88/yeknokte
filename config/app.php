@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Hadihosseini88\User\Providers\UserServiceProvider::class,
         Hadihosseini88\Dashboard\Providers\DashboardServiceProvider::class,
+        Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
 
         /*
          * Package Service Providers...
