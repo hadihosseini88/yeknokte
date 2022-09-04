@@ -6,7 +6,9 @@
     <p class="box__title margin-bottom-15">انتخاب دسته پدر</p>
     <select name="parent_id" id="parent_id">
         <option value="">ندارد</option>
-        <option value="0">برنامه نویسی</option>
+        @foreach($categories as $category)
+        <option value="{!! $category->id !!}">{!! $category->title !!}</option>
+        @endforeach
     </select>
     <button class="btn btn-webamooz_net">اضافه کردن</button>
 </form>
