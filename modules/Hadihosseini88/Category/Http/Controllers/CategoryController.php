@@ -1,56 +1,56 @@
 <?php
+
 namespace Hadihosseini88\Category\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Http\Requests\CategoryRequest;
-use Hadihosseini88\Category\Models\Category;
-use Illuminate\Http\Response;
+use Hadihosseini88\Category\Repositories\CategoryRepo;
+use Hadihosseini88\Category\Responses\AjaxResponses;
+
 
 class CategoryController extends Controller
 {
+    public $repo;
+
+    public function __construct(CategoryRepo $categoryRepo)
+    {
+        $this->repo = $categoryRepo;
+    }
+
     public function index()
     {
-        // todo category Repository
-        $categories = Category::all();
-        return view('Categories::index',compact('categories'));
+        $categories = $this->repo->all();
+        return view('Categories::index', compact('categories'));
     }
 
     public function store(CategoryRequest $request)
     {
         // todo category Repository
-        Category::create([
-            'title'=>$request->title,
-            'slug'=>$request->slug,
-            'parent_id'=>$request->parent_id,
-        ]);
 
+        $categories = $this->repo->store($request);
         return back();
 
     }
 
-    public function edit(Category $category)
+    public function edit($categoryId)
     {
         // todo category Repository
-        $categories = Category::where('id','!=',$category->id)->get();
-        return view('Categories::edit', compact('category','categories'));
+        $category  = $this->repo->findById($categoryId);
+        $categories = $this->repo->allExceptById($categoryId);
+        return view('Categories::edit', compact('category', 'categories'));
     }
 
-    public function update(Category $category,CategoryRequest $request)
+    public function update($categoryId, CategoryRequest $request)
     {
-        // todo category Repository
-        $category->update([
-            'title'=>$request->title,
-            'slug'=>$request->slug,
-            'parent_id'=>$request->parent_id,
-        ]);
-
+        $this->repo->update($categoryId, $request);
         return back();
+
     }
 
-    public function destroy(Category $category)
+    public function destroy($categoryId)
     {
-//        $category->delete();
-          return response()->json(['message'=>'عملیات با موفقیت انجام شد.'],Response::HTTP_OK);
+        $this->repo->delete($categoryId);
+        return AjaxResponses::SuccessResponse();
 
     }
 }
