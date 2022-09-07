@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "2.4"
+        "laravel/ui": "2.4",
+        "spatie/laravel-permission": "v3.13.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "v2.7",
@@ -39,7 +40,8 @@
             "App\\": "app/",
             "Hadihosseini88\\User\\": "modules/Hadihosseini88/User/",
             "Hadihosseini88\\Dashboard\\": "modules/Hadihosseini88/Dashboard/",
-            "Hadihosseini88\\Category\\": "modules/Hadihosseini88/Category/"
+            "Hadihosseini88\\Category\\": "modules/Hadihosseini88/Category/",
+            "Hadihosseini88\\RolePermissions\\": "modules/Hadihosseini88/RolePermissions/"
         },
         "classmap": [
             "database/seeds",

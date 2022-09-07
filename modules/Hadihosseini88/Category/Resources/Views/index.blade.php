@@ -1,5 +1,9 @@
 @extends('Dashboard::master')
 
+@section('breadcrumb')
+    <li><a href="{!! route('categories.index') !!}" title="دسته بندی">دسته بندی</a></li>
+@endsection
+
 @section('content')
     <div class="main-content padding-0 categories">
         <div class="row no-gutters  ">

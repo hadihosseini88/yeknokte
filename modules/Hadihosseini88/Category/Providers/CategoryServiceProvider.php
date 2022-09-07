@@ -15,4 +15,12 @@ class CategoryServiceProvider extends ServiceProvider
 
     }
 
+    public function boot(){
+        config()->set('sidebar.items.categories',[
+            "icon"=>"i-categories",
+            "title"=>"دسته بندی ها",
+            "url"=> route('categories.index')
+        ]);
+    }
+
 }

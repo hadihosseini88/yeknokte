@@ -161,10 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Hadihosseini88\User\Providers\UserServiceProvider::class,
-        Hadihosseini88\Dashboard\Providers\DashboardServiceProvider::class,
-        Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -177,6 +173,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        Hadihosseini88\User\Providers\UserServiceProvider::class,
+        Hadihosseini88\Dashboard\Providers\DashboardServiceProvider::class,
+        Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
+        Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
 
     ],
 

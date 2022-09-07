@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Dashboard" isTestSource="false" packagePrefix="Hadihosseini88\Dashboard\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Category" isTestSource="false" packagePrefix="Hadihosseini88\Category\" />
+      <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/RolePermissions" isTestSource="false" packagePrefix="Hadihosseini88\RolePermissions\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
@@ -119,6 +120,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-permission" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
