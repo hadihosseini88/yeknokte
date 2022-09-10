@@ -178,6 +178,7 @@ return [
         Hadihosseini88\Dashboard\Providers\DashboardServiceProvider::class,
         Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
         Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
+        Hadihosseini88\Course\Providers\CourseServiceProvider::class,
 
     ],
 

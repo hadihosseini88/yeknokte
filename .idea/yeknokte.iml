@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Dashboard" isTestSource="false" packagePrefix="Hadihosseini88\Dashboard\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Category" isTestSource="false" packagePrefix="Hadihosseini88\Category\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/RolePermissions" isTestSource="false" packagePrefix="Hadihosseini88\RolePermissions\" />
+      <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Course" isTestSource="false" packagePrefix="Hadihosseini88\Course\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
