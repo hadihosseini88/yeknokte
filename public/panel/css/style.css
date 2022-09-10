@@ -632,7 +632,7 @@ textarea {
 }
 
 .sidebar__nav .i-role-permissions a::before {
-    content: "\E133";
+    content: "\E084";
 }
 
 .sidebar__nav .i-slideshow a::before {
