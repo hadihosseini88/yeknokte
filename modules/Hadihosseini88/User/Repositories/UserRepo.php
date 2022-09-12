@@ -12,7 +12,11 @@ class UserRepo
 
     public function getTeachers()
     {
-        return [];
+        return User::permission('teach')->get();
     }
 
+    public function findById($id)
+    {
+        return User::find($id);
+    }
 }

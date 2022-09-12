@@ -402,12 +402,12 @@ textarea {
     cursor: pointer;
 }
 
-.btn-webamooz_net {
+.btn-yeknokte_ir {
     background-color: #46b2f0 !important;
     color: #fff;
 }
 
-.btn-webamooz_net:hover {
+.btn-yeknokte_ir:hover {
     background-color: #259ee3 !important;
     transition: background-color 200ms;
 }
@@ -1907,12 +1907,30 @@ span.tagRemove:hover {
 .invalid-feedback {
     font-family: irs;
     font-size: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     color: darkred;
 }
 
 .is-invalid {
     border: 1px solid red;
+}
+
+.text{
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+.margin-top-0{
+    margin-top: 0;
+}
+
+.dropdown-select {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+.tags{
+    margin-bottom: 0px;
+    margin-top: 15px;
 }
 
 

@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    public static $seeders=[];
     /**
      * Seed the application's database.
      *
@@ -11,6 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        foreach (self::$seeders as $seeder) {
+            $this->call($seeder);
+        }
+        // $this->call(RolePermissionTableSeeder::class);
     }
 }

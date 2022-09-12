@@ -3,6 +3,8 @@
 namespace Hadihosseini88\Course\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Hadihosseini88\Category\Repositories\CategoryRepo;
+use Hadihosseini88\Course\Http\Requests\CourseRequest;
 use Hadihosseini88\User\Repositories\UserRepo;
 
 class CourseController extends Controller
@@ -12,9 +14,15 @@ class CourseController extends Controller
 
     }
 
-    public function create(UserRepo $userRepo)
+    public function create(UserRepo $userRepo, CategoryRepo $categoryRepo)
     {
         $teachers =$userRepo->getTeachers();
-        return view('Courses::create',compact('teachers'));
+        $categories = $categoryRepo->all();
+        return view('Courses::create',compact('teachers','categories'));
+    }
+
+    public function store(CourseRequest $request)
+    {
+
     }
 }

@@ -26,7 +26,7 @@
                                     @if($categoryItem->id == $category->parent_id)selected @endif>{!! $categoryItem->title !!}</option>
                         @endforeach
                     </select>
-                    <button class="btn btn-webamooz_net">بروزرسانی</button>
+                    <button class="btn btn-yeknokte_ir">بروزرسانی</button>
                 </form>
             </div>
         </div>
