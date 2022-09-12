@@ -23,6 +23,7 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
+        dd($request,'eyval');
 
     }
 }

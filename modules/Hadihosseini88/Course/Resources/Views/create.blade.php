@@ -11,7 +11,7 @@
         <p class="box__title">ایجاد دوره جدید</p>
         <div class="row no-gutters bg-white">
             <div class="col-12">
-                <form action="{{route('courses.store')}}" class="padding-30" method="POST">
+                <form action="{{route('courses.store')}}" class="padding-30" method="POST" enctype="multipart/form-data">
                     @csrf
                     <x-input type="text" name="title" placeholder="عنوان دوره"
                              class="margin-top-0" required></x-input>
@@ -45,8 +45,7 @@
                     <x-select name="type" required>
                         <option value="">نوع دوره</option>
                         @foreach(\Hadihosseini88\Course\Models\Course::$types as $type)
-                            <option value="{{ $type }}" @if($type == old('type'))
-                                selected @endif>@lang($type)</option>
+                            <option value="{{ $type }}" @if($type == old('type')) selected @endif>@lang($type)</option>
                         @endforeach
                     </x-select>
 
@@ -63,19 +62,20 @@
                         <option value="">دسته بندی</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}"
-                                    @if($category->id == old('$category_id')) selected @endif
+                                    @if($category->id == old('category_id')) selected @endif
                             >{{$category->title}}</option>
                         @endforeach
                     </x-select>
 
-                    <x-file name="image" textSpan="آپلود بنر دوره"></x-file>
+                    <br>
 
+                    <x-file name="image" textSpan="آپلود بنر دوره"></x-file>
 
                     <x-textarea placeholder="توضیحات دوره" name="body"></x-textarea>
 
+                    <br>
+                    <br>
 
-                    <br>
-                    <br>
                     <button class="btn btn-yeknokte_ir">ایجاد دوره</button>
                 </form>
             </div>
