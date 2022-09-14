@@ -25,16 +25,12 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        // todo category Repository
-
         $categories = $this->repo->store($request);
         return back();
-
     }
 
     public function edit($categoryId)
     {
-        // todo category Repository
         $category  = $this->repo->findById($categoryId);
         $categories = $this->repo->allExceptById($categoryId);
         return view('Categories::edit', compact('category', 'categories'));
@@ -51,6 +47,5 @@ class CategoryController extends Controller
     {
         $this->repo->delete($categoryId);
         return AjaxResponses::SuccessResponse();
-
     }
 }

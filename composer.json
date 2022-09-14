@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.7",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
@@ -42,7 +43,8 @@
             "Hadihosseini88\\Dashboard\\": "modules/Hadihosseini88/Dashboard/",
             "Hadihosseini88\\Category\\": "modules/Hadihosseini88/Category/",
             "Hadihosseini88\\RolePermissions\\": "modules/Hadihosseini88/RolePermissions/",
-            "Hadihosseini88\\Course\\": "modules/Hadihosseini88/Course/"
+            "Hadihosseini88\\Course\\": "modules/Hadihosseini88/Course/",
+            "Hadihosseini88\\Media\\": "modules/Hadihosseini88/Media/"
         },
         "classmap": [
             "database/seeds",

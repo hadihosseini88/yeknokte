@@ -179,6 +179,7 @@ return [
         Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
         Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Hadihosseini88\Course\Providers\CourseServiceProvider::class,
+        Hadihosseini88\Media\Providers\MediaServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
