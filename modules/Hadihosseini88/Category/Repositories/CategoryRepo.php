@@ -21,7 +21,7 @@ class CategoryRepo
 
     public function findById($categoryId)
     {
-        return Category::find($categoryId);
+        return Category::findOrFail($categoryId);
 
     }
 

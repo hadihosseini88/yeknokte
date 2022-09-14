@@ -30,4 +30,14 @@ class CourseRepo
     {
         return Course::paginate();
     }
+
+    public function delete($id)
+    {
+        Course::where('id',$id)->delete();
+    }
+
+    public function findByid($id)
+    {
+        return Course::findOrFail($id);
+    }
 }

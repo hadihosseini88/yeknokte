@@ -1,4 +1,4 @@
 <input type="{{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}"
-       value="{{old($name)}}" {{ $attributes->merge(['class' => 'text']) }}>
+       {{ $attributes->merge(['class' => 'text']) }} value="{{old($name)}}">
 <x-validation-error field="{{ $name }}"/>
 

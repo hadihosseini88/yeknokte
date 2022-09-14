@@ -57,7 +57,7 @@
                 @foreach($courses as $course)
                 <tr role="row" >
                     <td><a href="">{{ $loop->index +1 }}</a></td>
-                    <td><img src="{{ $course->thumb }}" alt="{{$course->title}}" width="80"></td>
+                    <td><img src="{{ $course->banner->thumb }}" alt="{{$course->title}}" width="80"></td>
                     <td><a href="">{{ $course->id }}</a></td>
                     <td><a href="">{{ $course->priority ?? '0' }}</a></td>
                     <td><a href="">{{ $course->title }}</a></td>
@@ -71,12 +71,12 @@
                     <td>{{ $course->percent }}%</td>
                     <td>@lang($course->status)</td>
                     <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
+                        <a href="" onclick="deleteItem(event,'{{route('courses.destroy', $course->id)}}')" class="item-delete mlg-15" title="حذف"></a>
                         <a href="" class="item-reject mlg-15" title="رد"></a>
                         <a href="" class="item-lock mlg-15" title="قفل دوره"></a>
                         <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
                         <a href="" class="item-confirm mlg-15" title="تایید"></a>
-                        <a href="" class="item-edit " title="ویرایش"></a>
+                        <a href="{{ route('courses.edit', $course->id) }}" class="item-edit " title="ویرایش"></a>
                     </td>
                 </tr>
                 @endforeach

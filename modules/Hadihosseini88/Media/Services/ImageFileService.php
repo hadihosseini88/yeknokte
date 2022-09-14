@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Media\Services;
 
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ImageFileService
@@ -30,5 +31,12 @@ class ImageFileService
             })->save(storage_path($dir) . $filename . '_' . $size . '.' . $extension);
         }
         return $imgs;
+    }
+
+    public static function delete($media)
+    {
+        foreach ($media->files as $file){
+            Storage::delete('public\\'. $file);
+        }
     }
 }
