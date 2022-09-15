@@ -27,7 +27,7 @@ class CourseRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|min:3|max:190',
             'slug' => 'required|min:3|max:190|unique:courses,slug',
             'priority' => 'nullable|numeric',
@@ -39,21 +39,26 @@ class CourseRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'image' => 'required|mimes:jpg,png,jpeg,JPG,PNG,JPEG',
         ];
+        if (request()->method == 'PATCH') {
+            $rules['image'] = 'nullable|mimes:jpg,png,jpeg,JPG,PNG,JPEG';
+            $rules['slug'] = 'required|min:3|max:190|unique:courses,slug,' . request()->route('course');
+        }
+        return $rules;
     }
 
     public function attributes()
     {
         return [
-            'title' =>'عنوان دوره',
-            'slug' =>'عنوان انگلیسی',
-            'priority' =>'ردیف دوره',
-            'price' =>'قیمت',
-            'percent' =>'درصد دوره',
-            'teacher_id' =>'مدرس',
-            'type' =>'نوع',
-            'status' =>'وضعیت',
-            'category_id' =>'دسته بندی',
-            'image' =>'بنر دوره',
+            'title' => 'عنوان دوره',
+            'slug' => 'عنوان انگلیسی',
+            'priority' => 'ردیف دوره',
+            'price' => 'قیمت',
+            'percent' => 'درصد دوره',
+            'teacher_id' => 'مدرس',
+            'type' => 'نوع',
+            'status' => 'وضعیت',
+            'category_id' => 'دسته بندی',
+            'image' => 'بنر دوره',
             'body' => 'توضیحات'
         ];
     }

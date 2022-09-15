@@ -47,7 +47,7 @@
                     <th>تراکنش ها</th>
                     <th>نظرات</th>
                     <th>تعداد دانشجویان</th>
-                    <th>تعداد تایید</th>
+                    <th>وضعیت تایید</th>
                     <th>درصد مدرس</th>
                     <th>وضعیت دوره</th>
                     <th>عملیات</th>
@@ -67,15 +67,15 @@
                     <td><a href="course-transaction.html" class="color-2b4a83" >مشاهده</a></td>
                     <td><a href="" class="color-2b4a83" >مشاهده (10 نظر)</a></td>
                     <td>120</td>
-                    <td>تایید شده</td>
+                    <td class="confirmation_status">@lang($course->confirmation_status ? $course->confirmation_status : 'در انتظار')</td>
                     <td>{{ $course->percent }}%</td>
-                    <td>@lang($course->status)</td>
+                    <td class="status">@lang($course->status)</td>
                     <td>
                         <a href="" onclick="deleteItem(event,'{{route('courses.destroy', $course->id)}}')" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="" class="item-reject mlg-15" title="رد"></a>
-                        <a href="" class="item-lock mlg-15" title="قفل دوره"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.reject', $course->id)}}','آیا از رد این آیتم اطمینان دارید؟','رد شده')" class="item-reject mlg-15" title="رد"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.lock', $course->id)}}','آیا از قفل این آیتم اطمینان دارید؟','قفل شده','status')" class="item-lock mlg-15" title="قفل دوره"></a>
                         <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="" class="item-confirm mlg-15" title="تایید"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.accept', $course->id)}}','آیا از تایید این آیتم اطمینان دارید؟','تایید شده')" class="item-confirm mlg-15" title="تایید"></a>
                         <a href="{{ route('courses.edit', $course->id) }}" class="item-edit " title="ویرایش"></a>
                     </td>
                 </tr>

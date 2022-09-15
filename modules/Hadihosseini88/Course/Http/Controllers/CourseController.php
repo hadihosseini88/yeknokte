@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Repositories\CategoryRepo;
 use Hadihosseini88\Category\Responses\AjaxResponses;
 use Hadihosseini88\Course\Http\Requests\CourseRequest;
+use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Media\Services\MediaFileService;
 use Hadihosseini88\User\Repositories\UserRepo;
@@ -32,18 +33,27 @@ class CourseController extends Controller
         return redirect()->route('courses.index');
     }
 
-    public function edit($id, CourseRepo $courseRepo,UserRepo $userRepo,CategoryRepo $categoryRepo)
+    public function edit($id, CourseRepo $courseRepo, UserRepo $userRepo, CategoryRepo $categoryRepo)
     {
         $teachers = $userRepo->getTeachers();
         $categories = $categoryRepo->all();
         $course = $courseRepo->findByid($id);
 
-        return view('Courses::edit',compact('course','teachers','categories'));
+        return view('Courses::edit', compact('course', 'teachers', 'categories'));
     }
 
-    public function update()
+    public function update($id, CourseRequest $request, CourseRepo $courseRepo)
     {
-        dd('hhhh');
+        $course = $courseRepo->findByid($id);
+        if ($request->hasFile('image')) {
+            $course->banner->delete();
+            $request->request->add(['banner_id' => MediaFileService::upload($request->file('image'))->id]);
+        } else {
+            $request->request->add(['banner_id'=>$course->banner_id]);
+        }
+        $courseRepo->update($id, $request);
+
+        return redirect(route('courses.index'));
     }
 
     public function destroy($id, CourseRepo $courseRepo)
@@ -58,4 +68,26 @@ class CourseController extends Controller
         return AjaxResponses::SuccessResponse();
 
     }
+
+    public function accept($id, CourseRepo $courseRepo)
+    {
+        if ($courseRepo->updateConfirmationStatus($id,Course::CONFIRMATION_STATUS_ACCEPTED)){
+            return AjaxResponses::SuccessResponse();
+        }
+        return AjaxResponses::FailedResponse();
+    }
+    public function reject($id, CourseRepo $courseRepo) {
+        if ($courseRepo->updateConfirmationStatus($id,Course::CONFIRMATION_STATUS_REJECTED)){
+            return AjaxResponses::SuccessResponse();
+        }
+        return AjaxResponses::FailedResponse();
+    }
+
+    public function lock($id, CourseRepo $courseRepo) {
+        if ($courseRepo->updateStatus($id,Course::STATUS_LOCKED)){
+            return AjaxResponses::SuccessResponse();
+        }
+        return AjaxResponses::FailedResponse();
+    }
+
 }
