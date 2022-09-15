@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Repositories;
 
+use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 
 class UserRepo
@@ -12,7 +13,7 @@ class UserRepo
 
     public function getTeachers()
     {
-        return User::permission('teach')->get();
+        return User::permission(Permission::PERMISSION_TEACH)->get();
     }
 
     public function findById($id)

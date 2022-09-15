@@ -4,6 +4,7 @@ namespace Hadihosseini88\Category\Tests\Feature;
 
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
+use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -18,7 +19,7 @@ class CategoryTest extends TestCase
     {
         $this->actionAsAdmin();
         $this->seed(RolePermissionTableSeeder::class);
-        auth()->user()->givePermissionTo('manage categories');
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_CATEGORIES);
 //        $this->assertAuthenticated();
         $this->get(route('categories.index'))->assertOk();
     }
@@ -32,7 +33,7 @@ class CategoryTest extends TestCase
     {
         $this->actionAsAdmin();
         $this->seed(RolePermissionTableSeeder::class);
-        auth()->user()->givePermissionTo('manage categories');
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_CATEGORIES);
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
     }
@@ -42,7 +43,7 @@ class CategoryTest extends TestCase
         $newTitle ='hadi';
         $this->actionAsAdmin();
         $this->seed(RolePermissionTableSeeder::class);
-        auth()->user()->givePermissionTo('manage categories');
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_CATEGORIES);
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
         $this->patch(route('categories.update',1),['title'=>$newTitle,'slug'=>$this->faker->word]);
@@ -53,7 +54,7 @@ class CategoryTest extends TestCase
     {
         $this->actionAsAdmin();
         $this->seed(RolePermissionTableSeeder::class);
-        auth()->user()->givePermissionTo('manage categories');
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_CATEGORIES);
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
 

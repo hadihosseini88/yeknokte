@@ -3,6 +3,10 @@
 namespace Hadihosseini88\Course\Providers;
 
 use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
+use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\Course\Policies\CategoryPolicy;
+use Hadihosseini88\RolePermissions\Models\Permission;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class CourseServiceProvider extends ServiceProvider
@@ -15,6 +19,7 @@ class CourseServiceProvider extends ServiceProvider
         $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', "Courses");
         \DatabaseSeeder::$seeders[] = RolePermissionTableSeeder::class;
+        Gate::policy(Course::class,CategoryPolicy::class);
 
     }
 

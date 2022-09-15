@@ -21,7 +21,7 @@ Route::get('/test', function () {
 //    \Spatie\Permission\Models\Permission::create(['name'=>'manage categories']);
 //    \Spatie\Permission\Models\Permission::create(['name'=>'manage role_permissions']);
 //    \Spatie\Permission\Models\Permission::create(['name'=>'teach']);
-    auth()->user()->givePermissionTo('teach','manage categories','manage role_permissions');
+    auth()->user()->givePermissionTo(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_SUPER_ADMIN);
     return auth()->user()->permissions;
 });
 

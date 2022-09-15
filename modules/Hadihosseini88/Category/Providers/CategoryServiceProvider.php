@@ -3,6 +3,10 @@
 
 namespace Hadihosseini88\Category\Providers;
 
+use Hadihosseini88\Category\Models\Category;
+use Hadihosseini88\Course\Policies\CategoryPolicy;
+use Hadihosseini88\RolePermissions\Models\Permission;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class CategoryServiceProvider extends ServiceProvider
@@ -13,6 +17,8 @@ class CategoryServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'Categories');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
+        Gate::policy(Category::class,CategoryPolicy::class);
+        
     }
 
     public function boot(){

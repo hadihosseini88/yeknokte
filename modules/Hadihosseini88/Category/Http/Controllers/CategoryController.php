@@ -4,6 +4,7 @@ namespace Hadihosseini88\Category\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Http\Requests\CategoryRequest;
+use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Category\Repositories\CategoryRepo;
 use Hadihosseini88\Category\Responses\AjaxResponses;
 
@@ -19,6 +20,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $this->authorize('manage',Category::class);
         $categories = $this->repo->all();
         return view('Categories::index', compact('categories'));
     }
