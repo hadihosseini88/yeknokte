@@ -22,6 +22,7 @@ class CourseController extends Controller
 
     public function create(UserRepo $userRepo, CategoryRepo $categoryRepo)
     {
+        $this->authorize('create',Course::class);
         $teachers = $userRepo->getTeachers();
         $categories = $categoryRepo->all();
         return view('Courses::create', compact('teachers', 'categories'));

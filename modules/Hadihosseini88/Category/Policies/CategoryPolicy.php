@@ -1,6 +1,6 @@
 <?php
 
-namespace Hadihosseini88\Course\Policies;
+namespace Hadihosseini88\Category\Policies;
 
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;

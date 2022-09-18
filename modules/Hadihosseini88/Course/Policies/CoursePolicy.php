@@ -24,4 +24,11 @@ class CoursePolicy
     {
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES);
     }
+
+    public function create(User $user)
+    {
+        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+
+    }
 }
