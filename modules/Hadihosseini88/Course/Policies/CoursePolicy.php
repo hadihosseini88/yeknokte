@@ -31,4 +31,11 @@ class CoursePolicy
             $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
 
     }
+
+    public function edit(User $user,$course)
+    {
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
+
+        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher->id == $user->id;
+    }
 }

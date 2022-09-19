@@ -10,5 +10,6 @@
         <option value="{!! $category->id !!}">{!! $category->title !!}</option>
         @endforeach
     </select>
+    <br>
     <button class="btn btn-yeknokte_ir">اضافه کردن</button>
 </form>

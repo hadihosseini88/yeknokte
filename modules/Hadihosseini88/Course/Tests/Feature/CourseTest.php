@@ -2,11 +2,15 @@
 
 namespace Hadihosseini88\Course\Tests\Feature;
 
+use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
+use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class CourseTest extends TestCase
@@ -39,9 +43,50 @@ class CourseTest extends TestCase
         $this->get(route('courses.create'))->assertOk();
     }
 
+    public function test_normal_user_can_not_create_course()
+    {
+        $this->actionAsUser();
+        $this->get(route('courses.create'))->assertStatus(403);
+    }
 
+    public function test_permitted_user_can_store_course()
+    {
+        $this->actionAsUser();
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES, Permission::PERMISSION_TEACH);
+        Storage::fake('local');
+        $response = $this->post(route('courses.store'), $this->courseData());
 
+        $response->assertRedirect(route('courses.index'));
+        $this->assertEquals(Course::count(),1);
+    }
 
+    public function test_permitted_user_can_edit_course()
+    {
+        $this->actionAsAdmin();
+        $course = $this->createCourse();
+        $this->get(route('courses.edit', $course->id))->assertOk();
+
+        $this->actionAsUser();
+        $course = $this->createCourse();
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+        $this->get(route('courses.edit', $course->id))->assertOk();
+    }
+
+    public function test_permitted_user_can_not_edit_other_users_courses()
+    {
+        $this->actionAsUser();
+        $course = $this->createCourse();
+        $this->actionAsUser();
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+        $this->get(route('courses.edit', $course->id))->assertStatus(403);
+    }
+
+    public function test_normal_user_can_not_edit_course()
+    {
+        $this->actionAsUser();
+        $course = $this->createCourse();
+        $this->get(route('courses.edit', $course->id))->assertStatus(403);
+    }
 
 
     private function createUser()
@@ -65,6 +110,49 @@ class CourseTest extends TestCase
     private function actionAsUser()
     {
         $this->createUser();
+    }
+
+    private function createCourse()
+    {
+        $data  = $this->courseData() + ['confirmation_status'=> Course::CONFIRMATION_STATUS_PENDING];
+        unset($data['image']);
+        return Course::create($data);
+//        return Course::create([
+//            'teacher_id' => auth()->id(),
+//            'category_id'=>$this->faker->word,
+//            'banner_id'=>$this->faker->word,
+//            'title' => $this->faker->word,
+//            'slug' => $this->faker->word,
+//            'priority' => 12,
+//            'price' => 1200,
+//            'percent' => 20,
+//            'type' => Course::TYPE_FREE,
+//            'status' => Course::STATUS_NOT_COMPLETED,
+//            'body' => $this->faker->text,
+//        ]);
+    }
+
+    private function createCategory()
+    {
+        return Category::create(['title' => $this->faker->word, 'slug' => $this->faker->word]);
+    }
+
+    private function courseData()
+    {
+        $category = $this->createCategory();
+        return [
+            'teacher_id' => auth()->id(),
+            'category_id' => $category->id,
+            'title' => $this->faker->sentence(2),
+            'slug' => $this->faker->sentence(2),
+            'priority' => 12,
+            'price' => 2000,
+            'percent' => 60,
+            'type' => Course::TYPE_CASH,
+            'status' => Course::STATUS_NOT_COMPLETED,
+            'image' => UploadedFile::fake()->image('banner.jpg'),
+
+        ];
     }
 
 }

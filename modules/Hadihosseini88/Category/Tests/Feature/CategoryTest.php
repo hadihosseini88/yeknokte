@@ -69,7 +69,7 @@ class CategoryTest extends TestCase
     }
 
     private function createCategory(){
-        $this->post(route('categories.store'),['title'=>$this->faker->word,'slug'=>$this->faker->word]);
+        return $this->post(route('categories.store'),['title'=>$this->faker->word,'slug'=>$this->faker->word]);
     }
 
 

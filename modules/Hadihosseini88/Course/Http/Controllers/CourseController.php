@@ -37,9 +37,10 @@ class CourseController extends Controller
 
     public function edit($id, CourseRepo $courseRepo, UserRepo $userRepo, CategoryRepo $categoryRepo)
     {
+        $course = $courseRepo->findByid($id);
+        $this->authorize('edit',$course);
         $teachers = $userRepo->getTeachers();
         $categories = $categoryRepo->all();
-        $course = $courseRepo->findByid($id);
 
         return view('Courses::edit', compact('course', 'teachers', 'categories'));
     }
