@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Category\Models;
 
+use Hadihosseini88\Course\Models\Course;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -21,5 +22,10 @@ class Category extends Model
     public function subCategory()
     {
         return $this->hasMany(Category::class,'parent_id');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }

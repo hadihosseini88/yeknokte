@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Course\Models;
 
+use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -36,5 +37,10 @@ class Course extends Model
     public function teacher()
     {
         return $this->belongsTo(User::class,'teacher_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

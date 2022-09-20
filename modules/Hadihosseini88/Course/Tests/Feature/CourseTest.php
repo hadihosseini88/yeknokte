@@ -88,6 +88,91 @@ class CourseTest extends TestCase
         $this->get(route('courses.edit', $course->id))->assertStatus(403);
     }
 
+    public function test_permitted_user_can_update_course()
+    {
+        $this->actionAsUser();
+        auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES, Permission::PERMISSION_TEACH);
+        $course  = $this->createCourse();
+        $this->patch(route('courses.update',$course->id),[
+            'teacher_id' => auth()->id(),
+            'category_id' => $course->category->id,
+            'title' => 'updated title',
+            'slug' => 'updated slug',
+            'priority' => 2,
+            'price' => 5000,
+            'percent' => 30,
+            'type' => Course::TYPE_CASH,
+            'status' => Course::STATUS_COMPLETED,
+            'image' => UploadedFile::fake()->image('banner1.jpg'),
+
+        ])->assertRedirect(route('courses.index'));
+
+        $course = $course->fresh();
+        $this->assertEquals('updated title',$course->title);
+    }
+
+    public function test_normal_user_can_not_update_course()
+    {
+        $this->actionAsAdmin();
+        $course  = $this->createCourse();
+        $this->actionAsUser();
+        auth()->user()->givePermissionTo(Permission::PERMISSION_TEACH);
+
+        $this->patch(route('courses.update',$course->id),[
+            'teacher_id' => auth()->id(),
+            'category_id' => $course->category->id,
+            'title' => 'updated title',
+            'slug' => 'updated slug',
+            'priority' => 2,
+            'price' => 5000,
+            'percent' => 30,
+            'type' => Course::TYPE_CASH,
+            'status' => Course::STATUS_COMPLETED,
+            'image' => UploadedFile::fake()->image('banner1.jpg'),
+
+        ])->assertStatus(403);
+    }
+
+    public function test_permitted_user_can_delete_course()
+    {
+        $this->actionAsAdmin();
+        $course  = $this->createCourse();
+        $this->delete(route('courses.destroy',$course->id))->assertOk();
+        $this->assertEquals(0,Course::count());
+    }
+    public function test_normal_user_can_not_delete_course()
+    {
+        $this->actionAsAdmin();
+        $course  = $this->createCourse();
+        $this->actionAsUser();
+        $this->delete(route('courses.destroy',$course->id))->assertStatus(403);
+        $this->assertEquals(1,Course::count());
+    }
+
+    public function test_permitted_user_can_change_confirmation_status_course()
+    {
+        $this->actionAsAdmin();
+        $course  = $this->createCourse();
+        $this->patch(route('courses.accept',$course->id))->assertOk();
+        $this->patch(route('courses.reject',$course->id))->assertOk();
+        $this->patch(route('courses.lock',$course->id))->assertOk();
+    }
+
+    public function test_normal_user_can_not_change_confirmation_status_course()
+    {
+        $this->actionAsAdmin();
+        $course  = $this->createCourse();
+        $this->actionAsUser();
+        $this->patch(route('courses.accept',$course->id))->assertStatus(403);
+        $this->patch(route('courses.reject',$course->id))->assertStatus(403);
+        $this->patch(route('courses.lock',$course->id))->assertStatus(403);
+    }
+
+
+
+
+
+
 
     private function createUser()
     {
@@ -117,19 +202,6 @@ class CourseTest extends TestCase
         $data  = $this->courseData() + ['confirmation_status'=> Course::CONFIRMATION_STATUS_PENDING];
         unset($data['image']);
         return Course::create($data);
-//        return Course::create([
-//            'teacher_id' => auth()->id(),
-//            'category_id'=>$this->faker->word,
-//            'banner_id'=>$this->faker->word,
-//            'title' => $this->faker->word,
-//            'slug' => $this->faker->word,
-//            'priority' => 12,
-//            'price' => 1200,
-//            'percent' => 20,
-//            'type' => Course::TYPE_FREE,
-//            'status' => Course::STATUS_NOT_COMPLETED,
-//            'body' => $this->faker->text,
-//        ]);
     }
 
     private function createCategory()

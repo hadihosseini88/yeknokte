@@ -38,4 +38,14 @@ class CoursePolicy
 
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher->id == $user->id;
     }
+
+    public function delete(User $user)
+    {
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
+    }
+
+    public function change_confirmation_status(User $user)
+    {
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
+    }
 }

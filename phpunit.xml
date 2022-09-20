@@ -35,6 +35,14 @@
             <directory suffix="Test.php">./modules/Hadihosseini88/Course/Tests/Feature</directory>
         </testsuite>
 
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./modules/Hadihosseini88/RolePermissions/Tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./modules/Hadihosseini88/RolePermissions/Tests/Feature</directory>
+        </testsuite>
+
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

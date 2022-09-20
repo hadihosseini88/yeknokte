@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Responses\AjaxResponses;
 use Hadihosseini88\RolePermissions\Http\Requests\RoleRequest;
 use Hadihosseini88\RolePermissions\Http\Requests\RoleUpdateRequest;
+use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\RolePermissions\Repositories\PermissionRepo;
 use Hadihosseini88\RolePermissions\Repositories\RoleRepo;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+
 
 class RolePermissionsController extends Controller
 {
@@ -24,6 +24,7 @@ class RolePermissionsController extends Controller
 
     public function index()
     {
+        $this->authorize('index', Role::class);
         $roles = $this->roleRepo->all();
         $permissions = $this->permissionRepo->all();
         return view('RolePermissions::index', compact('roles', 'permissions'));
@@ -31,11 +32,14 @@ class RolePermissionsController extends Controller
 
     public function store(RoleRequest $request)
     {
-        return $this->roleRepo->create($request);
+        $this->authorize('create', Role::class);
+        $this->roleRepo->create($request);
+        return redirect(route('role-permissions.index'));
     }
 
     public function edit($roleId)
     {
+        $this->authorize('edit', Role::class);
         $role = $this->roleRepo->findById($roleId);
         $permissions = $this->permissionRepo->all();
         return view("RolePermissions::edit", compact('role', 'permissions'));
@@ -43,12 +47,14 @@ class RolePermissionsController extends Controller
 
     public function update(RoleUpdateRequest $request,$id)
     {
+        $this->authorize('edit', Role::class);
         $this->roleRepo->update($request,$id);
         return redirect(route('role-permissions.index'));
     }
 
     public function destroy($roleId)
     {
+        $this->authorize('delete', Role::class);
         $this->roleRepo->delete($roleId);
         return AjaxResponses::SuccessResponse();
     }
