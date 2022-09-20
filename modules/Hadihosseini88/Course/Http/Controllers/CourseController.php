@@ -4,7 +4,7 @@ namespace Hadihosseini88\Course\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Repositories\CategoryRepo;
-use Hadihosseini88\Category\Responses\AjaxResponses;
+use Hadihosseini88\Common\Responses\AjaxResponses;
 use Hadihosseini88\Course\Http\Requests\CourseRequest;
 use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Repositories\CourseRepo;

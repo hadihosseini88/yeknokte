@@ -1,6 +1,6 @@
 <?php
 
-namespace Hadihosseini88\Category\Responses;
+namespace Hadihosseini88\Common\Responses;
 
 use Illuminate\Http\Response;
 

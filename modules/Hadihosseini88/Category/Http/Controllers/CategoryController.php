@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Hadihosseini88\Category\Http\Requests\CategoryRequest;
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Category\Repositories\CategoryRepo;
-use Hadihosseini88\Category\Responses\AjaxResponses;
+use Hadihosseini88\Common\Responses\AjaxResponses;
 
 
 class CategoryController extends Controller
