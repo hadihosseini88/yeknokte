@@ -4,7 +4,8 @@ Route::group([
     'namespace' => 'Hadihosseini88\User\Http\Controllers',
     'middleware' => 'web'
 ], function ($router) {
-//    Auth::routes(['verify' => true]);
+    Route::resource('users','UserController');
+    Route::post('users/{user}/add/role','UserController@addRole')->name('users.addRole');
 
     Route::post('/email/verify', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');

@@ -13,6 +13,7 @@
                     <table class="table">
                         <thead role="rowgroup">
                         <tr role="row" class="title-row">
+                            <th>ردیف</th>
                             <th>شناسه</th>
                             <th>نام دسته بندی</th>
                             <th>نام انگلیسی دسته بندی</th>
@@ -23,6 +24,7 @@
                         <tbody>
                         @foreach($categories as $category)
                             <tr role="row" class="">
+                                <td><a href="">{{ $loop->index +1 }}</a></td>
                                 <td><a href="">{{$category->id}}</a></td>
                                 <td><a href="">{{$category->title}}</a></td>
                                 <td>{{$category->slug}}</td>

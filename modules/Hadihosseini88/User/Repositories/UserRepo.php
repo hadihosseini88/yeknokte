@@ -20,4 +20,9 @@ class UserRepo
     {
         return User::findOrFail($id);
     }
+
+    public function paginate()
+    {
+        return User::paginate();
+    }
 }
