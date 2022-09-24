@@ -1933,4 +1933,11 @@ span.tagRemove:hover {
     margin-top: 15px;
 }
 
+li.delete_able_list_item > a{
+    display: none;
+}
+.delete_able_list_item:hover  >  a{
+    display: inline-block;
+}
+
 

@@ -3,6 +3,7 @@
 namespace Hadihosseini88\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Hadihosseini88\Common\Responses\AjaxResponses;
 use Hadihosseini88\RolePermissions\Repositories\RoleRepo;
 use Hadihosseini88\User\Http\Requests\AddRoleRequest;
 use Hadihosseini88\User\Models\User;
@@ -31,7 +32,16 @@ class UserController extends Controller
 
         $this->authorize('addRole',User::class);
         $user->assignRole($reqeust->role);
+        newFeedback('موفقیت آمیز','به کاربر ' . $user->name . ' نقش کاربری ' . __($reqeust->role) .' داده شد.','success');
         return back();
+    }
 
+    public function removeRole($userId, $role)
+    {
+        $this->authorize('removeRole',User::class);
+        $user = $this->userRepo->findById($userId);
+        $user->removeRole($role);
+
+        return AjaxResponses::SuccessResponse();
     }
 }

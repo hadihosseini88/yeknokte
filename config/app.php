@@ -180,6 +180,7 @@ return [
         Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Hadihosseini88\Course\Providers\CourseServiceProvider::class,
         Hadihosseini88\Media\Providers\MediaServiceProvider::class,
+        Hadihosseini88\Common\Providers\CommonServiceProvider::class,
 
     ],
 

@@ -61,7 +61,13 @@
                         <td>
                             <ul>
                                 @foreach($user->roles as $userRole)
-                                    <li>{{ $userRole->name }}</li>
+                                    <li class="delete_able_list_item">{{ $userRole->name }}
+                                        <a href=""
+                                             onclick="deleteItem(event,'{{ route('users.removeRole', [ "user"=> $user->id, "role" => $userRole->name ]) }}','li')"
+                                             class="item-delete mlg-15" title="حذف"
+                                        >
+                                        </a>
+                                    </li>
                                 @endforeach
                                 <li><a href="#select-role" rel="modal:open" onclick="setFormAction({{ $user->id }})"
                                        style="color: #a94442">افزودن نقش کاربری</a>
@@ -102,6 +108,7 @@
 
 
 @section('js')
+
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
@@ -109,6 +116,8 @@
         function setFormAction(userId) {
             $('#select-role-form').attr('action', '{{ route('users.addRole', 0) }}'.replace('/0/', '/' + userId + '/'));
         }
+
+        @include('Common::layouts.feedbacks')
     </script>
 @endsection
 
