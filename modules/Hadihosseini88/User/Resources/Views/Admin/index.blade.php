@@ -54,7 +54,7 @@
                 @foreach($users as $user)
                     <tr role="row" class="">
                         <td><a href="">{{ $loop->index +1 }}</a></td>
-                        <td><a href="">1</a></td>
+                        <td><a href="">{{ $user->id }}</a></td>
                         <td><a href="">{{ $user->name }}</a></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->mobile ?? 'موبایل ثبت نشده' }}</td>
@@ -83,7 +83,7 @@
                             <a href="" class="item-confirm mlg-15" title="تایید"></a>
                             <a href="" class="item-reject mlg-15" title="رد"></a>
                             <a href="edit-user.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                            <a href="edit-user.html" class="item-edit " title="ویرایش"></a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="item-edit " title="ویرایش"></a>
                         </td>
                     </tr>
                 @endforeach
