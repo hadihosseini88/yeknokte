@@ -13,7 +13,6 @@ class CommonServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        require __DIR__ . '/../helpers.php';
     }
 
 }
