@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60ed2ab689e924ef0a1619afeab76aa9",
+    "content-hash": "b006294210b905741a2120466dc06259",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -865,6 +865,32 @@
                 }
             ],
             "time": "2022-06-20T21:43:03+00:00"
+        },
+        {
+            "name": "hadihosseini88/common",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Hadihosseini88/Common",
+                "reference": "84c5d61a37f0b8fe425548068ef1e5ce27f35ea3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": "\\Hadihosseini88\\Common\\Providers\\CommonServiceProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hadihosseini88\\Common\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "intervention/image",
@@ -8337,7 +8363,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "hadihosseini88/common": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

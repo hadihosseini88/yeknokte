@@ -5,5 +5,4 @@ function newFeedback($title = 'عملیات موفق', $body = 'عملیات ب�
     $session = session()->has('feedbacks') ? session()->get('feedbacks') : [];
     $session[] = ['title' => $title, 'body' => $body, 'type' => $type];
     session()->flash('feedbacks', $session);
-
 }

@@ -3,8 +3,8 @@
 namespace Hadihosseini88\Course\Tests\Feature;
 
 use Hadihosseini88\Category\Models\Category;
-use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -167,11 +167,6 @@ class CourseTest extends TestCase
         $this->patch(route('courses.reject',$course->id))->assertStatus(403);
         $this->patch(route('courses.lock',$course->id))->assertStatus(403);
     }
-
-
-
-
-
 
 
     private function createUser()

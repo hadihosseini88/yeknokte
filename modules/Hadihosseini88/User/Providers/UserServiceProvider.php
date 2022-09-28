@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Providers;
 
+use Hadihosseini88\User\Database\Seeds\UsersTableSeeder;
 use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
@@ -12,12 +13,6 @@ class UserServiceProvider extends ServiceProvider
 
     public function register()
     {
-        config()->set('auth.providers.users.model',User::class);
-        Gate::policy(User::class,UserPolicy::class);
-    }
-
-    public function boot()
-    {
         $this->loadRoutesFrom(__DIR__ . '/../Routes/user_routes.php');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->loadFactoriesFrom(__DIR__ . '/../Database/Factories');
@@ -25,6 +20,15 @@ class UserServiceProvider extends ServiceProvider
         $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', "User");
 
+        \DatabaseSeeder::$seeders[] = UsersTableSeeder::class;
+
+        config()->set('auth.providers.users.model',User::class);
+
+        Gate::policy(User::class,UserPolicy::class);
+    }
+
+    public function boot()
+    {
         config()->set('sidebar.items.users',[
             "icon"=>"i-users",
             "title"=>"کاربران",

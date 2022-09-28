@@ -1,0 +1,16 @@
+{
+    "name": "hadihosseini88/common",
+    "autoload": {
+        "psr-4": {
+            "Hadihosseini88\\Common\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": "\\Hadihosseini88\\Common\\Providers\\CommonServiceProvider"
+        }
+    }
+}

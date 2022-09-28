@@ -13,7 +13,6 @@
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/RolePermissions" isTestSource="false" packagePrefix="Hadihosseini88\RolePermissions\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Course" isTestSource="false" packagePrefix="Hadihosseini88\Course\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Media" isTestSource="false" packagePrefix="Hadihosseini88\Media\" />
-      <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Common" isTestSource="false" packagePrefix="Hadihosseini88\Common\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
@@ -125,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-permission" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hadihosseini88/common" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

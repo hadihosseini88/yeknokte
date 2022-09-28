@@ -3,7 +3,7 @@
 namespace Hadihosseini88\Category\Tests\Feature;
 
 use Hadihosseini88\Category\Models\Category;
-use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
+use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

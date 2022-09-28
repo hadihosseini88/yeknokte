@@ -174,13 +174,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Hadihosseini88\User\Providers\UserServiceProvider::class,
         Hadihosseini88\Dashboard\Providers\DashboardServiceProvider::class,
         Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
-        Hadihosseini88\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Hadihosseini88\Course\Providers\CourseServiceProvider::class,
         Hadihosseini88\Media\Providers\MediaServiceProvider::class,
-        Hadihosseini88\Common\Providers\CommonServiceProvider::class,
+
 
     ],
 

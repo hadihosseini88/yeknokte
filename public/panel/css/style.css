@@ -505,6 +505,11 @@ textarea {
     color: #e73368 !important;
 }
 
+.text-pending {
+    color: #DDB978 !important;
+}
+
+
 .webamooz_net_middle {
     align-content: center;
     -ms-flex-align: center;

@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "hadihosseini88/common": "dev-master",
         "intervention/image": "^2.7",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
@@ -26,6 +27,12 @@
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./modules/Hadihosseini88/Common"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
@@ -42,7 +49,7 @@
             "Hadihosseini88\\User\\": "modules/Hadihosseini88/User/",
             "Hadihosseini88\\Dashboard\\": "modules/Hadihosseini88/Dashboard/",
             "Hadihosseini88\\Category\\": "modules/Hadihosseini88/Category/",
-            "Hadihosseini88\\Common\\": "modules/Hadihosseini88/Common/",
+
             "Hadihosseini88\\RolePermissions\\": "modules/Hadihosseini88/RolePermissions/",
             "Hadihosseini88\\Course\\": "modules/Hadihosseini88/Course/",
             "Hadihosseini88\\Media\\": "modules/Hadihosseini88/Media/"

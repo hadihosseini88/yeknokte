@@ -2,7 +2,7 @@
 
 namespace Hadihosseini88\RolePermissions\Tests\Feature;
 
-use Hadihosseini88\Course\Database\Seeds\RolePermissionTableSeeder;
+use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Models\User;

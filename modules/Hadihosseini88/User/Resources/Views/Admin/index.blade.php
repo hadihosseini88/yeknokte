@@ -63,8 +63,8 @@
                                 @foreach($user->roles as $userRole)
                                     <li class="delete_able_list_item">{{ $userRole->name }}
                                         <a href=""
-                                             onclick="deleteItem(event,'{{ route('users.removeRole', [ "user"=> $user->id, "role" => $userRole->name ]) }}','li')"
-                                             class="item-delete mlg-15" title="حذف"
+                                           onclick="deleteItem(event,'{{ route('users.removeRole', [ "user"=> $user->id, "role" => $userRole->name ]) }}','li')"
+                                           class="item-delete mlg-15" title="حذف"
                                         >
                                         </a>
                                     </li>
@@ -77,10 +77,18 @@
                         <td>{{ $user->created_at->format('Y/m/d') }}</td>
                         <td>148.12.12.1</td>
                         <td>5 دوره</td>
-                        <td class="text-success">تاییده شده</td>
+                        <td class="confirmation_status @if($user->hasVerifiedEmail())
+                            text-success
+                            @else
+                            text-error
+                            @endif
+                        ">@lang($user->hasVerifiedEmail() ? 'تایید شده' : 'در انتظار تایید')</td>
                         <td>
-                            <a href="" class="item-delete mlg-15" title="حذف"></a>
-                            <a href="" class="item-confirm mlg-15" title="تایید"></a>
+                            <a href="" onclick="deleteItem(event,'{{route('users.destroy', $user->id)}}')"
+                               class="item-delete mlg-15" title="حذف"></a>
+                            <a href=""
+                               onclick="updateConfirmationStatus(event,'{{ route('users.manualVerify', $user->id) }}','آیا از تایید این کاربر اطمینان دارید؟','تایید شده')"
+                               class="item-confirm mlg-15" title="تایید"></a>
                             <a href="" class="item-reject mlg-15" title="رد"></a>
                             <a href="edit-user.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
                             <a href="{{ route('users.edit', $user->id) }}" class="item-edit " title="ویرایش"></a>

@@ -3,6 +3,7 @@
 namespace Hadihosseini88\User\Models;
 
 use Hadihosseini88\Media\Models\Media;
+use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Notifications\ResetPasswordRequestNotification;
 use Hadihosseini88\User\Notifications\VerifyMailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,6 +21,15 @@ class User extends Authenticatable implements MustVerifyEmail
     const STATUS_INACTIVE = 'inactive';
     const STATUS_BAN = 'ban';
     static $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_BAN];
+
+    static $defaultUsers = [
+        [
+            'email' => 'admin@admin.com',
+            'password' => 'demo',
+            'name' => 'Admin',
+            'role'=> Role::ROLE_SUPER_ADMIN
+        ]
+    ];
 
 
     /**
