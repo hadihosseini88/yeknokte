@@ -37,5 +37,13 @@ class UserServiceProvider extends ServiceProvider
             "url"=> route('users.index')
         ]);
 
+        $this->app->booted(function (){
+            config()->set('sidebar.items.user',[
+                "icon"=>"i-user__inforamtion",
+                "title"=>"اطلاعات کاربری",
+                "url"=> route('users.profile')
+            ]);
+        });
+
     }
 }
