@@ -61,28 +61,14 @@
                         <td>
                             <ul>
                                 @foreach($user->roles as $userRole)
-                                    <li class="delete_able_list_item">{{ $userRole->name }}
-                                        <a href=""
-                                           onclick="deleteItem(event,'{{ route('users.removeRole', [ "user"=> $user->id, "role" => $userRole->name ]) }}','li')"
-                                           class="item-delete mlg-15" title="حذف"
-                                        >
-                                        </a>
-                                    </li>
+                                    <li class="delete_able_list_item">@lang($userRole->name)</li>
                                 @endforeach
-                                <li><a href="#select-role" rel="modal:open" onclick="setFormAction({{ $user->id }})"
-                                       style="color: #a94442">افزودن نقش کاربری</a>
-                                </li>
                             </ul>
                         </td>
                         <td>{{ $user->created_at->format('Y/m/d') }}</td>
-                        <td>148.12.12.1</td>
+                        <td>{{ $user->ip }}</td>
                         <td>5 دوره</td>
-                        <td class="confirmation_status @if($user->hasVerifiedEmail())
-                            text-success
-                            @else
-                            text-error
-                            @endif
-                        ">@lang($user->hasVerifiedEmail() ? 'تایید شده' : 'در انتظار تایید')</td>
+                        <td class="confirmation_status">{!! $user->hasVerifiedEmail() ? "<span class='text-success'>تایید شده</span>" : "<span class='text-error'>تایید نشده</span>" !!}</td>
                         <td>
                             <a href="" onclick="deleteItem(event,'{{route('users.destroy', $user->id)}}')"
                                class="item-delete mlg-15" title="حذف"></a>
@@ -97,19 +83,6 @@
                 @endforeach
                 </tbody>
             </table>
-            <div id="select-role" class="modal">
-                <form action="{{route('users.addRole','0')}}" id="select-role-form" method="POST">
-                    @csrf
-                    <select name="role" id="">
-                        <option value="">نقش ها را انتخاب کنید</option>
-                        @foreach($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                        @endforeach
-                    </select>
-                    <br>
-                    <button class="btn btn-yeknokte_ir">افزودن</button>
-                </form>
-            </div>
         </div>
     </div>
 @endsection
@@ -117,20 +90,10 @@
 
 @section('js')
 
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-
     <script>
-        function setFormAction(userId) {
-            $('#select-role-form').attr('action', '{{ route('users.addRole', 0) }}'.replace('/0/', '/' + userId + '/'));
-        }
-
         @include('Common::layouts.feedbacks')
     </script>
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-@endsection
 
 

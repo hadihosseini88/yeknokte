@@ -35,13 +35,6 @@ class UserRepo
             'username' => $values->username,
             'mobile' => $values->mobile,
             'headline' => $values->headline,
-            'website' => $values->website,
-            'twitter' => $values->twitter,
-            'linkedin' => $values->linkedin,
-            'instagram' => $values->instagram,
-            'facebook' => $values->facebook,
-            'youtube' => $values->youtube,
-            'telegram' => $values->telegram,
             'status' => $values->status,
             'bio' => $values->bio,
             'image_id' => $values->image_id,
@@ -50,6 +43,10 @@ class UserRepo
         if (!is_null($values->password)) {
             $update['password'] = bcrypt($values->password);
         }
+
+        $user = User::find($userId);
+        $user->syncRoles([]);
+        $user->assignRole($values['role']);
 
         return User::where('id', $userId)->update($update);
     }

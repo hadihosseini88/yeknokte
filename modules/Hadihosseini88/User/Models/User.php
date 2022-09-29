@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Models;
 
+use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Notifications\ResetPasswordRequestNotification;
@@ -71,5 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function image()
     {
         return $this->belongsTo(Media::class,'image_id');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class,'teacher_id');
     }
 }

@@ -5,5 +5,7 @@
     "manage own courses": "مدیریت دوره های خود",
     "manage role_permissions": "مدیریت نقش های کاربری",
     "teach": "تدریس",
+    "teacher": "مدرس",
+    "student":"دانشجو",
     "super admin": "مدیرکل"
 }

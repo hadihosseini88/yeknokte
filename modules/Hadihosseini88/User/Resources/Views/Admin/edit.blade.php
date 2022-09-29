@@ -31,32 +31,20 @@
                     <x-input value="{{ $user->headline }}" name="headline" type="text" class="text" placeholder="عنوان"
                              ></x-input>
 
-                    <x-input value="{{ $user->website }}" name="website" type="text" class="text" placeholder="سایت"
-                             ></x-input>
-
-                    <x-input value="{{ $user->twitter }}" name="twitter" type="text" class="text" placeholder="توئیتر"
-                             ></x-input>
-
-                    <x-input value="{{ $user->linkedin }}" name="linkedin" type="text" class="text" placeholder="لینکدین"
-                             ></x-input>
-
-                    <x-input value="{{ $user->instagram }}" name="instagram" type="text" class="text" placeholder="اینستاگرام"
-                             ></x-input>
-
-                    <x-input value="{{ $user->facebook }}" name="facebook" type="text" class="text" placeholder="فیسبوک"
-                             ></x-input>
-
-                    <x-input value="{{ $user->youtube }}" name="youtube" type="text" class="text" placeholder="یوتیوب"
-                             ></x-input>
-
-                    <x-input value="{{ $user->telegram }}" name="telegram" type="text" class="text" placeholder="تلگرام"
-                             ></x-input>
-
                     <x-select name="status" required>
                         <option value="">وضعیت کاربر</option>
                         @foreach(\Hadihosseini88\User\Models\User::$statuses as $status)
                             <option value="{{ $status }}"
                                     @if($status == $user->status) selected @endif>@lang($status)</option>
+                        @endforeach
+                    </x-select>
+
+                    <x-select name="role">
+                        <option value="">نقشه کاربری</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }} >
+                                @lang($role->name)
+                            </option>
                         @endforeach
                     </x-select>
 
@@ -113,16 +101,13 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($user->courses as $course)
                         <tr role="row" class="">
-                            <td><a href="">1</a></td>
-                            <td><a href="">دوره لاراول</a></td>
-                            <td><a href="">صیاد اعظمی</a></td>
+                            <td><a href="">{{ $course->id }}</a></td>
+                            <td><a href="">{{ $course->title }}</a></td>
+                            <td><a href="">{{ $course->teacher->name }}</a></td>
                         </tr>
-                        <tr role="row" class="">
-                            <td><a href="">1</a></td>
-                            <td><a href="">دوره لاراول</a></td>
-                            <td><a href="">صیاد اعظمی</a></td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

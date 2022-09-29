@@ -3,6 +3,7 @@
 namespace Hadihosseini88\User\Providers;
 
 use Hadihosseini88\User\Database\Seeds\UsersTableSeeder;
+use Hadihosseini88\User\Http\Middleware\StoreUserIp;
 use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
@@ -19,6 +20,7 @@ class UserServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'User');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', "User");
+        $this->app['router']->pushMiddlewareToGroup('web', StoreUserIp::class);
 
         \DatabaseSeeder::$seeders[] = UsersTableSeeder::class;
 
