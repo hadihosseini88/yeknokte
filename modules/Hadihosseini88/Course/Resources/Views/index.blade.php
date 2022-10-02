@@ -63,7 +63,7 @@
                         <td><a href="">{{ $course->title }}</a></td>
                         <td><a href="">{{ $course->teacher->name }}</a></td>
                         <td>{{$course->price}}</td>
-                        <td><a href="course-detail.html" class="color-2b4a83">مشاهده</a></td>
+                        <td><a href="{{ route('courses.details',$course->id) }}" class="color-2b4a83">مشاهده</a></td>
                         <td><a href="course-transaction.html" class="color-2b4a83">مشاهده</a></td>
                         <td><a href="" class="color-2b4a83">مشاهده (10 نظر)</a></td>
                         <td>120</td>

@@ -24,15 +24,33 @@ class UpdateProfileInformationRequest extends FormRequest
             'mobile' => 'nullable|unique:users,mobile,' . auth()->id(),
             'password' => ['nullable', new ValidPassword()]
         ];
-        if (auth()->user()->hasPermissionTo(Permission::PERMISSION_TEACH) || auth()->user()->hasRole(Role::ROLE_TEACHER)){
-            $rules = [
-                'username' => 'required|min:3|max:190|unique:users,username,' . auth()->id(),
+        if (auth()->user()->hasPermissionTo(Permission::PERMISSION_TEACH)){
+            $rules += [
+
                 'card_number' => 'required|string|size:16',
                 'shaba' => 'required|string|size:24',
                 'headline' => 'required|min:3|max:60',
                 'bio' => 'required',
             ];
+
+           $rules['username'] = 'required|min:3|max:190|unique:users,username,' . auth()->id();
         }
         return $rules;
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' =>'نام و نام خانوادگی',
+            'email' => 'ایمیل',
+            'username' => 'نام کاربری',
+            'mobile' => 'موبایل',
+            'password' => 'رمز عبور جدید',
+            'card_number' =>'شماره کارت',
+            'shaba' => 'شماره شبا',
+            'headline' => 'عنوان',
+            'bio' => 'بیوگرافی',
+
+        ];
     }
 }

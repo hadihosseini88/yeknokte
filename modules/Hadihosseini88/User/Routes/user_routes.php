@@ -2,7 +2,7 @@
 
 Route::group([
     'namespace' => 'Hadihosseini88\User\Http\Controllers',
-    'middleware' => 'web'
+    'middleware' => ['web','auth']
 ], function ($router) {
     Route::post('users/{user}/add/role','UserController@addRole')->name('users.addRole');
     Route::delete('users/{user}/remove/{role}/role','UserController@removeRole')->name('users.removeRole');
@@ -13,6 +13,13 @@ Route::group([
     Route::get('tutors/{username}','UserController@viewProfile')->name('viewProfile');
 
     Route::resource('users','UserController');
+
+});
+
+Route::group([
+    'namespace' => 'Hadihosseini88\User\Http\Controllers',
+    'middleware' => 'web'
+], function ($router) {
 
     Route::post('/email/verify', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');

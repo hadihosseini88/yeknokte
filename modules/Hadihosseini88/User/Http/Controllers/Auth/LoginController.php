@@ -56,4 +56,5 @@ class LoginController extends Controller
     {
         return view('User::Front.login');
     }
+
 }
