@@ -218,7 +218,7 @@ function updateConfirmationStatus(event, route,message,status, fieldClass = 'con
         $.post(route, {_method: "PATCH", _token: $('meta[name="_token"]').attr('content')})
 
             .done(function (response) {
-                if (status = "تایید شده"){
+                if (status == "تایید شده"){
                     $(event.target).closest('tr').find('td.' + fieldClass).html("<span class='text-success'>" + status + "</span>");
                 }else{
                     $(event.target).closest('tr').find('td.' + fieldClass).html("<span class='text-error'>" + status + "</span>");

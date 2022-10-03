@@ -22,6 +22,9 @@ class CreateSeasonsTable extends Migration
             $table->enum('confirmation_status', \Hadihosseini88\Course\Models\Season::$confirmationStatuses)
                 ->default(\Hadihosseini88\Course\Models\Season::CONFIRMATION_STATUS_PENDING);
 
+            $table->enum('status',\Hadihosseini88\Course\Models\Season::$statuses)
+                ->default(\Hadihosseini88\Course\Models\Season::STATUS_OPENED);
+
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('CASCADE');
