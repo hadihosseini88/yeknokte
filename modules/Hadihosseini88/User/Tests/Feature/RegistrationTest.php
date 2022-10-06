@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Tests\Feature;
 
+use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -73,6 +74,7 @@ class RegistrationTest extends TestCase
 
     public function test_verified_user_can_see_home_page()
     {
+        $this->seed(RolePermissionTableSeeder::class);
         $this->registerNewUser();
 
         $this->assertAuthenticated();

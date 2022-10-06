@@ -16,6 +16,7 @@ class SeasonRepo
             'title' => $values->title,
             'number' => $this->generateNumber($values->number, $id),
             'confirmation_status' => Season::CONFIRMATION_STATUS_PENDING,
+            'status'=>Season::STATUS_OPENED
         ]);
     }
 

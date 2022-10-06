@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Providers;
 
+use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Database\Seeds\UsersTableSeeder;
 use Hadihosseini88\User\Http\Middleware\StoreUserIp;
 use Hadihosseini88\User\Models\User;
@@ -34,11 +35,12 @@ class UserServiceProvider extends ServiceProvider
         config()->set('sidebar.items.users',[
             "icon"=>"i-users",
             "title"=>"کاربران",
-            "url"=> route('users.index')
+            "url"=> route('users.index'),
+            "permission" => Permission::PERMISSION_MANAGE_USERS,
         ]);
 
         $this->app->booted(function (){
-            config()->set('sidebar.items.user',[
+            config()->set('sidebar.items.userInformation',[
                 "icon"=>"i-user__inforamtion",
                 "title"=>"اطلاعات کاربری",
                 "url"=> route('users.profile')

@@ -4,9 +4,9 @@ return [
     'items' => [
         'dashboard' => [],
         'courses' => [],
-        'users' => [],
         'categories' => [],
+        'users' => [],
         'role-permissions' => [],
-        'user' => []
+        'userInformation' => []
     ]
 ];

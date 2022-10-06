@@ -89,4 +89,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->username ? route('viewProfile', $this->username) : route('viewProfile','username');
     }
+
+    public function getThumbAttribute()
+    {
+        if($this->image)
+        return '/storage/' . $this->image->files[300];
+
+        return '/panel/img/pro.jpg';
+    }
 }
