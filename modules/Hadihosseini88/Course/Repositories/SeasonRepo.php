@@ -16,6 +16,11 @@ class SeasonRepo
             ->orderBy('number')->get();
     }
 
+    public function findByIdAndCourseId($seasonId, $courseId)
+    {
+        return Season::where('course_id', $courseId)->where('id', $seasonId)->first();
+    }
+
     public function store($id, $values)
     {
         return Season::create([

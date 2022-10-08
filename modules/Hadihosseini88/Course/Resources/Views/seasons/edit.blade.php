@@ -2,8 +2,8 @@
 
 @section('breadcrumb')
     <li><a href="{!! route('courses.index') !!}" title="دوره ها">دوره ها</a></li>
-    <li><a href="{!! route('courses.details', $season->course_id) !!}" title="جزئیات">جزئیات</a></li>
-    <li><a href="#" class="is-active" title="ویرایش فصل">ویرایش فصل</a></li>
+    <li><a href="{!! route('courses.details', $season->course_id) !!}" title="جزئیات">{{ $season->course->title }}</a></li>
+    <li><a href="{{ route('seasons.edit', $season->id) }}" class="is-active" title="ویرایش فصل">ویرایش فصل</a></li>
 @endsection
 
 @section('content')
