@@ -8,21 +8,24 @@ use Illuminate\Support\Str;
 
 class SeasonRepo
 {
+
+    public function getCourseSeasons($course)
+    {
+        return Season::where('course_id', $course)
+            ->where('confirmation_status', Season::CONFIRMATION_STATUS_ACCEPTED)
+            ->orderBy('number')->get();
+    }
+
     public function store($id, $values)
     {
         return Season::create([
-            'course_id'=> $id,
-            'user_id'=> auth()->id(),
+            'course_id' => $id,
+            'user_id' => auth()->id(),
             'title' => $values->title,
             'number' => $this->generateNumber($values->number, $id),
             'confirmation_status' => Season::CONFIRMATION_STATUS_PENDING,
-            'status'=>Season::STATUS_OPENED
+            'status' => Season::STATUS_OPENED
         ]);
-    }
-
-    public function paginate()
-    {
-        return Course::paginate();
     }
 
     public function delete($id)
@@ -62,4 +65,5 @@ class SeasonRepo
         }
         return $number;
     }
+
 }
