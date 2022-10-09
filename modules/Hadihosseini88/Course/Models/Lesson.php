@@ -2,6 +2,8 @@
 
 namespace Hadihosseini88\Course\Models;
 
+use Hadihosseini88\Media\Models\Media;
+use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
@@ -18,4 +20,24 @@ class Lesson extends Model
 
     protected $guarded = [];
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function season()
+    {
+        return $this->belongsTo(Season::class);
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
 }

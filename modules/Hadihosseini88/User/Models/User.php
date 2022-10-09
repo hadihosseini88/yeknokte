@@ -3,6 +3,7 @@
 namespace Hadihosseini88\User\Models;
 
 use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\Course\Models\Lesson;
 use Hadihosseini88\Course\Models\Season;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\RolePermissions\Models\Role;
@@ -84,6 +85,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Season::class);
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
+
+
 
     public function profilePath()
     {

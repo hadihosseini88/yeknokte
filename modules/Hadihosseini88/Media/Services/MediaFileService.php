@@ -26,7 +26,14 @@ class MediaFileService
 
             case 'avi':
             case 'mp4':
-                VideoFileService::upload($file);
+            case 'mkv':
+                $media = new Media();
+                $media->files = VideoFileService::upload($file);
+                $media->type = 'video';
+                $media->user_id = auth()->id();
+                $media->filename = $file->getClientOriginalName();
+                $media->save();
+                return $media;
                 break;
 
         }
