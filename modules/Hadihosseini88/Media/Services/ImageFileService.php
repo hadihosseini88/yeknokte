@@ -2,21 +2,19 @@
 
 namespace Hadihosseini88\Media\Services;
 
+use Hadihosseini88\Media\Contracts\FileServiceContract;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class ImageFileService
+class ImageFileService implements FileServiceContract
 {
     protected static $sizes = ['300', '600'];
 
-    public static function upload($file)
+    public static function upload($file, $filename, $dir): array
     {
-        $filename = uniqid();
-        $extension = $file->getClientOriginalExtension();
-        $dir = 'public\\';
-        Storage::putFileAs($dir,$file,$filename . '.' . $extension);
-        $path = $dir . $filename . '.' . $extension;
-        return self::resize(Storage::path($path), $dir, $filename, $extension);
+        Storage::putFileAs($dir, $file, $filename . '.' . $file->getClientOriginalExtension());
+        $path = $dir . $filename . '.' . $file->getClientOriginalExtension();
+        return self::resize(Storage::path($path), $dir, $filename, $file->getClientOriginalExtension());
 
     }
 
@@ -35,8 +33,8 @@ class ImageFileService
 
     public static function delete($media)
     {
-        foreach ($media->files as $file){
-            Storage::delete('public\\'. $file);
+        foreach ($media->files as $file) {
+            Storage::delete('public\\' . $file);
         }
     }
 }

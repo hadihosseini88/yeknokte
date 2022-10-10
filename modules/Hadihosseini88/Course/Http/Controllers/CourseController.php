@@ -31,7 +31,7 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request, CourseRepo $courseRepo)
     {
-        $request->request->add(['banner_id' => MediaFileService::upload($request->file('image'))->id]);
+        $request->request->add(['banner_id' => MediaFileService::publicUpload($request->file('image'))->id]);
         $courseRepo->store($request);
         return redirect()->route('courses.index');
     }
@@ -51,7 +51,7 @@ class CourseController extends Controller
         $course = $courseRepo->findByid($id);
         $this->authorize('edit',$course);
         if ($request->hasFile('image')) {
-            $request->request->add(['banner_id' => MediaFileService::upload($request->file('image'))->id]);
+            $request->request->add(['banner_id' => MediaFileService::publicUpload($request->file('image'))->id]);
             if ($course->banner)
                 $course->banner->delete();
         } else {
