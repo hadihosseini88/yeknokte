@@ -76,4 +76,13 @@ class MediaFileService
         return $media;
     }
 
+    public static function thumb(Media $media)
+    {
+        foreach (config('mediaFile.MediaTypeServices') as $type => $service){
+            if ($media->type == $type){
+                return $service['handler']::thumb($media);
+            }
+        }
+    }
+
 }

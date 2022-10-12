@@ -34,7 +34,7 @@ class LessonRequest extends FormRequest
             'number' => 'nullable|numeric',
             'time' => 'required|numeric|min:0|max:255',
             'season_id' => [ new ValidSeason() ],
-            'free' => 'required|boolean',
+            'is_free' => 'required|boolean',
             'lesson_file' => 'required|file|mimes:avi,mp4,mkv,zip,rar',
         ];
 //        if (request()->method == 'PATCH') {
@@ -52,7 +52,7 @@ class LessonRequest extends FormRequest
             'number' => 'شماره درس',
             'time' => 'زمان به دقیقه',
             'season_id' => 'شناسه سرفصل',
-            'free' => 'نوع دوره',
+            'is_free' => 'نوع دوره',
             'lesson_file' => 'فایل درس',
             'body' => 'توضیحات'
         ];

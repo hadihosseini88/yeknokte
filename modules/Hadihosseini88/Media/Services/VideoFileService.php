@@ -16,4 +16,8 @@ class VideoFileService extends DefaultFileService implements FileServiceContract
         return ['video' => $filename . '.' . $file->getClientOriginalExtension()];
     }
 
+    public static function thumb(Media $media)
+    {
+        return url('/img/video-thumb.png');
+    }
 }

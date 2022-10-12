@@ -41,7 +41,7 @@
                         @endswitch
 
                     ">@lang($season->confirmation_status)</td>
-                <td class="status">@lang($season->status)</td>
+                <td class="status ">@lang($season->status)</td>
                 <td>
                     <a href="" onclick="deleteItem(event,'{{route('seasons.destroy', $season->id)}}')" class="item-delete mlg-15"  title="حذف"></a>
                     @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_COURSES)

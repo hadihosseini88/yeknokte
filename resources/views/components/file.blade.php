@@ -5,6 +5,7 @@
     </div>
     <span class="filesize"></span>
     @if($value)
+        <span>{{ $value->filename }}</span><br>
         <span class="selectedFiles"><img src="{{$value->thumb}}" alt="{{ $name }}"></span>
     @else
         <span class="selectedFiles">فایلی انتخاب نشده است.</span>

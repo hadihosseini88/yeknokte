@@ -3,6 +3,7 @@
 namespace Hadihosseini88\Media\Services;
 
 use Hadihosseini88\Media\Contracts\FileServiceContract;
+use Hadihosseini88\Media\Models\Media;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -32,4 +33,8 @@ class ImageFileService extends DefaultFileService implements FileServiceContract
     }
 
 
+    public static function thumb(Media $media)
+    {
+        return '/storage/' . $media->files[300];
+    }
 }
