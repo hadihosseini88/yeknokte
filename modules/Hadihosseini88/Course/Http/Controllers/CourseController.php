@@ -64,7 +64,7 @@ class CourseController extends Controller
 
     public function details($id, CourseRepo $courseRepo,LessonRepo $lessonRepo)
     {
-        $lessons = $lessonRepo->paginate();
+        $lessons = $lessonRepo->paginate($id);
         $course = $courseRepo->findByid($id);
         $this->authorize('details',$course);
         return view('Courses::details', compact('course','lessons'));

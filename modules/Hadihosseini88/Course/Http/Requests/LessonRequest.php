@@ -5,6 +5,7 @@ namespace Hadihosseini88\Course\Http\Requests;
 use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Rules\ValidSeason;
 use Hadihosseini88\Course\Rules\ValidTeacher;
+use Hadihosseini88\Media\Services\MediaFileService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -37,10 +38,10 @@ class LessonRequest extends FormRequest
             'is_free' => 'required|boolean',
             'lesson_file' => 'required|file|mimes:avi,mp4,mkv,zip,rar',
         ];
-//        if (request()->method == 'PATCH') {
-//            $rules['image'] = 'nullable|mimes:jpg,png,jpeg,JPG,PNG,JPEG';
-//            $rules['slug'] = 'required|min:3|max:190|unique:courses,slug,' . request()->route('course');
-//        }
+
+        if (request()->method == 'PATCH') {
+            $rules['lesson_file'] =  'nullable|file|mimes:'. MediaFileService::getExtensions();
+        }
         return $rules;
     }
 

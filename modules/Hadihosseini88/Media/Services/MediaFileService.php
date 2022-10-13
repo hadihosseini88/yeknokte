@@ -85,4 +85,16 @@ class MediaFileService
         }
     }
 
+    public static function getExtensions()
+    {
+        $extensions = [];
+        foreach (config('mediaFile.MediaTypeServices') as $service){
+            foreach ($service['extensions'] as $extension){
+                $extensions[]= $extension;
+            }
+        }
+        return implode(',',$extensions);
+
+    }
+
 }
