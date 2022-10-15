@@ -3,8 +3,10 @@
 namespace Hadihosseini88\Course\Providers;
 
 use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\Course\Models\Lesson;
 use Hadihosseini88\Course\Models\Season;
 use Hadihosseini88\Course\Policies\CoursePolicy;
+use Hadihosseini88\Course\Policies\LessonPolicy;
 use Hadihosseini88\Course\Policies\SeasonPolicy;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Illuminate\Support\Facades\Gate;
@@ -24,6 +26,7 @@ class CourseServiceProvider extends ServiceProvider
 
         Gate::policy(Course::class,CoursePolicy::class);
         Gate::policy(Season::class,SeasonPolicy::class);
+        Gate::policy(Lesson::class,LessonPolicy::class);
 
     }
 
