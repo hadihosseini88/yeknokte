@@ -9,6 +9,8 @@ use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,9 @@ class UserServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', "User");
         $this->app['router']->pushMiddlewareToGroup('web', StoreUserIp::class);
 
+        Factory::guessFactoryNamesUsing(function (string $modelName){
+            return 'Hadihosseini88\User\Database\Factories\\'. class_basename($modelName) . 'Factory';
+        });
         \DatabaseSeeder::$seeders[] = UsersTableSeeder::class;
 
         config()->set('auth.providers.users.model',User::class);

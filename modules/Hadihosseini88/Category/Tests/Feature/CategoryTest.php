@@ -56,7 +56,7 @@ class CategoryTest extends TestCase
     private function actionAsAdmin()
     {
         $this->seed(RolePermissionTableSeeder::class);
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
         auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_CATEGORIES);
 
 
@@ -64,7 +64,7 @@ class CategoryTest extends TestCase
 
     private function actionAsUser()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
         $this->seed(RolePermissionTableSeeder::class);
     }
 

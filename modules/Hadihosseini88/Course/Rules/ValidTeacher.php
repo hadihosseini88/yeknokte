@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Course\Rules;
 
+use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Repositories\UserRepo;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -26,8 +27,9 @@ class ValidTeacher implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = resolve(UserRepo::class)->findById($value);
-        return $user->hasPermissionTo('teach');
+        $user = (new UserRepo())->findById($value);
+//        $user = resolve(UserRepo::class)->findById($value);
+        return ($user->hasAnyPermission([Permission::PERMISSION_TEACH,Permission::PERMISSION_SUPER_ADMIN]));
     }
 
     /**
