@@ -25,6 +25,12 @@ class CoursePolicy
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES);
     }
 
+    public function index(User $user)
+    {
+        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+    }
+
     public function create(User $user)
     {
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
@@ -32,7 +38,7 @@ class CoursePolicy
 
     }
 
-    public function edit(User $user,$course)
+    public function edit(User $user, $course)
     {
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher->id == $user->id;
@@ -51,8 +57,7 @@ class CoursePolicy
 
     public function details($user, $course)
     {
-        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES))
-        {
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) {
             return true;
         }
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher_id == $user->id) {
@@ -69,8 +74,7 @@ class CoursePolicy
 
     public function createSeason($user, $course)
     {
-        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES))
-        {
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) {
             return true;
         }
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher_id == $user->id) {

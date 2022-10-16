@@ -21,7 +21,7 @@ class CourseRepo
             'type' => $values->type,
             'status' => $values->status,
             'body' => $values->body,
-            'confirmation_status'=> Course::CONFIRMATION_STATUS_PENDING,
+            'confirmation_status' => Course::CONFIRMATION_STATUS_PENDING,
 
         ]);
     }
@@ -33,7 +33,7 @@ class CourseRepo
 
     public function delete($id)
     {
-        Course::where('id',$id)->delete();
+        Course::where('id', $id)->delete();
     }
 
     public function findByid($id)
@@ -43,7 +43,7 @@ class CourseRepo
 
     public function update($id, $values)
     {
-        return Course::where('id',$id)->update([
+        return Course::where('id', $id)->update([
             'teacher_id' => $values->teacher_id,
             'category_id' => $values->category_id,
             'banner_id' => $values->banner_id,
@@ -60,10 +60,16 @@ class CourseRepo
 
     public function updateConfirmationStatus($id, string $status)
     {
-        return Course::where('id',$id)->update(['confirmation_status'=>$status]);
+        return Course::where('id', $id)->update(['confirmation_status' => $status]);
     }
+
     public function updateStatus($id, string $status)
     {
-        return Course::where('id',$id)->update(['status'=>$status]);
+        return Course::where('id', $id)->update(['status' => $status]);
+    }
+
+    public function getCoursesByTeacherId(?int $id)
+    {
+        return Course::where('teacher_id', $id)->get();
     }
 }
