@@ -1,0 +1,13 @@
+{
+    "name": "hadihosseini88/front",
+    "autoload": {
+        "psr-4": {
+            "Hadihosseini88\\Front\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": "\\Hadihosseini88\\Front\\Providers\\FrontServiceProvider"
+        }
+    }
+}

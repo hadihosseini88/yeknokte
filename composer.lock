@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f688a06685d4ce924f6668bf28c8ebe1",
+    "content-hash": "d060671449883c3f34c3e9b7f319d8de",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1043,6 +1043,29 @@
                 "files": [
                     "src/helpers.php"
                 ]
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "hadihosseini88/front",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Hadihosseini88/Front",
+                "reference": "e1c61a846ae79c162652436bddca71383def53f0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": "\\Hadihosseini88\\Front\\Providers\\FrontServiceProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hadihosseini88\\Front\\": "src"
+                }
             },
             "transport-options": {
                 "relative": true
@@ -9465,7 +9488,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "hadihosseini88/common": 20
+        "hadihosseini88/common": 20,
+        "hadihosseini88/front": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

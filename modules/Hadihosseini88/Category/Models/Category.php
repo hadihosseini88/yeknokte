@@ -14,12 +14,12 @@ class Category extends Model
         return (is_null($this->parent_id)) ? 'ندارد' : $this->parentCategory->title;
     }
 
-    public function parentCategory()
+    public function parentCategories()
     {
         return $this->belongsTo(Category::class,'parent_id');
     }
 
-    public function subCategory()
+    public function subCategories()
     {
         return $this->hasMany(Category::class,'parent_id');
     }
@@ -28,4 +28,11 @@ class Category extends Model
     {
         return $this->hasMany(Course::class);
     }
+
+    public function path()
+    {
+        return route('categories.show', $this->id);
+    }
+
+
 }

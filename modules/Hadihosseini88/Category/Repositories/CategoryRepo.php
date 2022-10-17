@@ -13,7 +13,7 @@ class CategoryRepo
 
     public function allExceptById($id)
     {
-        return $this->all()->filter(function ($item) use ($id){
+        return $this->all()->filter(function ($item) use ($id) {
             return $item->id != $id;
         });
 
@@ -36,7 +36,7 @@ class CategoryRepo
 
     public function update($id, $values)
     {
-        Category::where('id',$id)->update([
+        Category::where('id', $id)->update([
             'title' => $values->title,
             'slug' => $values->slug,
             'parent_id' => $values->parent_id,
@@ -46,7 +46,12 @@ class CategoryRepo
 
     public function delete($id)
     {
-        Category::where('id',$id)->delete();
+        Category::where('id', $id)->delete();
+    }
+
+    public function tree()
+    {
+        return Category::where('parent_id', null)->with('subCategories')->get();
     }
 
 
