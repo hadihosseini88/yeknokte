@@ -3,6 +3,7 @@
 namespace Hadihosseini88\Course\Repositories;
 
 use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\Course\Models\Lesson;
 use Illuminate\Support\Str;
 
 class CourseRepo
@@ -71,5 +72,20 @@ class CourseRepo
     public function getCoursesByTeacherId(?int $id)
     {
         return Course::where('teacher_id', $id)->get();
+    }
+
+    public function latestCourses()
+    {
+        return Course::where('confirmation_status', Course::CONFIRMATION_STATUS_ACCEPTED)->latest()->take(8)->get();
+    }
+
+    public function getDuration($id)
+    {
+        return Lesson::where('course_id',$id)->where('confirmation_status',Lesson::CONFIRMATION_STATUS_ACCEPTED)->sum('time');
+    }
+
+    public function getLessonsCount($id)
+    {
+        return Lesson::where('course_id', $id)->where('confirmation_status',Lesson::CONFIRMATION_STATUS_ACCEPTED)->count();
     }
 }

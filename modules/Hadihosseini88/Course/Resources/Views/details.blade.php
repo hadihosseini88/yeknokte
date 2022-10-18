@@ -52,7 +52,7 @@
                                 </td>
                                 <td><a href="">{{ $lesson->number }}</a></td>
                                 <td><a href="">{{ $lesson->title }}</a></td>
-                                <td>{{ $lesson->season->title }}</td>
+                                <td>{{ $lesson->season ? $lesson->season->title : '-'}}</td>
                                 <td> {{ $lesson->time }} دقیقه</td>
                                 <td class="confirmation_status {{$lesson->getConfirmationstatusCssClass()}}">@lang($lesson->confirmation_status)</td>
                                 <td>{{ $lesson->is_free ? 'همه' : 'شرکت کنندگان' }}</td>

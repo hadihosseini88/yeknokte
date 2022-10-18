@@ -14,7 +14,7 @@ class Category extends Model
         return (is_null($this->parent_id)) ? 'ندارد' : $this->parentCategory->title;
     }
 
-    public function parentCategories()
+    public function parentCategory()
     {
         return $this->belongsTo(Category::class,'parent_id');
     }

@@ -67,4 +67,9 @@ class Lesson extends Model
                 break;
         }
     }
+
+    public function path()
+    {
+        return $this->course->path() . '?lesson=l-' . $this->id . "-" . $this->slug;
+    }
 }

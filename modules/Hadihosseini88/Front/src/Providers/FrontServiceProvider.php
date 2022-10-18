@@ -4,6 +4,7 @@ namespace Hadihosseini88\Front\Providers;
 
 
 use Hadihosseini88\Category\Repositories\CategoryRepo;
+use Hadihosseini88\Course\Repositories\CourseRepo;
 use Illuminate\Support\ServiceProvider;
 
 class FrontServiceProvider extends ServiceProvider
@@ -17,5 +18,12 @@ class FrontServiceProvider extends ServiceProvider
             $categories = (new CategoryRepo())->tree();
             $view->with(compact('categories'));
         });
+
+        view()->composer('Front::layout.latestCourses', function ($view){
+            $latestCourses = (new CourseRepo())->latestCourses();
+            $view->with(compact('latestCourses'));
+        });
+
+
     }
 }

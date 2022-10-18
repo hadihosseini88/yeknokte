@@ -93,8 +93,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Lesson::class);
     }
 
-
-
     public function profilePath()
     {
         return $this->username ? route('viewProfile', $this->username) : route('viewProfile','username');
@@ -106,5 +104,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return '/storage/' . $this->image->files[300];
 
         return '/panel/img/pro.jpg';
+    }
+
+    public function hasAccessToCourse($courseId)
+    {
+        return false;
     }
 }

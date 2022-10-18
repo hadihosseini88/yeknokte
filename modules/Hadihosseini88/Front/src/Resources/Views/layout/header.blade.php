@@ -179,27 +179,6 @@
                         @endif
                     </li>
                 @endforeach
-                <li class="main-menu has-sub"><a href="#">برنامه نویسی</a>
-                    <div class="sub-menu">
-                        <div class="container">
-                            <div><a href="android.html">اندروید</a></div>
-                            <div><a href="web.html">وب</a></div>
-                            <div><a href="window.html">ویندوز</a></div>
-                        </div>
-                    </div>
-                    <div class="triangle"></div>
-                </li>
-                <li class="main-menu"><a href="#">گرافیک</a></li>
-                <li class="main-menu has-sub"><a href="#">چندرسانه ای</a>
-                    <div class="sub-menu">
-                        <div class="container">
-                            <div><a href="#">فیلم و صدا</a></div>
-                            <div><a href="#">بازی سازی</a></div>
-                        </div>
-                    </div>
-                    <div class="triangle"></div>
-                </li>
-                <li class="main-menu"><a href="#">کسب و کار</a></li>
                 <li class="main-menu d-none"><a href="#">درباره ما</a></li>
                 <li class="main-menu"><a href="contact-us.html">تماس ما</a></li>
                 <li class="main-menu join-teachers-li"><a href="become-a-teacher.html">تدریس در یک نکته</a></li>
