@@ -1,10 +1,11 @@
-<div class="sidebar__nav border-top border-left  ">
+<div class="sidebar__nav border-top border-left">
     <span class="bars d-none padding-0-18"></span>
     <a class="header__logo  d-none" href="./home"></a>
 
     <x-user-photo></x-user-photo>
 
-    <ul>
+    <div class="margin-bottom-20" style="clear: both"></div>
+    <ul style="margin-top: auto">
         @foreach(config('sidebar.items') as $sidebarItem)
             @if(!array_key_exists('permission', $sidebarItem) || auth()->user()->hasAnyPermission($sidebarItem['permission'])
             || auth()->user()->hasPermissionTo(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_SUPER_ADMIN))
@@ -14,7 +15,7 @@
         @endforeach
 
     </ul>
-    <ul>
+{{--    <ul>--}}
 {{--        <li class="item-li i-courses "><a href="courses.html">دوره ها</a></li>--}}
         {{--    <li class="item-li i-users"><a href="users.html"> کاربران</a></li>--}}
         {{--    <li class="item-li i-categories"><a href="categories.html">دسته بندی ها</a></li>--}}
@@ -33,5 +34,5 @@
         {{--    <li class="item-li i-notification__management"><a href="notification-management.html">مدیریت اطلاع رسانی</a>--}}
         {{--    </li>--}}
 {{--        <li class="item-li i-user__inforamtion"><a href="user-information.html">اطلاعات کاربری</a></li>--}}
-    </ul>
+{{--    </ul>--}}
 </div>

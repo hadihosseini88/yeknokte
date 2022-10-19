@@ -38,20 +38,24 @@
                             </div>
                             <div class="sell_course">
                                 <strong>قیمت :</strong>
-                                <del class="discount-Price">900,000</del>
+                                <del class="discount-Price">{{ $course->getFormattedPrice() }}</del>
                                 <p class="price">
-                        <span class="woocommerce-Price-amount amount">495,000
+                        <span class="woocommerce-Price-amount amount">{{ $course->getFormattedPrice() }}
                             <span class="woocommerce-Price-currencySymbol">تومان</span>
                         </span>
                                 </p>
                             </div>
-                            @if(auth()->id() == $course->teacher_id)
-                                <p class="mycourse">شما مدرس این دوره هستید</p>
-                            @elseif(auth()->user()->hasAccessToCourse($course->id))
-                                <p class="mycourse">شما این دوره رو خریداری کرده اید</p>
+                            @auth
+                                @if(auth()->id() == $course->teacher_id)
+                                    <p class="mycourse">شما مدرس این دوره هستید</p>
+                                @elseif(auth()->user()->hasAccessToCourse($course))
+                                    <p class="mycourse">شما این دوره رو خریداری کرده اید</p>
+                                @else
+                                    <button class="btn buy">خرید دوره</button>
+                                @endif
                             @else
                                 <button class="btn buy">خرید دوره</button>
-                            @endif
+                            @endauth
                             <div class="average-rating-sidebar">
                                 <div class="rating-stars">
                                     <div class="slider-rating">
@@ -83,7 +87,7 @@
                         <div class="product-info-box">
                             <div class="product-meta-info-list">
                                 <div class="total_sales">
-                                    تعداد دانشجو : <span>246</span>
+                                    تعداد دانشجو : <span>{{ $course->students ? count($course->students) : 0 }}</span>
                                 </div>
                                 <div class="meta-info-unit one">
                                     <span class="title">تعداد جلسات منتشر شده :  </span>
@@ -127,28 +131,35 @@
                                 </div>
                             </div>
                             <div class="job-content">
-{{--                                <p>{{ $course->teacher->bio }}</p>--}}
+                                {{--                                <p>{{ $course->teacher->bio }}</p>--}}
                             </div>
                         </div>
                         <div class="short-link">
                             <div class="">
                                 <span>لینک کوتاه</span>
                                 <input class="short--link" value="{{ $course->shortUrl() }}">
-                                <a href="{{ $course->shortUrl() }}" class="short-link-a" data-link="{{ $course->shortUrl() }}"></a>
+                                <a href="{{ $course->shortUrl() }}" class="short-link-a"
+                                   data-link="{{ $course->shortUrl() }}"></a>
                             </div>
                         </div>
                         @include('Front::layout.sidebar-banners')
                     </div>
                 </div>
                 <div class="content-left">
-                    <div class="preview">
-                        <video width="100%" controls>
-                            <source src="intro.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <a href="#" class="episode-download">دانلود این قسمت (قسمت {{ $lesson->number }})</a>
-                    <div class="course-description">
+                    @if(!is_null($lesson))
+                        @if($lesson->media->type == "video")
+                            <div class="preview">
+                                <video width="100%" controls>
+                                    <source src="{{ $lesson->downloadLink() }}" type="video/mp4">
+                                </video>
+                            </div>
+                        @endif
 
+
+                        <a href="{{ $lesson->downloadLink() }}" class="episode-download">دانلود این قسمت
+                            (قسمت {{ $lesson->number }})</a>
+                    @endif
+                    <div class="course-description">
                         <div class="course-description-title">توضیحات دوره
                             <div class="study-mode"></div>
                         </div>
@@ -329,14 +340,5 @@
 
         </div>
     </main>
-    <div class="toast">
-        <div>
-            <div class="toast__icon"></div>
-            <div class="toast__message"></div>
-            <div class="toast__close" onclick="toast__close()"></div>
-        </div>
-
-
-    </div>
 
 @endsection

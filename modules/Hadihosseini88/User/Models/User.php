@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'email' => 'admin@admin.com',
             'password' => 'demo',
             'name' => 'Admin',
-            'role'=> Role::ROLE_SUPER_ADMIN
+            'role' => Role::ROLE_SUPER_ADMIN
         ]
     ];
 
@@ -43,7 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','mobile'
+        'name', 'email', 'password', 'mobile'
     ];
 
     /**
@@ -68,6 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new VerifyMailNotification());
     }
+
     public function sendResetPasswordRequestNotification()
     {
         $this->notify(new ResetPasswordRequestNotification());
@@ -75,12 +76,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function image()
     {
-        return $this->belongsTo(Media::class,'image_id');
+        return $this->belongsTo(Media::class, 'image_id');
     }
 
     public function courses()
     {
-        return $this->hasMany(Course::class,'teacher_id');
+        return $this->hasMany(Course::class, 'teacher_id');
+    }
+
+    public function purchases()
+    {
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
     }
 
     public function seasons()
@@ -95,19 +101,22 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function profilePath()
     {
-        return $this->username ? route('viewProfile', $this->username) : route('viewProfile','username');
+        return $this->username ? route('viewProfile', $this->username) : route('viewProfile', 'username');
     }
 
     public function getThumbAttribute()
     {
-        if($this->image)
-        return '/storage/' . $this->image->files[300];
+        if ($this->image)
+            return '/storage/' . $this->image->files[300];
 
         return '/panel/img/pro.jpg';
     }
 
-    public function hasAccessToCourse($courseId)
+    public function hasAccessToCourse(Course $course)
     {
+        if ($this->can('manage', Course::class) || ($this->id == $course->teacher_id) || ($course->students->contains($this->id)) ) {
+            return true;
+        }
         return false;
     }
 }
