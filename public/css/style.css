@@ -10,6 +10,7 @@
 
 *:before, *:after {
     font-family: digikala;
+    vertical-align: middle;
 }
 
 input, button {
@@ -1067,113 +1068,114 @@ footer {
     top: 6px;
 }
 
-.average-rating-sidebar {
+
+.rating {
+    width: 100px;
+    position: relative;
+    direction: rtl;
+}
+
+.star {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    direction: ltr !important;
+
+}
+
+.rate {
+    position: relative;
+}
+
+.rate::before {
+    font-family: digikala;
+    content: '\e114';
+    color: #ddd;
+    font-style: normal;
+    font-size: 20px;
+    transition: color 200ms ease;
+
+}
+
+.rate:hover:before, .rate:hover ~ span:before {
+    color: #ffa200;
+    transition: color 200ms ease;
+    position: relative;
+    z-index: 91;
+}
+
+.rate::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 30px;
+    display: none;
+    font-family: irs;
+    font-size: 13px;
+    color: #6b7074;
+    right: -8px;
+}
+
+.rate:nth-child(5)::after {
+    right: 3px !important;
+}
+
+.rate:nth-child(1)::after {
+    right: -4px !important;
+}
+
+.rate:hover::after {
+    display: block;
+}
+
+.fstar {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+}
+
+.frate::before {
+    font-family: digikala;
+    content: '\e114';
+    color: #36b3fb;
+    font-style: normal;
+    font-size: 20px;
+    transition: color 200ms ease;
+}
+
+.fstar:hover {
+    z-index: -10;
+}
+
+
+.fstar.is-active .frate::before {
+    color: #ddd;
+}
+
+.rating-star {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
     -ms-flex-pack: justify;
     -webkit-box-pack: justify;
     justify-content: space-between;
-
 }
 
-
-.slider-rating {
-    position: relative;
-    direction: ltr;
-    /*overflow: hidden;*/
-    cursor: pointer;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-}
-
-.slider-rating-span:before {
-    content: '\e114';
-    color: #ddd;
-    font-style: normal;
-    font-size: 20px;
-    transition: color 200ms ease;
-}
-
-.star-fill {
-    background: url(../img/st1.png) right top repeat-x;
-    height: 21px;
-    width: 0;
-    position: absolute;
-    right: 0;
-    top: 5px;
-}
-
-
-.slider-rating-span:hover:before, .slider-rating-span:hover ~ span:before {
-    color: #ffa200;
-    transition: color 200ms ease;
-    position: relative;
-    z-index: 91;
-
-}
-
-
-.slider-rating .slider-rating-span::after {
-    content: attr(data-title);
-    position: absolute;
-    top: 36px;
-    font-family: irs;
-    margin-right: 30px;
-    white-space: nowrap;
-    font-size: 12px;
-    display: none;
-    color: #6b7074;
-    text-align: center;
-}
-
-.slider-rating .slider-rating-span-20::after {
-    right: -40px;
-}
-
-.slider-rating .slider-rating-span-40::after {
-    right: 0px;
-}
-
-.slider-rating .slider-rating-span-60::after {
-    right: 11px;
-}
-
-.slider-rating .slider-rating-span-100::after {
-    right: 50px;
-}
-
-.slider-rating .slider-rating-span:hover::after {
-    display: block;
-}
-
-.fa-star-half:before {
-    content: '\e114';
-    font-style: normal;
-}
-
-
-.average-rating-sidebar .average-rating-number {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
+.schema-stars {
     font-size: 13px;
     color: #6b7074;
-    -ms-flex-align: center;
-    -webkit-box-align: center;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
     align-items: center;
-    white-space: nowrap;
 }
 
-.average-rating-number .title-rate1 {
-    padding-left: 6px;
-}
 
-.average-rating-number .title-rate {
-    padding-right: 3px;
+.schema-stars .title-rate {
+    padding: 0 5px;
 }
-
 
 .product-meta-info-list {
     overflow: hidden;
@@ -1570,6 +1572,21 @@ footer {
     border-bottom: 2px solid #46b2f0;
     color: #444;
     font-weight: 500;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.episodes-list--title span {
+    font-size: 14px !important;
+    font-weight: normal;
+
+}
+
+.episodes-list--title span::before {
+    content: '\e05c';
+    margin-left: 10px;
 }
 
 
@@ -2724,7 +2741,7 @@ footer {
     background: #2d3648 !important;
 }
 
-.dark-mode .webamooz, .dark-mode .bt-accrdion {
+.dark-mode .hadi, .dark-mode .bt-accrdion {
     background: #2d3648 !important;
 }
 
@@ -3049,7 +3066,8 @@ footer {
 
 @media (max-width: 1152px) {
     .posts .col {
-        width: calc(33.33% - 20px) !important;
+        width: calc(33.33% - 20px);
+    !important;
         -ms-flex: 0 0 calc(33.33% - 20px);
         -webkit-box-flex: 0;
         -ms-flex-positive: 0;
@@ -3065,7 +3083,7 @@ footer {
         max-height: 210px;
     }
 
-    .average-rating-sidebar .average-rating-number {
+    .rating-star .schema-stars {
         font-size: 12px !important;
     }
 }
@@ -3679,23 +3697,56 @@ textarea {
 .mrt-170 {
     margin-top: 170px;
 }
-
-.invalid-feedback {
-    font-family: irs;
-    font-size: 12px;
-    margin-bottom: 15px;
-    color: darkred;
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: rgba(0,0,0,0);
+    color: #6c757d;
+}
+.table-bordered {
+    border: 1px solid #f0f0f5;
+}
+.table-striped tbody tr:nth-of-type(2n+1) {
+    background-color: #f9f9f9;
+}
+.table th {
+    text-align: initial;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #f0f0f5;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #f0f0f5;
+}
+.table th, .table td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #f0f0f5;
+}
+.text-red {
+    color: #ff6e6e !important;
+}
+.text-blue {
+    color: #46b2f0 !important;
 }
 
-.is-invalid {
-    border: 1px solid red;
+#Modal-buy p{
+    color: #000;
+    font-size: 18px;
+}
+.text-success {
+    color: #00b894 !important;
 }
 
-.a-btn-danger {
-    color: #ffffff !important;
-    background: #f0b646;
-    display:block;
-    border-bottom:unset !important;
+.text-info {
+    color: #189bc3 !important;
 }
 
+.text-warning {
+    color: #e3a507 !important;
+}
 
+.text-error {
+    color: #e73368 !important;
+}

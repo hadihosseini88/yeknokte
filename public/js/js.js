@@ -195,35 +195,28 @@ $('.short-link-a').on('click', function (e) {
     }, 1000)
 });
 
-function rating_star() {
-    var steps = $('.slider-rating-span');
-    var ratingStarWidth = $('.rating-stars').width();
-    var slider__rating = $('.slider-rating');
-    steps.each(function () {
-        var self = $(this);
-        // console.log(self)
-        var step_title = self.attr('data-title')
-        var ctitle;
-        self.hover(function () {
-            ctitle = slider__rating.attr('data-title');
-            //  console.log(ctitle)
-            slider__rating.attr('data-title', step_title);
-        }, function () {
-            slider__rating.attr('data-title', ctitle);
-        })
-        self.on('click', function () {
-            slider__rating.attr('data-title', step_title);
-            ctitle = slider__rating.attr('data-title');
-            var move = parseInt(self.attr('data-value'));
-            slider__rating.find('.star-fill').css({'width': move + '%'});
-            toastNotifi('با موفقیت ثبت شد', 'bg-toast-success', 'toast-success', 2000)
+$('.rate').click(function () {
+    var rate = $(this);
+    var dataw = rate.data('w');
+    console.log(dataw)
+    var rating = $(this).parents('.rating');
+    var fstar = rating.find('.fstar');
+    console.log(fstar);
+    fstar.css('width', dataw)
 
-        })
-    })
-}
+})
 
-rating_star()
+$('.rate').hover(function () {
+    $('.fstar').addClass('is-active')
+}, function () {
+    $('.fstar').removeClass('is-active')
+
+})
 $('.study-mode').click(function () {
     $('.sidebar-right').toggleClass('d-none');
     $('.content-left').toggleClass('on');
 })
+
+function setCommentId(commentableId) {
+    $("#comment_id").val(commentableId)
+}

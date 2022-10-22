@@ -40,7 +40,7 @@
                                 <strong>قیمت :</strong>
                                 <del class="discount-Price">{{ $course->getFormattedPrice() }}</del>
                                 <p class="price">
-                        <span class="woocommerce-Price-amount amount">{{ $course->getFormattedPrice() }}
+                        <span class="woocommerce-Price-amount amount">{{ $course->getFormattedFinalPrice() }}
                             <span class="woocommerce-Price-currencySymbol">تومان</span>
                         </span>
                                 </p>
@@ -51,10 +51,11 @@
                                 @elseif(auth()->user()->hasAccessToCourse($course))
                                     <p class="mycourse">شما این دوره رو خریداری کرده اید</p>
                                 @else
-                                    <button class="btn buy">خرید دوره</button>
+                                    <button class="btn buy btn-buy">خرید دوره</button>
                                 @endif
                             @else
-                                <button class="btn buy">خرید دوره</button>
+                                <p>جهت خرید دوره ابتدا در سایت لاگین کنید.</p>
+                                <a href="{{ route('login')}}" class="btn buy text-white w-100">ورود جهت خرید دوره</a>
                             @endauth
                             <div class="average-rating-sidebar">
                                 <div class="rating-stars">
@@ -117,7 +118,7 @@
                         </div>
                         <div class="course-teacher-details">
                             <div class="top-part">
-                                <a href="https://yeknokte.ir/tutor/">
+                                <a href="{{ route('singleTutor', $course->teacher->username) }}">
                                     <img alt="{{ $course->teacher->name }}" class="img-fluid lazyloaded"
                                          src="{{ $course->teacher->thumb }}"
                                          loading="lazy">
@@ -125,7 +126,7 @@
                                                    alt="{{ $course->teacher->name }}"></noscript>
                                 </a>
                                 <div class="name">
-                                    <a href="https://yeknokte.ir/tutor/" class="btn-link">
+                                    <a href="{{ route('singleTutor', $course->teacher->username) }}" class="btn-link">
                                         <h6>{{ $course->teacher->name }}</h6></a>
                                     <span class="job-title">{{ $course->teacher->headline }}</span>
                                 </div>
@@ -337,8 +338,62 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div id="Modal-buy" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>کد تخفیف را وارد کنید</p>
+                    <div class="close">&times;</div>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route("courses.buy", $course->id) }}">
+                        @csrf
+                        <div>
+                            <input type="text" name="code" id="code" class="txt" placeholder="کد تخفیف را وارد کنید">
+                            <p id="response"></p>
+                        </div>
+                        <button type="button" class="btn i-t " onclick="checkDiscountCode()">اعمال
+                            <img src="/img/loading.gif" alt="" id="loading" class="loading d-none">
+                        </button>
+
+                        <table class="table text-center table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>قیمت کل دوره</th>
+                                <td> {{ $course->getFormattedPrice() }} تومان</td>
+                            </tr>
+                            <tr>
+                                <th>درصد تخفیف</th>
+                                <td><span id="discountPercent" data-value="{{ $course->getDiscountPercent()  }}">{{ $course->getDiscountPercent() }}</span>%</td>
+                            </tr>
+                            <tr>
+                                <th> مبلغ تخفیف</th>
+                                <td class="text-red"><span
+                                        id="discountAmount" data-value="{{ $course->getDiscountAmount()  }}"> {{ $course->getDiscountAmount() }}</span> تومان
+                                </td>
+                            </tr>
+                            <tr>
+                                <th> قابل پرداخت</th>
+                                <td class="text-blue"><span
+                                        id="payableAmount" data-value="{{ $course->getFinalPrice()  }}">{{ $course->getFormattedFinalPrice() }}</span> تومان
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn i-t ">پرداخت آنلاین</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 
+@endsection
+
+@section('js')
+    <script src="/js/modal.js"></script>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="/css/modal.css">
 @endsection
