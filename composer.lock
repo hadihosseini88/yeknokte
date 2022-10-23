@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d060671449883c3f34c3e9b7f319d8de",
+    "content-hash": "f39d6704ce16009aec2374aeb34e1159",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1065,6 +1065,29 @@
             "autoload": {
                 "psr-4": {
                     "Hadihosseini88\\Front\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "hadihosseini88/payment",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Hadihosseini88/Payment",
+                "reference": "edf78195d1dcf77b8c7ac8f3b69af6c40dd67661"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": "\\Hadihosseini88\\Payment\\Providers\\PaymentServiceProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hadihosseini88\\Payment\\": "src"
                 }
             },
             "transport-options": {
@@ -9489,7 +9512,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "hadihosseini88/common": 20,
-        "hadihosseini88/front": 20
+        "hadihosseini88/front": 20,
+        "hadihosseini88/payment": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

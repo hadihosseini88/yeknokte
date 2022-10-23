@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^7.1",
         "hadihosseini88/common": "dev-master",
         "hadihosseini88/front": "dev-master",
+        "hadihosseini88/payment": "dev-master",
         "intervention/image": "^2.7",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
@@ -36,6 +37,10 @@
         {
             "type": "path",
             "url": "./modules/Hadihosseini88/Front"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Hadihosseini88/Payment"
         }
     ],
     "config": {

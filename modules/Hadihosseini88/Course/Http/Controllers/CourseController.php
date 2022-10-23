@@ -10,16 +10,19 @@ use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Course\Repositories\LessonRepo;
 use Hadihosseini88\Media\Services\MediaFileService;
+use Hadihosseini88\Payment\Repositories\PaymentRepo;
+use Hadihosseini88\Payment\Services\PaymentService;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Repositories\UserRepo;
+use phpDocumentor\Reflection\Types\True_;
 
 class CourseController extends Controller
 {
     public function index(CourseRepo $courseRepo)
     {
         $this->authorize('index', Course::class);
-        if (auth()->user()->hasAnyPermission([Permission::PERMISSION_MANAGE_COURSES,Permission::PERMISSION_SUPER_ADMIN])) {
+        if (auth()->user()->hasAnyPermission([Permission::PERMISSION_MANAGE_COURSES, Permission::PERMISSION_SUPER_ADMIN])) {
             $courses = $courseRepo->paginate();
         } else {
             $courses = $courseRepo->getCoursesByTeacherId(auth()->id());
@@ -117,9 +120,53 @@ class CourseController extends Controller
         return AjaxResponses::FailedResponse();
     }
 
-    public function buy($courseId)
+    public function buy($courseId, CourseRepo $courseRepo)
     {
-        return $courseId;
+        $course = $courseRepo->findByid($courseId);
+
+        if (!$this->courseCanBePurchased($course)) {
+            return back();
+        }
+        if (!$this->authUserCanPurchaseCourse($course)) {
+            return back();
+        }
+        $amount = $course->getFinalPrice();
+        $payment = PaymentService::generate($amount, $course, auth()->user());
+
+
+    }
+
+    private function courseCanBePurchased(Course $course)
+    {
+        if ($course->type == Course::TYPE_FREE) {
+            newFeedback('عملیات ناموفق', 'دوره های رایگان قابل خریداری نیستند!', 'error');
+            return false;
+        }
+        if ($course->status == Course::STATUS_LOCKED) {
+            newFeedback('عملیات ناموفق', 'این دوره قفل شده است و فعلا قابل خریداری نیست!', 'error');
+            return false;
+        }
+
+        if ($course->confirmation_status != Course::CONFIRMATION_STATUS_ACCEPTED) {
+            newFeedback('عملیات ناموفق', 'دوره انتخابی شما هنوز تایید نشده است!', 'error');
+            return false;
+        }
+
+        return true;
+    }
+
+    private function authUserCanPurchaseCourse(Course $course)
+    {
+        if (auth()->id() == $course->teacher_id) {
+            newFeedback('عملیات ناموفق', 'شما مدرس این دوره هستید!', 'error');
+            return false;
+        }
+        if (auth()->user()->hasAccessToCourse($course)) {
+            newFeedback('عملیات ناموفق', 'شما به دوره دسترسی دارید!', 'error');
+            return false;
+        }
+
+        return true;
     }
 
 }

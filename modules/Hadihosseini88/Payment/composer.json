@@ -1,0 +1,13 @@
+{
+    "name": "hadihosseini88/payment",
+    "autoload": {
+        "psr-4": {
+            "Hadihosseini88\\Payment\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": "\\Hadihosseini88\\Payment\\Providers\\PaymentServiceProvider"
+        }
+    }
+}
