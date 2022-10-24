@@ -26,4 +26,14 @@ class PaymentRepo
 
 
     }
+
+    public function findByInvoiceId($invoiceId)
+    {
+        return Payment::where('invoice_id',$invoiceId)->first();
+    }
+
+    public function changeStatus($id, $status)
+    {
+        return Payment::where('id',$id)->update(['status'=>$status]);
+    }
 }

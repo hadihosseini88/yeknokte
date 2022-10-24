@@ -5,6 +5,7 @@ namespace Hadihosseini88\Course\Models;
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Media\Models\Media;
+use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -58,6 +59,11 @@ class Course extends Model
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function payments()
+    {
+        return $this->morphMany(Payment::class,'paymentable');
     }
 
     public function getDuration()
