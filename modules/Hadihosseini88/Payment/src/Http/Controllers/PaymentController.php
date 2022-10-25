@@ -4,6 +4,8 @@ namespace Hadihosseini88\Payment\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+
+use Hadihosseini88\Payment\Events\PaymentWasSuccessful;
 use Hadihosseini88\Payment\Gateways\Gateway;
 use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\Payment\Repositories\PaymentRepo;
@@ -11,6 +13,14 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+    public function index(PaymentRepo $paymentRepo)
+    {
+        $this->authorize('manage', Payment::class);
+        $payments = $paymentRepo->paginate();
+
+        return view('Payment::index' , compact('payments'));
+    }
+
     public function callback(Request $request)
     {
         $getway = resolve(Gateway::class);
@@ -30,7 +40,7 @@ class PaymentController extends Controller
             // todo
 
         } else {
-            // todo success
+            event(new PaymentWasSuccessful($payment));
             newFeedback('عملیات موفق', 'پرداخت با موفقیت انجام شد.');
             $paymentRepo->changeStatus($payment->id, Payment::STATUS_SUCCESS);
 

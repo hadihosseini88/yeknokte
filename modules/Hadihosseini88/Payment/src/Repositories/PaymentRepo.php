@@ -36,4 +36,9 @@ class PaymentRepo
     {
         return Payment::where('id',$id)->update(['status'=>$status]);
     }
+
+    public function paginate()
+    {
+        return Payment::query()->latest()->paginate();
+    }
 }

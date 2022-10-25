@@ -14,28 +14,38 @@
                 <x-input value="{{ auth()->user()->name }}" name="name" type="text" placeholder="نام و نام خانوادگی"
                          requierd></x-input>
 
-                <x-input value="{{ auth()->user()->email }}" name="email" type="text" class="text text-left" placeholder="ایمیل"
+                <x-input value="{{ auth()->user()->email }}" name="email" type="text" class="text text-left"
+                         placeholder="ایمیل"
                          requierd></x-input>
-                <x-input value="{{ auth()->user()->mobile }}" name="mobile" type="text" class="text text-left" placeholder="شماره موبایل"></x-input>
+                <x-input value="{{ auth()->user()->mobile }}" name="mobile" type="text" class="text text-left"
+                         placeholder="شماره موبایل"></x-input>
 
                 <x-input value="" name="password" class="text text-left" type="text" placeholder="رمز عبور"></x-input>
                 <p class="rules">رمز عبور باید حداقل ۶ کاراکتر و ترکیبی از حروف بزرگ، حروف کوچک، اعداد و کاراکترهای
                     غیر الفبا مانند <strong>!@#$%^&*()</strong> باشد.</p>
 
                 @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_TEACH)
-                <x-input value="{{ auth()->user()->card_number }}" name="card_number" type="text" class="text text-left" placeholder="شماره کارت بانکی"></x-input>
-                <x-input value="{{ auth()->user()->shaba }}" name="shaba" class="text text-left" type="text" placeholder="شماره شبا بانکی"></x-input>
-                <x-input value="{{ auth()->user()->username }}" name="username" class="text text-left" type="text" placeholder="نام کاربری و آدرس پروفایل"></x-input>
-                <p class="input-help text-left margin-bottom-12" dir="ltr">
-                    <a href="{{ auth()->user()->profilePath() }}" target="_blank">{{ auth()->user()->profilePath() }}</a>
-                </p>
-                <x-input value="{{ auth()->user()->headline }}" name="headline" type="text" class="text text-left" placeholder="عنوان"></x-input>
-
-                <br>
-                    <x-textarea value="{{ auth()->user()->bio }}" name="bio" class="text" placeholder="درباره من مخصوص مدرسین"></x-textarea>
-                @endcan
+                    <x-input value="{{ auth()->user()->card_number }}" name="card_number" type="text"
+                             class="text text-left" placeholder="شماره کارت بانکی"></x-input>
+                    <x-input value="{{ auth()->user()->shaba }}" name="shaba" class="text text-left" type="text"
+                             placeholder="شماره شبا بانکی"></x-input>
+                    <x-input value="{{ auth()->user()->username }}" name="username" class="text text-left" type="text"
+                             placeholder="نام کاربری و آدرس پروفایل"></x-input>
+                    <p class="input-help text-left margin-bottom-12" dir="ltr">
+                        @if(auth()->user()->profilePath())
+                            <a href="{{ auth()->user()->profilePath() }}"
+                               target="_blank">{{ auth()->user()->profilePath() }}</a>
+                        @endif
+                    </p>
+                    <x-input value="{{ auth()->user()->headline }}" name="headline" type="text" class="text text-left"
+                             placeholder="عنوان"></x-input>
 
                     <br>
+                    <x-textarea value="{{ auth()->user()->bio }}" name="bio" class="text"
+                                placeholder="درباره من مخصوص مدرسین"></x-textarea>
+                @endcan
+
+                <br>
                 <br>
                 <button class="btn btn-yeknokte_ir">ذخیره تغییرات</button>
             </form>

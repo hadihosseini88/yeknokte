@@ -43,7 +43,7 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class,'course_user', 'course_id','user_id');
+        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
     }
 
     public function category()
@@ -63,12 +63,17 @@ class Course extends Model
 
     public function payments()
     {
-        return $this->morphMany(Payment::class,'paymentable');
+        return $this->morphMany(Payment::class, 'paymentable');
     }
 
     public function getDuration()
     {
         return (new CourseRepo())->getDuration($this->id);
+    }
+
+    public function hasStudent($studentId)
+    {
+        return resolve(CourseRepo::class)->hasStudent($this, $studentId);
     }
 
     public function formattedDuration()
@@ -120,5 +125,15 @@ class Course extends Model
     {
         return route('singleCourse', $this->id);
 
+    }
+
+    public function downloadLinks(): array
+    {
+        $links = [];
+        foreach (resolve(CourseRepo::class)->getLessons($this->id) as $lesson) {
+            $links[] = $lesson->downloadLink();
+        }
+
+        return $links;
     }
 }

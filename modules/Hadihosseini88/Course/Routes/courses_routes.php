@@ -7,4 +7,5 @@ Route::group(['namespace' => 'Hadihosseini88\Course\Http\Controllers', 'middlewa
     $router->patch('courses/{course}/lock','CourseController@lock')->name('courses.lock');
     $router->get('courses/{course}/details','CourseController@details')->name('courses.details');
     $router->post('courses/{course}/buy','CourseController@buy')->name('courses.buy');
+    $router->get('courses/{course}/download-links','CourseController@downloadLinks')->name('courses.downloadLinks');
 });

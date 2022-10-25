@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Payment\Models;
 
+use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
@@ -9,7 +10,7 @@ class Payment extends Model
     protected $guarded = [];
     const STATUS_PENDING = 'pending';
     const STATUS_CANCELED = 'canceled';
-    const STATUS_SUCCESS = 'succcess';
+    const STATUS_SUCCESS = 'success';
     const STATUS_FAIL = 'fail';
 
     public static $statuses = [
@@ -22,5 +23,10 @@ class Payment extends Model
     public function paymentable()
     {
         return $this->morphTo();
+    }
+
+    public function buyer()
+    {
+        return $this->belongsTo(User::class,'buyer_id');
     }
 }

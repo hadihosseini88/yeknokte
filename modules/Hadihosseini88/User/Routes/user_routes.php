@@ -2,16 +2,16 @@
 
 Route::group([
     'namespace' => 'Hadihosseini88\User\Http\Controllers',
-    'middleware' => ['web','auth']
+    'middleware' => ['web', 'auth']
 ], function ($router) {
-    Route::post('users/{user}/add/role','UserController@addRole')->name('users.addRole');
-    Route::delete('users/{user}/remove/{role}/role','UserController@removeRole')->name('users.removeRole');
-    Route::patch('users/{user}/manualVerify','UserController@manualVerify')->name('users.manualVerify');
-    Route::post('users/photo','UserController@updatePhoto')->name('users.photo');
-    Route::get('edit-profile','UserController@profile')->name('users.profile');
-    Route::post('edit-profile','UserController@updateProfile')->name('users.profile');
+    Route::post('users/{user}/add/role', 'UserController@addRole')->name('users.addRole');
+    Route::delete('users/{user}/remove/{role}/role', 'UserController@removeRole')->name('users.removeRole');
+    Route::patch('users/{user}/manualVerify', 'UserController@manualVerify')->name('users.manualVerify');
+    Route::post('users/photo', 'UserController@updatePhoto')->name('users.photo');
+    Route::get('edit-profile', 'UserController@profile')->name('users.profile');
+    Route::post('edit-profile', ['uses' => 'UserController@updateProfile', 'as' => 'users.profile']);
 
-    Route::resource('users','UserController');
+    Route::resource('users', 'UserController');
 
 });
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Hadihosseini88\Course\Listeners\RegisterUserInTheCourse;
+use Hadihosseini88\Payment\Events\PaymentWasSuccessful;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

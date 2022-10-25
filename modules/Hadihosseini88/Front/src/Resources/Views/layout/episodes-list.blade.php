@@ -1,5 +1,11 @@
 <div class="episodes-list">
-    <div class="episodes-list--title">فهرست جلسات</div>
+    <div class="episodes-list--title">فهرست جلسات
+        @can('download',$course)
+            <span>
+                <a href="{{ route('courses.downloadLinks',$course->id) }}">دریافت همه لینک های دانلود</a>
+            </span>
+        @endcan
+    </div>
     <div class="episodes-list-section">
         <div class="episodes-list-group">
             <div class="episodes-list-group-head">
@@ -12,7 +18,7 @@
             </div>
             <div class="episodes-list-group-body">
                 @foreach($lessons as $lesson)
-                    <div class="episodes-list-item {{ auth()->check() && auth()->user()->hasAccessToCourse($lesson->course) ? '' : 'lock'  }}">
+                    <div class="episodes-list-item @cannot('download',$lesson) lock @endcannot">
                         <div class="section-right">
                             <span
                                 class="episodes-list-number">{{ $lesson->number }}</span>
@@ -25,7 +31,8 @@
                                 <div class="episodes-list-details">
                                     <span class="detail-type">@lang($lesson->type)</span>
                                     <span class="detail-time">{{ $lesson->time }}</span>
-                                    <a class="detail-download">
+                                    <a class="detail-download"
+                                       @can('download',$lesson) href="{{ $lesson->downloadLink() }}"@endcan>
                                         <i class="icon-download"></i>
                                     </a>
                                 </div>
@@ -241,3 +248,6 @@
         </div>
     </div>
 </div>
+
+
+

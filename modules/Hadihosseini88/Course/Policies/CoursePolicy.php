@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Course\Policies;
 
+use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -80,6 +81,14 @@ class CoursePolicy
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher_id == $user->id) {
             return true;
         }
+    }
+
+    public function download($user, $course)
+    {
+        if (($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) || ($user->id == $course->teacher_id) || $course->hasStudent($user->id) ) {
+            return true;
+        }
+        return false;
     }
 
 }
