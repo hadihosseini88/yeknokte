@@ -5,6 +5,7 @@ namespace Hadihosseini88\Payment\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
+use Carbon\CarbonPeriod;
 use Hadihosseini88\Payment\Events\PaymentWasSuccessful;
 use Hadihosseini88\Payment\Gateways\Gateway;
 use Hadihosseini88\Payment\Models\Payment;
@@ -17,8 +18,19 @@ class PaymentController extends Controller
     {
         $this->authorize('manage', Payment::class);
         $payments = $paymentRepo->paginate();
+        $last30DaysTotal = $paymentRepo->getLastNDaysTotal(-30);
+        $last30DaysSiteBenefit = $paymentRepo->getLastNDaysSiteBenefit(-30);
+        $last30DaysSellerShare = $paymentRepo->getLastNDaysSellerShare(-30);
+        $totalSell = $paymentRepo->getLastNDaysTotal();
+        $totalBenefit = $paymentRepo->getLastNDaysSiteBenefit();
 
-        return view('Payment::index' , compact('payments'));
+        $dates = collect();
+        foreach (range(-30, 0) as $i) {
+            $dates->put(now()->addDays($i)->format("Y-m-d"), 0);
+        }
+
+        $summery =  $paymentRepo->getDailySummery($dates);
+        return view('Payment::index', compact('payments', 'last30DaysTotal', 'last30DaysSiteBenefit', 'totalSell', 'totalBenefit', 'last30DaysSellerShare', 'summery','dates'));
     }
 
     public function callback(Request $request)

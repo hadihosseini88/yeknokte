@@ -11,24 +11,30 @@
         <div class="row no-gutters  margin-bottom-10">
             <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10">
                 <p>کل فروش ۳۰ روز گذشته سایت </p>
-                <p>2,500,000 تومان</p>
+                <p>{{ number_format($last30DaysTotal) }} تومان</p>
             </div>
             <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10">
                 <p>درامد خالص ۳۰ روز گذشته سایت</p>
-                <p>2,500,000 تومان</p>
+                <p>{{ number_format($last30DaysSiteBenefit) }} تومان</p>
             </div>
             <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10">
                 <p>کل فروش سایت</p>
-                <p>2,500,000 تومان</p>
+                <p>{{ number_format($totalSell) }} تومان</p>
             </div>
             <div class="col-3 padding-20 border-radius-3 bg-white margin-bottom-10">
                 <p> کل درآمد خالص سایت</p>
-                <p>2,500,000 تومان</p>
+                <p>{{ number_format($totalBenefit) }} تومان</p>
             </div>
         </div>
         <div class="row no-gutters border-radius-3 font-size-13">
             <div class="col-12 bg-white padding-30 margin-bottom-20">
-                محل نمودار درامد سی روز گذاشته
+                محل نمودار درآمد سی روز گذشته
+
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    در این نمودار درآمد خالص سایت و درآمد خالص مدرسان به نمایش گذشته شده است.
+                </p>
+
             </div>
 
         </div>
@@ -80,7 +86,9 @@
                         <td><a href="">{{ $payment->site_share }}</a></td>
                         <td><a href="">{{ $payment->paymentable->title }}</a></td>
                         <td><a href="">{{ $payment->created_at }}</a></td>
-                        <td><a href="" class="@if($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_SUCCESS) text-success @elseif($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_PENDING) text-pending @else text-error @endif">@lang($payment->status)</a></td>
+                        <td><a href=""
+                               class="@if($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_SUCCESS) text-success @elseif($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_PENDING) text-pending @else text-error @endif">@lang($payment->status)</a>
+                        </td>
                         <td>
                             <a href="" class="item-delete mlg-15"></a>
                             <a href="edit-transaction.html" class="item-edit"></a>
@@ -100,7 +108,114 @@
     <script>
         @include('Common::layouts.feedbacks')
     </script>
+
+    <script src="/panel/js/highcharts.js"></script>
+    <script src="/panel/js/series-label.js"></script>
+    <script src="/panel/js/exporting.js"></script>
+    <script src="/panel/js/export-data.js"></script>
+    <script src="/panel/js/accessibility.js"></script>
+
+    <script>
+
+        Highcharts.chart('container', {
+            title: {
+                text: 'نمودار درآمد فروش سایت',
+                align: 'center',
+                useHTML: true,
+                style: {
+                    fontFamily: 'irs',
+                    direction: 'rtl',
+                },
+            },
+            tooltip: {
+                useHTML: true,
+                style: {
+                    fontFamily: 'irs',
+                    direction: 'rtl',
+                },
+
+                formatter: function () {
+                    return (this.x ? 'تاریخ: ' + this.x + '<br>' : '')  + 'مبلغ: ' + this.y + ' تومان';
+
+                }
+
+            },
+            xAxis: {
+                categories: [@foreach($dates as $date =>$value) '{{ $date }}', @endforeach],
+                useHTML: true,
+                style: {
+                    fontFamily: 'irs',
+                    direction: 'rtl',
+                },
+            },
+            yAxis: {
+                title: {
+                    text: 'مبلغ به تومان'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value + ' تومان';
+                    }
+                },
+            },
+            labels: {
+                items: [{
+                    html: 'درآمد 30 روز گذشته',
+                    style: {
+                        left: '50px',
+                        top: '18px',
+                        color: ( // theme
+                            Highcharts.defaultOptions.title.style &&
+                            Highcharts.defaultOptions.title.style.color
+                        ) || 'black'
+                    }
+                }]
+            },
+            series: [{
+                type: 'column',
+                name: 'تراکنش موفق',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalAmount }} , @else 0, @endif @endforeach]
+            }, {
+                type: 'column',
+                name: 'مبلغ روز سایت',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSiteShare }} , @else 0, @endif @endforeach]
+            }, {
+                type: 'column',
+                name: 'مبلغ روز مدرسین',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSellerShare }} , @else 0, @endif @endforeach]
+            }, {
+                type: 'spline',
+                name: 'نمودار خطی تراکنش موفق',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalAmount }} , @else 0, @endif @endforeach],
+                marker: {
+                    lineWidth: 2,
+                    lineColor: Highcharts.getOptions().colors[3],
+                    fillColor: 'white'
+                }
+            }, {
+                type: 'pie',
+                name: 'مبلغ فروش',
+                data: [{
+                    name: 'مبلغ کل سایت',
+                    y: {{ $last30DaysSiteBenefit }},
+                    color: Highcharts.getOptions().colors[0] // 2020 color
+                }, {
+                    name: 'مبلغ کل مدرسین',
+                    y: {{ $last30DaysSellerShare }},
+                    color: Highcharts.getOptions().colors[1] // 2021 color
+                }],
+                center: [80, 70],
+                size: 100,
+                showInLegend: false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+        });
+    </script>
+
 @endsection
+
 
 
 
