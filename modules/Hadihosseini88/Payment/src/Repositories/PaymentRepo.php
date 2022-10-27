@@ -5,8 +5,16 @@ namespace Hadihosseini88\Payment\Repositories;
 use Hadihosseini88\Payment\Models\Payment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+
 class PaymentRepo
 {
+    private $query;
+
+    public function __construct()
+    {
+        $this->query = Payment::query();
+    }
+
     public static function store($data)
     {
 
@@ -37,9 +45,54 @@ class PaymentRepo
         return Payment::where('id', $id)->update(['status' => $status]);
     }
 
+    public function searchEmail($email)
+    {
+        if (!is_null($email)) {
+            $this->query->join('users', 'payments.buyer_id', 'users.id')->select('payments.*', 'users.email')->where('users.email', 'like', '%' . $email . '%');
+        }
+
+        return $this;
+    }
+
+    public function searchAmount($amount)
+    {
+        if (!is_null($amount)) {
+            $this->query->where('payments.amount', $amount);
+        }
+
+        return $this;
+    }
+
+    public function searchInvoiceId($invoiceId)
+    {
+        if (!is_null($invoiceId)) {
+            $this->query->where('invoice_id', 'like', '%' . $invoiceId . '%');
+        }
+
+        return $this;
+    }
+
+    public function searchAfterDate($date)
+    {
+        if (!is_null($date)) {
+            $this->query->whereDate("created_at", ">=", $date);
+        }
+
+        return $this;
+    }
+
+    public function searchBeforeDate($date)
+    {
+        if (!is_null($date)) {
+            $this->query->whereDate("created_at", "<=", $date);
+        }
+
+        return $this;
+    }
+
     public function paginate()
     {
-        return Payment::query()->latest()->paginate();
+        return $this->query->latest()->paginate();
     }
 
     public function getLatNDaysPayments($status, $days = null)

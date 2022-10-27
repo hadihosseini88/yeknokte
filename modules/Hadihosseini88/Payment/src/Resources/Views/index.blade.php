@@ -41,17 +41,16 @@
         <div class="d-flex flex-space-between item-center flex-wrap padding-30 border-radius-3 bg-white">
             <p class="margin-bottom-15">همه تراکنش ها</p>
             <div class="t-header-search">
-                <form action="" onclick="event.preventDefault();">
+                <form action="">
                     <div class="t-header-searchbox font-size-13">
                         <input type="text" class="text search-input__box font-size-13" placeholder="جستجوی تراکنش">
                         <div class="t-header-search-content ">
-                            <input type="text" class="text" placeholder="شماره کارت / بخشی از شماره کارت">
-                            <input type="text" class="text" placeholder="ایمیل">
-                            <input type="text" class="text" placeholder="مبلغ به تومان">
-                            <input type="text" class="text" placeholder="شماره">
-                            <input type="text" class="text" placeholder="از تاریخ : 1399/10/11">
-                            <input type="text" class="text margin-bottom-20" placeholder="تا تاریخ : 1399/10/12">
-                            <btutton class="btn btn-yeknokte_ir">جستجو</btutton>
+                            <input type="text" class="text" name="email" value="{{ request('emila') }}" placeholder="ایمیل">
+                            <input type="text" class="text" name="amount" value="{{ request('amount') }}" placeholder="مبلغ به تومان">
+                            <input type="text" class="text" name="invoice_id" value="{{ request('invoice_id') }}" placeholder="شماره">
+                            <input type="text" class="text" name="start_date" value="{{ request('start_date') }}" placeholder="از تاریخ : 1399/10/11">
+                            <input type="text" class="text margin-bottom-20" name="end_date" value="{{ request('end_date') }}" placeholder="تا تاریخ : 1399/10/12">
+                            <button class="btn btn-yeknokte_ir" type="submit">جستجو</button>
                         </div>
                     </div>
                 </form>
@@ -62,9 +61,9 @@
                 <thead role="rowgroup">
                 <tr role="row" class="title-row">
                     <th>شناسه پرداخت</th>
+                    <th>شناسه تراکنش</th>
                     <th>نام و نام خانوادگی</th>
                     <th>ایمیل پرداخت کننده</th>
-                    <th>شماره کارت</th>
                     <th>مبلغ (تومان)</th>
                     <th>درامد مدرس</th>
                     <th>درامد سایت</th>
@@ -78,14 +77,14 @@
                 @foreach($payments as $payment)
                     <tr role="row">
                         <td><a href="">{{ $payment->id }}</a></td>
+                        <td>{{ $payment->invoice_id }}</td>
                         <td><a href="">{{ $payment->buyer->name }}</a></td>
                         <td><a href="">{{ $payment->buyer->email }}</a></td>
-                        <td><a href="">6037691544480511</a></td>
                         <td><a href="">{{ $payment->amount }}</a></td>
                         <td><a href="">{{ $payment->seller_share }}</a></td>
                         <td><a href="">{{ $payment->site_share }}</a></td>
                         <td><a href="">{{ $payment->paymentable->title }}</a></td>
-                        <td><a href="">{{ $payment->created_at }}</a></td>
+                        <td><a href="">{{ createFromCarbon($payment->created_at) }}</a></td>
                         <td><a href=""
                                class="@if($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_SUCCESS) text-success @elseif($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_PENDING) text-pending @else text-error @endif">@lang($payment->status)</a>
                         </td>
@@ -141,7 +140,7 @@
 
             },
             xAxis: {
-                categories: [@foreach($dates as $date =>$value) '{{ $date }}', @endforeach],
+                categories: [@foreach($dates as $date =>$value) '{{ getJalaliFromFormat($date) }}', @endforeach],
                 useHTML: true,
                 style: {
                     fontFamily: 'irs',
@@ -177,32 +176,35 @@
                 data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalAmount }} , @else 0, @endif @endforeach]
             }, {
                 type: 'column',
-                name: 'مبلغ روز سایت',
-                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSiteShare }} , @else 0, @endif @endforeach]
+                name: 'مبلغ روز مدرسین',
+                color: 'pink',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSellerShare }} , @else 0, @endif @endforeach]
             }, {
                 type: 'column',
-                name: 'مبلغ روز مدرسین',
-                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSellerShare }} , @else 0, @endif @endforeach]
+                name: 'مبلغ روز سایت',
+                color: 'green',
+                data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalSiteShare }} , @else 0, @endif @endforeach]
             }, {
                 type: 'spline',
                 name: 'نمودار خطی تراکنش موفق',
                 data: [@foreach($dates as $date => $value) @if($day = $summery->where('date',$date)->first()) {{ $day->totalAmount }} , @else 0, @endif @endforeach],
                 marker: {
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
+                    lineColor: 'lightblue',
                     fillColor: 'white'
-                }
+                },
+                color: "lightblue"
             }, {
                 type: 'pie',
                 name: 'مبلغ فروش',
                 data: [{
                     name: 'مبلغ کل سایت',
                     y: {{ $last30DaysSiteBenefit }},
-                    color: Highcharts.getOptions().colors[0] // 2020 color
+                    color: 'green'
                 }, {
                     name: 'مبلغ کل مدرسین',
                     y: {{ $last30DaysSellerShare }},
-                    color: Highcharts.getOptions().colors[1] // 2021 color
+                    color: 'pink'
                 }],
                 center: [80, 70],
                 size: 100,

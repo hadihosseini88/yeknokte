@@ -14,10 +14,16 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function index(PaymentRepo $paymentRepo)
+    public function index(PaymentRepo $paymentRepo, Request $request)
     {
         $this->authorize('manage', Payment::class);
-        $payments = $paymentRepo->paginate();
+        $payments = $paymentRepo
+            ->searchEmail($request->email)
+            ->searchAmount($request->amount)
+            ->searchInvoiceId($request->invoice_id)
+            ->searchAfterDate(dateFromJalali($request->start_date))
+            ->searchBeforeDate(dateFromJalali( $request->end_date))
+            ->paginate();
         $last30DaysTotal = $paymentRepo->getLastNDaysTotal(-30);
         $last30DaysSiteBenefit = $paymentRepo->getLastNDaysSiteBenefit(-30);
         $last30DaysSellerShare = $paymentRepo->getLastNDaysSellerShare(-30);
@@ -58,6 +64,12 @@ class PaymentController extends Controller
 
         }
         return redirect()->to($payment->paymentable->path());
+    }
+
+    public function purchases()
+    {
+        $payments =  auth()->user()->payments()->with("paymentable")->paginate();
+        return view("Payment::purchases", compact("payments"));
     }
 
 }

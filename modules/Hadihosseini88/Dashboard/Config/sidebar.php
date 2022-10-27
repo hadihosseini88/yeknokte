@@ -8,6 +8,7 @@ return [
         'users' => [],
         'role-permissions' => [],
         'payments' => [],
+        'my-purchases' => [],
         'userInformation' => []
     ]
 ];

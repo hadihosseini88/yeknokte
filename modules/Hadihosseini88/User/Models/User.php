@@ -6,6 +6,7 @@ use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Models\Lesson;
 use Hadihosseini88\Course\Models\Season;
 use Hadihosseini88\Media\Models\Media;
+use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Notifications\ResetPasswordRequestNotification;
 use Hadihosseini88\User\Notifications\VerifyMailNotification;
@@ -87,6 +88,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function purchases()
     {
         return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class,'buyer_id');
     }
 
     public function seasons()
