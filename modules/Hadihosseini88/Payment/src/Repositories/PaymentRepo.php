@@ -20,6 +20,8 @@ class PaymentRepo
 
         return Payment::Create([
             'buyer_id' => $data['buyer_id'],
+            'seller_id' => $data['seller_id'],
+
             'paymentable_id' => $data['paymentable_id'],
             'paymentable_type' => $data['paymentable_type'],
             'amount' => $data['amount'],
@@ -148,6 +150,14 @@ class PaymentRepo
             ->sum('seller_share');
     }
 
+    public function getUserTotalSiteByPeriod($userId, $startDate, $endDate)
+    {
+        return $this->getUserSuccessPayments($userId)
+            ->whereDate('created_at','<=',$startDate)
+            ->whereDate('created_at','>=',$endDate)
+            ->sum('site_share');
+    }
+
     public function getUserTotalSiteShare($userId)
     {
         return $this->getUserSuccessPayments($userId)->sum('site_share');
@@ -220,6 +230,11 @@ class PaymentRepo
             DB::raw("SUM(seller_share) as totalSellerShare"),
             DB::raw("SUM(site_share) as totalSiteShare"),
         ]);
+    }
+
+    public function PaymentsBySellerId(int $id)
+    {
+        return Payment::query()->where('seller_id',$id);
     }
 
 }

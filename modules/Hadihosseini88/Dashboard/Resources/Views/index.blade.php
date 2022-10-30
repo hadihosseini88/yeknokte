@@ -41,12 +41,17 @@
         </div>
         <div class="row no-gutters font-size-13 margin-bottom-10">
             <div class="col-8 padding-20 bg-white margin-bottom-10 margin-left-10 border-radius-3">
-                محل قرار گیری نمودار
+                محل نمودار درآمد سی روز گذشته
+
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    در این نمودار درآمد خالص مدرسان به نمایش گذشته شده است.
+                </p>
             </div>
             <div class="col-4 info-amount padding-20 bg-white margin-bottom-12-p margin-bottom-10 border-radius-3">
 
                 <p class="title icon-outline-receipt">موجودی قابل تسویه </p>
-                <p class="amount-show color-444">600,000<span> تومان </span></p>
+                <p class="amount-show color-444">{{ number_format(auth()->user()->balance) }}<span> تومان </span></p>
                 <p class="title icon-sync">در حال تسویه</p>
                 <p class="amount-show color-444">0<span> تومان </span></p>
                 <a href="/" class=" all-reconcile-text color-2b4a83">همه تسویه حساب ها</a>
@@ -63,10 +68,13 @@
                 <table width="100%" class="table">
                     <thead role="rowgroup">
                     <tr role="row" class="title-row">
-                        <th>شناسه پرداخت</th>
+                        <th>ردیف</th>
+{{--                        <th>شناسه پرداخت</th>--}}
+{{--                        <th>شناسه تراکنش</th>--}}
+                        <th>نام و نام خانوادگی</th>
                         <th>ایمیل پرداخت کننده</th>
                         <th>مبلغ (تومان)</th>
-                        <th>درامد شما</th>
+                        <th>درامد مدرس</th>
                         <th>درامد سایت</th>
                         <th>نام دوره</th>
                         <th>تاریخ و ساعت</th>
@@ -75,37 +83,37 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr role="row">
-                        <td><a href=""> 1</a></td>
-                        <td><a href="">mohammadnio3@gmail.com</a></td>
-                        <td><a href="">600,000</a></td>
-                        <td><a href="">400,000</a></td>
-                        <td><a href="">400,000</a></td>
-                        <td><a href="">خرید دوره - دوره متخصص php سطح مقدماتی</a></td>
-                        <td><a href=""> 22:14:48 1399/02/23</a></td>
-                        <td><a href="" class="text-success">پرداخت موفق</a></td>
-                        <td class="i__oprations">
-                            <a href="" class="item-delete margin-left-10" title="حذف"></a>
-                            <a href="edit-transaction.html" class="item-edit" title='ویرایش'></a>
-                        </td>
-                    </tr>
-                    <tr role="row">
-                        <td><a href=""> 1</a></td>
-                        <td><a href="">mohammadniko3@gmail.com</a></td>
-                        <td><a href="">600,000</a></td>
-                        <td><a href="">400,000</a></td>
-                        <td><a href="">400,000</a></td>
-                        <td><a href="">خرید دوره - دوره متخصص php سطح مقدماتی</a></td>
-                        <td><a href=""> 22:14:48 1399/02/23</a></td>
-                        <td><a href="" class="text-error">پرداخت ناموفق</a></td>
-                        <td class="i__oprations">
-                            <a href="" class="item-delete margin-left-10" title="حذف"></a>
-                            <a href="edit-transaction.html" class="item-edit" title='ویرایش'></a>
-                        </td>
-                    </tr>
+                    @foreach($payments as $payment)
+                        <tr role="row">
+                            <td>{{ $loop->index +1 }}</td>
+{{--                            <td><a href="">{{ $payment->id }}</a></td>--}}
+{{--                            <td>{{ $payment->invoice_id }}</td>--}}
+                            <td><a href="">{{ $payment->buyer->name }}</a></td>
+                            <td><a href="">{{ $payment->buyer->email }}</a></td>
+                            <td><a href="">{{ $payment->amount }}</a></td>
+                            <td><a href="">{{ $payment->seller_share }}</a></td>
+                            <td><a href="">{{ $payment->site_share }}</a></td>
+                            <td><a href="">{{ $payment->paymentable->title }}</a></td>
+                            <td><a href="">{{ createFromCarbon($payment->created_at) }}</a></td>
+                            <td><a href=""
+                                   class="@if($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_SUCCESS) text-success @elseif($payment->status == \Hadihosseini88\Payment\Models\Payment::STATUS_PENDING) text-pending @else text-error @endif">@lang($payment->status)</a>
+                            </td>
+                            <td>
+                                <a href="" class="item-delete mlg-15"></a>
+                                <a href="edit-transaction.html" class="item-edit"></a>
+                            </td>
+                        </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    @include('Payment::chart')
+
 @endsection
