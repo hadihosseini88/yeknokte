@@ -44,5 +44,23 @@ class PaymentServiceProvider extends ServiceProvider
             "url" => route('purchases.index'),
 
         ]);
+
+        config()->set('sidebar.items.settlements', [
+            "icon" => "i-checkouts",
+            "title" => "تسویه حساب ها",
+            "url" => route('settlements.index'),
+//            "permission"=>[
+//                Permission::PERMISSION_MANAGE_PAYMENTS
+//            ],
+        ]);
+
+        config()->set('sidebar.items.settlementsCreate', [
+            "icon" => "i-checkout__request",
+            "title" => "درخواست تسویه",
+            "url" => route('settlements.create'),
+//            "permission"=>[
+//                Permission::PERMISSION_MANAGE_PAYMENTS
+//            ],
+        ]);
     }
 }

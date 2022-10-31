@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
     <li><a href="{!! route('courses.index') !!}" title="دوره ها">دوره ها</a></li>
-    <li><a href="#" class="is-active" title="ویرایش دوره">ویرایش دوره</a></li>
+    <li><a href="{!! route('courses.edit', $course->id) !!}" class="is-active" title="ویرایش دوره">ویرایش دوره</a></li>
 @endsection
 
 @section('content')

@@ -7,6 +7,7 @@ use Hadihosseini88\Course\Models\Lesson;
 use Hadihosseini88\Course\Models\Season;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\Payment\Models\Payment;
+use Hadihosseini88\Payment\Models\Settlement;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Notifications\ResetPasswordRequestNotification;
 use Hadihosseini88\User\Notifications\VerifyMailNotification;
@@ -103,6 +104,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function settlements()
+    {
+        return $this->hasMany(Settlement::class);
     }
 
     public function profilePath()
