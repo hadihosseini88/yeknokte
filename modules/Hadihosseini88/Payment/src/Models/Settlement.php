@@ -11,8 +11,8 @@ class Settlement extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'to'=>'json',
-        'from'=>'json'
+        'to' => 'json',
+        'from' => 'json'
     ];
 
     const STATUS_PENDING = 'pending';
@@ -30,6 +30,14 @@ class Settlement extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getStatusCssClass()
+    {
+        if ($this->status == \Hadihosseini88\Payment\Models\Settlement::STATUS_SETTLED) return 'text-success';
+        elseif ($this->status == \Hadihosseini88\Payment\Models\Settlement::STATUS_PENDING) return 'text-warning';
+        else return 'text-error';
+
     }
 
 }

@@ -5,12 +5,13 @@ namespace Hadihosseini88\Payment\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Hadihosseini88\Payment\Http\Requests\SettlementRequest;
 use Hadihosseini88\Payment\Repositories\SettlementRepo;
+use Hadihosseini88\Payment\Services\SettlementService;
 
 class SettlementController extends Controller
 {
     public function index(SettlementRepo $repo)
     {
-        $settlements = $repo->paginate();
+        $settlements = $repo->latest()->paginate();
 
         return view('Payment::settlements.index', compact('settlements'));
 
@@ -21,16 +22,9 @@ class SettlementController extends Controller
         return view('Payment::settlements.create');
     }
 
-    public function store(SettlementRequest $request, SettlementRepo $repo)
+    public function store(SettlementRequest $request)
     {
-        $repo->store([
-            'cart' => $request->cart,
-            'name' => $request->name,
-            'amount' => $request->amount,
-        ]);
-
-        newFeedback();
-
+        SettlementService::store($request->all());
         return redirect(route('settlements.index'));
 
     }
@@ -38,12 +32,13 @@ class SettlementController extends Controller
     public function edit($settlement,SettlementRepo $repo)
     {
         $settlement = $repo->find($settlement);
-
         return view('Payment::settlements.edit', compact('settlement'));
     }
 
-    public function update(SettlementRequest $request)
+    public function update($settlementId,SettlementRequest $request)
     {
+        SettlementService::upadte($settlementId, $request->all());
+        return redirect(route('settlements.index'));
 
     }
 }

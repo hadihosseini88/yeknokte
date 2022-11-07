@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    
+
     <div class="main-content">
         <form action="{{ route('settlements.update', $settlement->id) }}" method="POST" class="padding-30 bg-white font-size-14">
             @csrf
@@ -20,10 +20,10 @@
                    class="text" required />
 
             <x-select name="status" required>
-{{--                <option value="">وضعیت پرداخت</option>--}}
+                <option value="">وضعیت پرداخت</option>
                 @foreach(\Hadihosseini88\Payment\Models\Settlement::$statuses as $status)
                     <option value="{{$status}}"
-{{--                            @if($status == old('status')) selected @endif--}}
+                            @if($settlement->status == $status) selected @endif
                     >@lang($status)</option>
                 @endforeach
             </x-select>
