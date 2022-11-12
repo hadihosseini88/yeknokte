@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class DiscountServiceProvider extends ServiceProvider
 {
-    public $namespace ='Hadihosseini88\Discount\Providers';
+    public $namespace ='Hadihosseini88\Discount\Http\Controllers';
     public function register()
     {
         Route::middleware('web')

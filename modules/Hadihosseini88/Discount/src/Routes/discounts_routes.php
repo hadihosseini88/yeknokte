@@ -1,8 +1,8 @@
 <?php
 
-Route::group(['middleware'=>'auth'], function ($router){
+Route::group(['middleware' => 'auth'], function ($router) {
     $router->get('/discounts', [
         'as' => 'discounts.index',
-        'uses'=> 'DiscountController@index'
+        'uses' => 'DiscountController@index'
     ]);
 });

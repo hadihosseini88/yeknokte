@@ -116,4 +116,12 @@ class CourseRepo
     {
         return Lesson::where('course_id', $id)->where('confirmation_status', Lesson::CONFIRMATION_STATUS_ACCEPTED);
     }
+
+    public function getAll(string $status = null)
+    {
+        $query = Course::query();
+        if ($status) $query->where('confirmation_status', $status);
+
+        return $query->latest()->get();
+    }
 }
