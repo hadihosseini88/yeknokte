@@ -4,6 +4,7 @@ namespace Hadihosseini88\Course\Models;
 
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Repositories\CourseRepo;
+use Hadihosseini88\Discount\Models\Discount;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\User\Models\User;
@@ -69,6 +70,11 @@ class Course extends Model
     public function payment()
     {
         return $this->payments()->latest()->first();
+    }
+
+    public function discounts()
+    {
+        return $this->morphToMany(Discount::class, 'discountable');
     }
 
     public function getDuration()

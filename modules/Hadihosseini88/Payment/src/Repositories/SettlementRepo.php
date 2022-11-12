@@ -63,4 +63,29 @@ class SettlementRepo
         return $this->query->latest();
     }
 
+    public function getLatestPendingSettlement($userId)
+    {
+        return Settlement::query()
+            ->where('user_id', $userId)
+            ->where('status',Settlement::STATUS_PENDING)
+            ->latest()
+            ->first();
+    }
+
+    public function getLatestSettlement($userId)
+    {
+        return Settlement::query()
+            ->where('user_id', $userId)
+            ->latest()
+            ->first();
+    }
+
+    public function paginateUserSettlements($userId)
+    {
+        return Settlement::query()
+            ->where('user_id', $userId)
+            ->latest()
+            ->paginate();
+    }
+
 }

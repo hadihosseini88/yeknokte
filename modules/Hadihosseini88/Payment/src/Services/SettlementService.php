@@ -28,12 +28,14 @@ class SettlementService
             $settlement->user->save();
         }
 
-        if ($settlement->user->balance < $settlement->amount){
-            newFeedback('ناموفق','موجودی حساب کاربر کافی نمی باشد','error');
-            return;
-        }
-
         if (in_array($settlement->status , $check) && in_array($data['status'], [Settlement::STATUS_PENDING,Settlement::STATUS_SETTLED])){
+
+            if ($settlement->status != $data['status'] &&
+                $settlement->user->balance < $settlement->amount){
+                newFeedback('ناموفق','موجودی حساب کاربر کافی نمی باشد','error');
+                return;
+            }
+
             $settlement->user->balance -= $settlement->amount;
             $settlement->user->save();
         }

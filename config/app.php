@@ -180,6 +180,7 @@ return [
         Hadihosseini88\Category\Providers\CategoryServiceProvider::class,
         Hadihosseini88\Course\Providers\CourseServiceProvider::class,
         Hadihosseini88\Media\Providers\MediaServiceProvider::class,
+        Hadihosseini88\Discount\Providers\DiscountServiceProvider::class,
 
 
     ],

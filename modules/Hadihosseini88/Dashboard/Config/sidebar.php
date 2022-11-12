@@ -9,6 +9,7 @@ return [
         'role-permissions' => [],
         'payments' => [],
         'my-purchases' => [],
+        'discounts' => [],
         'userInformation' => []
     ]
 ];
