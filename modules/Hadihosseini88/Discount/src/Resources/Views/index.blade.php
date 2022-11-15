@@ -29,14 +29,14 @@
                             @foreach($discounts as $discount)
                             <tr role="row" class="">
                                 <td><a href="">{{ $discount->id }}</a></td>
-                                <td><a href="">{{ $discount->code }}</a></td>
-                                <td><a href="">{{ $discount->percent }}%</a></td>
-                                <td>{{ createFromCarbon($discount->expire_at) }}</td>
+                                <td><a href="">{{ $discount->code ?? '-' }}</a></td>
+                                <td><a href="">{{ $discount->percent }}%</a> برای @lang($discount->type)</td>
+                                <td>{{ $discount->expire_at ? createFromCarbon($discount->expire_at) : 'نامحدود' }}</td>
                                 <td>{{ $discount->description }}</td>
                                 <td>{{ $discount->uses }} نفر</td>
                                 <td>
-                                    <a href="" class="item-delete mlg-15"></a>
-                                    <a href="edit-discount.html" class="item-edit " title="ویرایش"></a>
+                                    <a href="" onclick="deleteItem(event, '{{ route('discounts.destroy', $discount->id) }}')" class="item-delete mlg-15" title="حذف"></a>
+                                    <a href="{{ route('discounts.edit', $discount->id) }}" class="item-edit " title="ویرایش"></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -50,17 +50,17 @@
                 <p class="box__title">ایجاد تخفیف جدید</p>
                 <form action="{{ route('discounts.store') }}" method="POST" class="padding-30">
                     @csrf
-                    <x-input type="text" placeholder="کد تخفیف" class="text" name="code" required />
+                    <x-input type="text" placeholder="کد تخفیف" class="text" name="code" />
                     <x-input type="number" placeholder="درصد تخفیف" class="text" name="percent" required />
                     <x-input type="number" placeholder="محدودیت افراد" class="text" name="usage_limitation" />
                     <x-input id="expire_at" type="text" placeholder="محدودیت زمانی" class="text" name="expire_at" />
-                    <p class="box__title">این تخفیف برای</p>
+                    <p class="box__title" style="margin-top: 10px;margin-bottom: -10px">این تخفیف برای</p>
                     <div class="notificationGroup">
-                        <input id="discounts-field-1" class="discounts-field-pn" name="discounts-field" value="all" type="radio"/>
+                        <input id="discounts-field-1" class="discounts-field-pn" name="type" value="all" type="radio"/>
                         <label for="discounts-field-1">همه دوره ها</label>
                     </div>
                     <div class="notificationGroup">
-                        <input id="discounts-field-2" class="discounts-field-pn" name="discounts-field" value="special" type="radio"/>
+                        <input id="discounts-field-2" class="discounts-field-pn" name="type" value="special" type="radio"/>
                         <label for="discounts-field-2">دوره خاص</label>
                     </div>
                     <div id="selectCourseContainer" class="d-none">
@@ -93,7 +93,7 @@
     <script src="/js/select2.min.js"></script>
 
     <script>
-        $("#expire_at").persianDatepicker({formatDate: "YYYY/0M/0D hh:mm"});
+        $("#expire_at").persianDatepicker({formatDate: "YYYY/0M/0D 0h:0m"});
         $('.mySelect2').select2({
             placeholder : "یک یا چند دوره را انتخاب کنید."
         });

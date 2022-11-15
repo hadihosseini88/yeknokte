@@ -16,6 +16,7 @@ class DiscountServiceProvider extends ServiceProvider
             ->group(__DIR__ . '/../Routes/discounts_routes.php');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'Discount');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadJsonTranslationsFrom(__DIR__.'/../Resources/Lang');
 
     }
 

@@ -22,6 +22,8 @@ class CreateDiscountsTable extends Migration
             $table->timestamp('expire_at')->nullable();
             $table->string('link',300)->nullable();
             $table->string('description')->nullable();
+            $table->enum('type',[\Hadihosseini88\Discount\Models\Discount::$types])
+                ->default(\Hadihosseini88\Discount\Models\Discount::TYPE_ALL);
             $table->bigInteger('uses')->default(0)->unsigned();
             $table->timestamps();
         });
@@ -29,7 +31,7 @@ class CreateDiscountsTable extends Migration
         Schema::create('discountables',function (Blueprint $table){
             $table->foreignId('discount_id');
             $table->foreignId('discountable_id');
-            $table->foreignId('discountable_type');
+            $table->string('discountable_type');
             $table->primary(['discount_id','discountable_id','discountable_type'],'discountable_key');
         });
     }
