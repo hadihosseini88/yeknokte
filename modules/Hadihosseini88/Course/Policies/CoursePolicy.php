@@ -23,26 +23,26 @@ class CoursePolicy
 
     public function manage(User $user)
     {
-        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES);
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
     }
 
     public function index(User $user)
     {
-        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
-            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES)) return true;
     }
 
     public function create(User $user)
     {
-        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
-            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES)) return true;
 
     }
 
     public function edit(User $user, $course)
     {
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
-        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher->id == $user->id;
+        if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher->id == $user->id) return true;
     }
 
 
@@ -85,7 +85,7 @@ class CoursePolicy
 
     public function download($user, $course)
     {
-        if (($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) || ($user->id == $course->teacher_id) || $course->hasStudent($user->id) ) {
+        if (($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) || ($user->id == $course->teacher_id) || $course->hasStudent($user->id)) {
             return true;
         }
         return false;
