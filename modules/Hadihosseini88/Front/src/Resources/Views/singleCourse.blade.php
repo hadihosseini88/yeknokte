@@ -365,18 +365,24 @@
                             </tr>
                             <tr>
                                 <th>درصد تخفیف</th>
-                                <td><span id="discountPercent" data-value="{{ $course->getDiscountPercent()  }}">{{ $course->getDiscountPercent() }}</span>%</td>
+                                <td><span id="discountPercent"
+                                          data-value="{{ $course->getDiscountPercent()  }}">{{ $course->getDiscountPercent() }}</span>%
+                                </td>
                             </tr>
                             <tr>
                                 <th> مبلغ تخفیف</th>
                                 <td class="text-red"><span
-                                        id="discountAmount" data-value="{{ $course->getDiscountAmount()  }}"> {{ $course->getDiscountAmount() }}</span> تومان
+                                        id="discountAmount"
+                                        data-value="{{ $course->getDiscountAmount()  }}"> {{ $course->getDiscountAmount() }}</span>
+                                    تومان
                                 </td>
                             </tr>
                             <tr>
                                 <th> قابل پرداخت</th>
                                 <td class="text-blue"><span
-                                        id="payableAmount" data-value="{{ $course->getFinalPrice()  }}">{{ $course->getFormattedFinalPrice() }}</span> تومان
+                                        id="payableAmount"
+                                        data-value="{{ $course->getFinalPrice()  }}">{{ $course->getFormattedFinalPrice() }}</span>
+                                    تومان
                                 </td>
                             </tr>
                             </tbody>
@@ -392,6 +398,21 @@
 
 @section('js')
     <script src="/js/modal.js"></script>
+    <script>
+        function checkDiscountCode() {
+            const code = $("#code").val();
+            const url = "{{ route('discounts.check',['code', $course->id]) }}"
+            $.get(url.replace('code', code))
+                .done(function (data){
+                    $("#discountAmount").text(data.discountAmount);
+                    $("#discountPercent").text(data.discountPercent);
+                    $("#payableAmount").text(data.payableAmount);
+                })
+                .fail(function (data){
+
+                });
+        }
+    </script>
 @endsection
 
 @section('css')

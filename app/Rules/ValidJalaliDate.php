@@ -7,7 +7,7 @@ use Morilog\Jalali\Jalalian;
 
 class ValidJalaliDate implements Rule
 {
-
+    public $error;
     public function __construct()
     {
         //
@@ -20,6 +20,7 @@ class ValidJalaliDate implements Rule
             return true;
 
         }catch (\Exception $exception){
+            $this->error = $exception->getMessage() . " - {$value}";
             return false;
         }
     }
@@ -27,6 +28,6 @@ class ValidJalaliDate implements Rule
 
     public function message()
     {
-        return 'یک تاریخ معتبر شمسی انتخاب کنید.';
+        return 'یک تاریخ معتبر شمسی انتخاب کنید.'. "({$this->error})";
     }
 }

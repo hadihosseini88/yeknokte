@@ -11,6 +11,7 @@ class DiscountRepo
     {
         return Discount::query()->find($id);
     }
+
     public function store(array $data)
     {
         $discount = Discount::query()->create([
@@ -52,5 +53,45 @@ class DiscountRepo
         } else {
             $discount->courses()->sync([]);
         }
+    }
+
+    public function getValidDiscountsQuery($type = Discount::TYPE_ALL, $id = null)
+    {
+        $query = Discount::query()
+            ->where('expire_at', '>', now())
+            ->where('type', $type)
+            ->whereNull('code');
+        if ($id) {
+            $query->whereHas('courses', function ($q) use ($id) {
+                $q->where('id', $id);
+            });
+        }
+        $query->where(function ($q) {
+            $q->Where('usage_limitation', '>', '0')
+                ->orWhereNull('usage_limitation');
+        });
+        $query->orderBy('percent', 'desc');
+        return $query;
+    }
+
+    public function getGlobalBiggerDiscount()
+    {
+        return $this->getValidDiscountsQuery()->first();
+    }
+
+    public function getCourseBiggerDiscount($id)
+    {
+        return $this->getValidDiscountsQuery(Discount::TYPE_SPECIAL, $id)->first();
+    }
+
+    public function getValidDiscountByCode($code, $id)
+    {
+        return Discount::query()
+            ->where('code', $code)
+            ->where(function ($qu) use ($id) {
+                return $qu->whereHas('courses', function ($q) use ($id) {
+                    return $q->where('id', $id);
+                })->orWhereDoesntHave('courses');
+            })->first();
     }
 }

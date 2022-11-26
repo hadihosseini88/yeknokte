@@ -9,6 +9,7 @@ use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Discount\Http\Requests\DiscountRequest;
 use Hadihosseini88\Discount\Models\Discount;
 use Hadihosseini88\Discount\Repositories\DiscountRepo;
+use Hadihosseini88\Discount\Services\DiscountService;
 
 class DiscountController extends Controller
 {
@@ -50,6 +51,26 @@ class DiscountController extends Controller
         $this->authorize('manage', Discount::class);
         $discount->delete();
         return AjaxResponses::SuccessResponse();
+    }
+
+    public function check($code, Course $course, DiscountRepo $repo)
+    {
+        $discount = $repo->getValidDiscountByCode($code, $course->id);
+        if ($discount) {
+            $discountAmount = DiscountService::calculateDiscountAmount($course->price, $discount->percent);
+            $total = 0;
+            $discountPercent = $discount->percent;
+            $response = [
+                'status' => 'valid',
+                'payableAmount' => $course->price - $discountAmount,
+                'discountAmount' => $discountAmount,
+                'discountPercent' => $discountPercent,
+            ];
+            return response()->json($response);
+        }
+        return response()->json([
+            'status' => 'invalid',
+        ])->setStatusCode(422);
     }
 
 }

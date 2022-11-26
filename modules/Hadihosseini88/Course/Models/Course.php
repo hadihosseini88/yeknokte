@@ -5,6 +5,8 @@ namespace Hadihosseini88\Course\Models;
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Discount\Models\Discount;
+use Hadihosseini88\Discount\Repositories\DiscountRepo;
+use Hadihosseini88\Discount\Services\DiscountService;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\User\Models\User;
@@ -102,14 +104,19 @@ class Course extends Model
 
     public function getDiscountPercent()
     {
-        //todo
-        return 0;
+
+        $discountRepo = new DiscountRepo();
+        $percent = 0;
+        $specificDiscount = $discountRepo->getCourseBiggerDiscount($this->id);
+        if ($specificDiscount) $percent = $specificDiscount->percent;
+        $globalDiscount = $discountRepo->getGlobalBiggerDiscount();
+        if ($globalDiscount && ($globalDiscount->percent > $percent)) $percent = $globalDiscount->percent;
+        return $percent;
     }
 
     public function getDiscountAmount()
     {
-        //todo
-        return 0;
+        return DiscountService::calculateDiscountAmount($this->price, $this->getDiscountPercent());
     }
 
     public function getFinalPrice()
