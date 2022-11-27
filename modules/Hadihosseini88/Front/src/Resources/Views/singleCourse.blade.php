@@ -400,15 +400,23 @@
     <script src="/js/modal.js"></script>
     <script>
         function checkDiscountCode() {
+            $('#loading').removeClass('d-none');
             const code = $("#code").val();
             const url = "{{ route('discounts.check',['code', $course->id]) }}"
+            $('#loading').addClass('d-none');
+            $('#response').text("")
             $.get(url.replace('code', code))
                 .done(function (data){
                     $("#discountAmount").text(data.discountAmount);
                     $("#discountPercent").text(data.discountPercent);
                     $("#payableAmount").text(data.payableAmount);
+                    $('#response').text("کد تخفیف با موفقیت اعمال شد").removeClass('text-error').addClass('text-success')
                 })
                 .fail(function (data){
+                    $('#response').text("کد تخفیف معتبر نیست").removeClass('text-success').addClass('text-error')
+                })
+                .always(function (){
+                    $('#loading').addClass('d-none');
 
                 });
         }
