@@ -138,13 +138,13 @@ class CourseController extends Controller
         if (!$this->authUserCanPurchaseCourse($course)) {
             return back();
         }
-        $amount = $course->getFinalPrice();
+        [$amount, $discounts] = $course->getFinalPrice(request()->code, true);
         if ($amount <= 0) {
             $courseRepo->addStudentToCourse($course, auth()->id());
             newFeedback('عملیات موفق', 'شما با موفقیت در دوره شرکت کردید.');
             return redirect($course->path());
         }
-        $payment = PaymentService::generate($amount, $course, auth()->user(), $course->teacher_id);
+        $payment = PaymentService::generate($amount, $course, auth()->user(), $course->teacher_id, $discounts);
 
         resolve(Gateway::class)->redirect($payment->invoice_id);
 

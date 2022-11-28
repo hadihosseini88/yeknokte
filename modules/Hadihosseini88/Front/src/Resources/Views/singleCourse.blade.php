@@ -32,13 +32,17 @@
                 <div class="sidebar-right">
                     <div class="sidebar-sticky">
                         <div class="product-info-box">
+                            @if($course->getDiscountPercent())
                             <div class="discountBadge">
-                                <p>45%</p>
+                                <p>{{ $course->getDiscountPercent() }}%</p>
                                 تخفیف
                             </div>
+                            @endif
                             <div class="sell_course">
                                 <strong>قیمت :</strong>
+                                @if($course->getDiscountPercent())
                                 <del class="discount-Price">{{ $course->getFormattedPrice() }}</del>
+                                @endif
                                 <p class="price">
                         <span class="woocommerce-Price-amount amount">{{ $course->getFormattedFinalPrice() }}
                             <span class="woocommerce-Price-currencySymbol">تومان</span>

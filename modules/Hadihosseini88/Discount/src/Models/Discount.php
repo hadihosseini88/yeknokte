@@ -3,6 +3,7 @@
 namespace Hadihosseini88\Discount\Models;
 
 use Hadihosseini88\Course\Models\Course;
+use Hadihosseini88\Payment\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,5 +23,10 @@ class Discount extends Model
     public function courses()
     {
         return $this->morphedByMany(Course::class,'discountable');
+    }
+
+    public function payments()
+    {
+        return $this->belongsToMany(Payment::class,'discount_payment');
     }
 }

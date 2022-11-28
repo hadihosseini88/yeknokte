@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Payment\Models;
 
+use Hadihosseini88\Discount\Models\Discount;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,6 +24,11 @@ class Payment extends Model
     public function paymentable()
     {
         return $this->morphTo();
+    }
+
+    public function discounts()
+    {
+        return $this->belongsToMany(Discount::class, 'discount_payment');
     }
 
     public function buyer()

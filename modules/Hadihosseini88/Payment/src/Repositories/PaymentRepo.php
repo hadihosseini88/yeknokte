@@ -15,10 +15,10 @@ class PaymentRepo
         $this->query = Payment::query();
     }
 
-    public static function store($data)
+    public static function store($data, $discounts = [])
     {
 
-        return Payment::Create([
+        $payment = Payment::Create([
             'buyer_id' => $data['buyer_id'],
             'seller_id' => $data['seller_id'],
 
@@ -33,8 +33,10 @@ class PaymentRepo
             'site_share' => $data['site_share']
 
         ]);
-
-
+        foreach ($discounts as $discount)$discountIds[] = $discount->id;
+        if (isset($discountIds))
+            $payment->discounts()->sync($discountIds);
+        return $payment;
     }
 
     public function findByInvoiceId($invoiceId)
