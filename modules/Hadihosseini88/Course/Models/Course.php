@@ -9,6 +9,7 @@ use Hadihosseini88\Discount\Repositories\DiscountRepo;
 use Hadihosseini88\Discount\Services\DiscountService;
 use Hadihosseini88\Media\Models\Media;
 use Hadihosseini88\Payment\Models\Payment;
+use Hadihosseini88\Ticket\Models\Ticket;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -62,6 +63,11 @@ class Course extends Model
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function tickets()
+    {
+        return $this->morphMany(Ticket::class, 'ticketable');
     }
 
     public function payments()

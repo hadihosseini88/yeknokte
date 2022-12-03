@@ -64,7 +64,8 @@
             "Hadihosseini88\\RolePermissions\\": "modules/Hadihosseini88/RolePermissions/",
             "Hadihosseini88\\Course\\": "modules/Hadihosseini88/Course/",
             "Hadihosseini88\\Media\\": "modules/Hadihosseini88/Media/",
-            "Hadihosseini88\\Discount\\": "modules/Hadihosseini88/Discount/src"
+            "Hadihosseini88\\Discount\\": "modules/Hadihosseini88/Discount/src",
+            "Hadihosseini88\\Ticket\\": "modules/Hadihosseini88/Ticket/src"
         },
         "classmap": [
             "database/seeds",

@@ -181,6 +181,7 @@ return [
         Hadihosseini88\Course\Providers\CourseServiceProvider::class,
         Hadihosseini88\Media\Providers\MediaServiceProvider::class,
         Hadihosseini88\Discount\Providers\DiscountServiceProvider::class,
+        Hadihosseini88\Ticket\Providers\TicketServiceProvider::class,
 
 
     ],
