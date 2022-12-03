@@ -14,6 +14,8 @@ class DiscountServiceProvider extends ServiceProvider
     public $namespace ='Hadihosseini88\Discount\Http\Controllers';
     public function register()
     {
+        $this->app->register(EventServiceProvider::class);
+
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(__DIR__ . '/../Routes/discounts_routes.php');

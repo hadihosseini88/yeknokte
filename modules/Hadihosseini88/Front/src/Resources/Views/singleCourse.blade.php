@@ -411,9 +411,9 @@
             $('#response').text("")
             $.get(url.replace('code', code))
                 .done(function (data){
-                    $("#discountAmount").text(data.discountAmount);
-                    $("#discountPercent").text(data.discountPercent);
-                    $("#payableAmount").text(data.payableAmount);
+                    $("#discountAmount").text(parseInt($("#discountAmount").attr("data-value")) + data.discountAmount);
+                    $("#discountPercent").text(parseInt($("#discountPercent").attr("data-value")) + data.discountPercent);
+                    $("#payableAmount").text(parseInt($("#payableAmount").attr("data-value")) - data.discountPercent);
                     $('#response').text("کد تخفیف با موفقیت اعمال شد").removeClass('text-error').addClass('text-success')
                 })
                 .fail(function (data){
