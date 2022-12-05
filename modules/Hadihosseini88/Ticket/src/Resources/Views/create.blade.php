@@ -11,9 +11,11 @@
         <p class="box__title">ایجاد تیکت جدید</p>
         <div class="row no-gutters bg-white">
             <div class="col-12">
-                <form action="" class="padding-30">
+                <form action="{{ route('tickets.store') }}" method="POST" enctype="multipart/form-data" class="padding-30">
+                    @csrf
                     <x-input name="title" type="text"  placeholder="عنوان تیکت" required></x-input>
                     <x-textarea name="body" placeholder="متن تیکت" required ></x-textarea>
+                    <br><br>
                     <x-file name="attachment" textSpan="آپلود فایل" placeholder="آپلود فایل پیوست"></x-file>
                     <button class="btn btn-yeknokte_ir">ارسال تیکت</button>
                 </form>

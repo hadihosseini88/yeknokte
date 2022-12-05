@@ -21,9 +21,9 @@
                     <div class="t-header-searchbox font-size-13">
                         <input type="text" class="text search-input__box font-size-13" placeholder="جستجوی در تیکت ها">
                         <div class="t-header-search-content ">
-                            <input type="text"  class="text"  placeholder="ایمیل">
-                            <input type="text"  class="text "  placeholder="نام و نام خانوادگی">
-                            <input type="text"  class="text margin-bottom-20"  placeholder="تاریخ">
+                            <input type="text" class="text" placeholder="ایمیل">
+                            <input type="text" class="text " placeholder="نام و نام خانوادگی">
+                            <input type="text" class="text margin-bottom-20" placeholder="تاریخ">
                             <btutton class="btn btn-yeknokte_ir">جستجو</btutton>
                         </div>
                     </div>
@@ -36,50 +36,38 @@
                 <thead role="rowgroup">
                 <tr role="row" class="title-row">
                     <th>شناسه</th>
+                    <th>موضوع</th>
                     <th>نام ارسال کننده</th>
                     <th>ایمیل ارسال کننده</th>
                     <th>آخرین بروزرسانی</th>
                     <th>وضعیت</th>
-                    <th>عملیات</th>
+                    @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
+                        <th>عملیات</th>
+                    @endcan
                 </tr>
                 </thead>
                 <tbody>
-                <tr role="row" >
-                    <td><a href="">1</a></td>
-                    <td><a href="">سیدهادی حسینی</a></td>
-                    <td><a href="">mmd@gmail.com</a></td>
-                    <td>1399/05/01</td>
-                    <td class="text-info">جدید</td>
-                    <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="show-comment.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                    </td>
-                </tr>
-                <tr role="row" >
-                    <td><a href="">1</a></td>
-                    <td><a href="">سیدهادی حسینی</a></td>
-                    <td><a href="">mmd@gmail.com</a></td>
-                    <td>1399/05/01</td>
-                    <td class="text-success">پاسخ داده شده</td>
-                    <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="show-comment.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                    </td>
-                </tr>
-                <tr role="row" class="close-status">
-                    <td><a href="">1</a></td>
-                    <td><a href="">سیدهادی حسینی</a></td>
-                    <td><a href="">mmd@gmail.com</a></td>
-                    <td>1399/05/01</td>
-                    <td>بسته شده</td>
-                    <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="show-comment.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                    </td>
-                </tr>
+                @foreach($tickets as $ticket)
+                    <tr role="row"
+                        @if($ticket->status == \Hadihosseini88\Ticket\Models\Ticket::STATUS_CLOSE) class="close-status" @endif >
+                        <td><a href="{{ route('tickets.show', $ticket->id) }}">{{ $ticket->id }}</a></td>
+                        <td><a href="{{ route('tickets.show', $ticket->id) }}">{{ $ticket->title }}</a></td>
+                        <td><a href="">{{ $ticket->user->name }}</a></td>
+                        <td><a href="">{{ $ticket->user->email }}</a></td>
+                        <td>{{ $ticket->updated_at }}</td>
+                        <td class="{{ $ticket->getStatusCssClass() }}">@lang($ticket->status)</td>
+                        @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
+                            <td>
+                                <a href="" onclick="deleteItem(event,'{{ route('tickets.destroy', $ticket->id) }}')"
+                                   class="item-delete mlg-15" title="حذف"></a>
+                                <a href="{{ route('tickets.show', $ticket->id) }}" target="_blank"
+                                   class="item-eye mlg-15" title="مشاهده"></a>
+                                <a href="{{ route('tickets.close', $ticket->id) }}" class="item-confirm "
+                                   title="بستن تیکت"></a>
+                            </td>
+                        @endcan
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

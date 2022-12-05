@@ -21,6 +21,7 @@ class TicketServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(__DIR__ . '/../Routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'Tickets');
         Gate::policy(Ticket::class,TicketPolicy::class);
         Gate::policy(Reply::class,ReplyPolicy::class);
@@ -33,7 +34,6 @@ class TicketServiceProvider extends ServiceProvider
             "icon"=>"i-tickets",
             "title"=>"تیکت ها",
             "url"=> route('tickets.index'),
-//            "permission" => Permission::PERMISSION_MANAGE_CATEGORIES,
         ]);
     }
 

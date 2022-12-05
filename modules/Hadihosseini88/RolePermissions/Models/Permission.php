@@ -12,6 +12,7 @@ class Permission extends \Spatie\Permission\Models\Permission
     const PERMISSION_MANAGE_PAYMENTS = 'manage payments';
     const PERMISSION_MANAGE_SETTLEMENTS = 'manage settlements';
     const PERMISSION_MANAGE_DISCOUNTS = 'manage discounts';
+    const PERMISSION_MANAGE_TICKETS = 'manage tickets';
     const PERMISSION_TEACH = 'teach';
     const PERMISSION_SUPER_ADMIN = 'super admin';
 
@@ -26,6 +27,7 @@ class Permission extends \Spatie\Permission\Models\Permission
         self::PERMISSION_MANAGE_COURSES,
         self::PERMISSION_MANAGE_OWN_COURSES,
         self::PERMISSION_MANAGE_DISCOUNTS,
+        self::PERMISSION_MANAGE_TICKETS,
     ];
 
 }
