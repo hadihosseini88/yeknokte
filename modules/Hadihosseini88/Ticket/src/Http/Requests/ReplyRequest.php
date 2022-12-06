@@ -2,36 +2,20 @@
 
 namespace Hadihosseini88\Ticket\Http\Requests;
 
-use Hadihosseini88\Course\Models\Course;
-use Hadihosseini88\Course\Rules\ValidSeason;
-use Hadihosseini88\Course\Rules\ValidTeacher;
-use Hadihosseini88\Media\Services\MediaFileService;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
 
 class ReplyRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return auth()->check() == true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'body'=> 'required',
-            'attachment' => 'nullable|file|mimes:avi,mp4,mkv,zip,rar,docx,pdf,jpg,png|max:10240',
+            'body' => 'required',
+            'attachment' => 'nullable|file|mimes:avi,mkv,mp4,zip,rar|max:102400',
         ];
     }
 

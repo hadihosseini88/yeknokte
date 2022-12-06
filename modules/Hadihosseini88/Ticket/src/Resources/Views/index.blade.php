@@ -41,9 +41,7 @@
                     <th>ایمیل ارسال کننده</th>
                     <th>آخرین بروزرسانی</th>
                     <th>وضعیت</th>
-                    @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
                         <th>عملیات</th>
-                    @endcan
                 </tr>
                 </thead>
                 <tbody>
@@ -56,16 +54,16 @@
                         <td><a href="">{{ $ticket->user->email }}</a></td>
                         <td>{{ $ticket->updated_at }}</td>
                         <td class="{{ $ticket->getStatusCssClass() }}">@lang($ticket->status)</td>
-                        @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
                             <td>
+                        @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
                                 <a href="" onclick="deleteItem(event,'{{ route('tickets.destroy', $ticket->id) }}')"
                                    class="item-delete mlg-15" title="حذف"></a>
                                 <a href="{{ route('tickets.show', $ticket->id) }}" target="_blank"
                                    class="item-eye mlg-15" title="مشاهده"></a>
+                        @endcan
                                 <a href="{{ route('tickets.close', $ticket->id) }}" class="item-confirm "
                                    title="بستن تیکت"></a>
                             </td>
-                        @endcan
                     </tr>
                 @endforeach
                 </tbody>

@@ -34,38 +34,19 @@
                     </div>
                     <div class="transition-comment-body">
                         <pre>{{ $reply->body }}</pre>
+                        <hr style="border-style: inset; border-width: 1px;margin-left: 20px;margin-right: 20px;">
                         <div>
-
+                            @if($reply->media_id)
+                                <a href="{{ $reply->attachmentLink() }}" class="text-warning" style="padding-right: 30px;padding-top: 10px;padding-bottom: 10px;">دانلود فایل پیوست</a>
+                            @endif
                         </div>
                     </div>
                 </div>
             @endforeach
-            <div class="transition-comment is-answer">
-                <div class="transition-comment-header">
-                       <span>
-                                         <img src="img/profile.jpg" class="logo-pic">
-                       </span>
-                    <span class="nav-comment-status">
-                            <p class="username">مدیر : یک نکته</p>
-                            <p class="comment-date">10 ماه پیش</p></span>
-                    <div>
-
-                    </div>
-                </div>
-                <div class="transition-comment-body">
-                        <pre>سلام خسته نباشید من زرین کارتم دستم رسیده و الان میخام گردش مالی رو چک کنم ولی
- رمز دوم و cvv2 رو که میزنم  خطا میده  و گردش مالی رو چک نمیکنه مشکل کجاست؟
-فایل رو ضمیمه میکنم ببنید
-من باید برم جایی این کارت رو فعال کنم؟ یا خیر فعال شده هستش؟</pre>
-                    <div>
-
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="answer-comment">
             <p class="p-answer-comment">ارسال پاسخ</p>
-            <form action="{{ route('tickets.reply', $ticket->id) }}" method="post">
+            <form action="{{ route('tickets.reply', $ticket->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <x-textarea name="body" placeholder="متن پاسخ" required></x-textarea>
                 <br><br>

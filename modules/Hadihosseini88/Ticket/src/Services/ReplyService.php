@@ -12,6 +12,7 @@ class ReplyService
 {
     public static function store(Ticket $ticket, $reply, $attachment)
     {
+
         $repo = new ReplyRepo();
         $tickerRepo = new TicketRepo();
         $media_id = null;
@@ -21,7 +22,7 @@ class ReplyService
         $reply = $repo->store($ticket->id, $reply, $media_id);
         if ($reply->user_id != $ticket->user_id) {
             $tickerRepo->setStatus($ticket->id, Ticket::STATUS_REPLIED);
-        }else{
+        } else {
             $tickerRepo->setStatus($ticket->id, Ticket::STATUS_OPEN);
         }
 
