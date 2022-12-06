@@ -1,4 +1,5 @@
 <?php
+
 namespace Hadihosseini88\Ticket\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -10,26 +11,31 @@ use Hadihosseini88\Ticket\Models\Reply;
 use Hadihosseini88\Ticket\Models\Ticket;
 use Hadihosseini88\Ticket\Repositories\TicketRepo;
 use Hadihosseini88\Ticket\Services\ReplyService;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
-    public function index(TicketRepo $repo)
+    public function index(TicketRepo $repo, Request $request)
     {
-        if (auth()->user()->can(Permission::PERMISSION_MANAGE_TICKETS)){
-
-        $tickets = $repo->paginateAll();
-        }
-        else{
+        if (auth()->user()->can(Permission::PERMISSION_MANAGE_TICKETS)) {
+            $tickets = $repo->joinUsers()
+                ->searchEmail($request->email)
+                ->searchName($request->name)
+                ->searchTitle($request->title)
+                ->searchDate(dateFromJalali($request->date))
+                ->searchStatus($request->status)
+                ->paginate();
+        } else {
             $tickets = $repo->paginateAll(auth()->id());
         }
-        return view('Tickets::index',compact('tickets'));
+        return view('Tickets::index', compact('tickets'));
     }
 
     public function show($ticket, TicketRepo $ticketRepo)
     {
         $ticket = $ticketRepo->findOrFailWithReplies($ticket);
-        $this->authorize('show',$ticket);
-        return view('Tickets::show',compact('ticket'));
+        $this->authorize('show', $ticket);
+        return view('Tickets::show', compact('ticket'));
     }
 
     public function create()
@@ -49,7 +55,7 @@ class TicketController extends Controller
     public function reply(Ticket $ticket, ReplyRequest $request)
     {
 
-        $this->authorize('show',$ticket);
+        $this->authorize('show', $ticket);
         ReplyService::store($ticket, $request->body, $request->attchment);
         newFeedback();
         return redirect()->route('tickets.show', $ticket->id);
@@ -57,7 +63,7 @@ class TicketController extends Controller
 
     public function close(Ticket $ticket, TicketRepo $repo)
     {
-        $this->authorize('show',$ticket);
+        $this->authorize('show', $ticket);
         $repo->setStatus($ticket->id, Ticket::STATUS_CLOSE);
         newFeedback();
         return redirect(route('tickets.index'));
@@ -67,7 +73,7 @@ class TicketController extends Controller
     {
         $this->authorize('delete', $ticket);
         $hasAttachments = Reply::query()->where('ticket_id', $ticket->id)->whereNotNull('media_id')->with('media')->get();
-        foreach ($hasAttachments as $reply){
+        foreach ($hasAttachments as $reply) {
             $reply->media->delete();
         }
         $ticket->delete();
