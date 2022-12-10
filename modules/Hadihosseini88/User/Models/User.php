@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\User\Models;
 
+use Hadihosseini88\Comment\Models\Comment;
 use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Models\Lesson;
 use Hadihosseini88\Course\Models\Season;
@@ -121,6 +122,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ticketReplies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function profilePath()

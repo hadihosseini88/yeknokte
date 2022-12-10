@@ -2,6 +2,7 @@
 
 namespace Hadihosseini88\Comment\Models;
 
+use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Self_;
 
@@ -18,5 +19,15 @@ class Comment extends Model
         self::STATUS_APPROVED,
         self::STATUS_REJECTED,
     ];
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

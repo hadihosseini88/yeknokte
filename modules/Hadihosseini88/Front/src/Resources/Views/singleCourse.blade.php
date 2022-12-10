@@ -33,15 +33,15 @@
                     <div class="sidebar-sticky">
                         <div class="product-info-box">
                             @if($course->getDiscountPercent())
-                            <div class="discountBadge">
-                                <p>{{ $course->getDiscountPercent() }}%</p>
-                                تخفیف
-                            </div>
+                                <div class="discountBadge">
+                                    <p>{{ $course->getDiscountPercent() }}%</p>
+                                    تخفیف
+                                </div>
                             @endif
                             <div class="sell_course">
                                 <strong>قیمت :</strong>
                                 @if($course->getDiscountPercent())
-                                <del class="discount-Price">{{ $course->getFormattedPrice() }}</del>
+                                    <del class="discount-Price">{{ $course->getFormattedPrice() }}</del>
                                 @endif
                                 <p class="price">
                         <span class="woocommerce-Price-amount amount">{{ $course->getFormattedFinalPrice() }}
@@ -184,7 +184,7 @@
                     @include('Front::layout.episodes-list')
                 </div>
             </div>
-            @include('Front::comments.index')
+            @include('Front::comments.index', ["commentable" => $course])
         </div>
 
         <div id="Modal-buy" class="modal">
@@ -253,16 +253,16 @@
             $('#loading').addClass('d-none');
             $('#response').text("")
             $.get(url.replace('code', code))
-                .done(function (data){
+                .done(function (data) {
                     $("#discountAmount").text(parseInt($("#discountAmount").attr("data-value")) + data.discountAmount);
                     $("#discountPercent").text(parseInt($("#discountPercent").attr("data-value")) + data.discountPercent);
                     $("#payableAmount").text(parseInt($("#payableAmount").attr("data-value")) - data.discountPercent);
                     $('#response').text("کد تخفیف با موفقیت اعمال شد").removeClass('text-error').addClass('text-success')
                 })
-                .fail(function (data){
+                .fail(function (data) {
                     $('#response').text("کد تخفیف معتبر نیست").removeClass('text-success').addClass('text-error')
                 })
-                .always(function (){
+                .always(function () {
                     $('#loading').addClass('d-none');
 
                 });
