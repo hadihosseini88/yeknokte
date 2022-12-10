@@ -182,6 +182,7 @@ return [
         Hadihosseini88\Media\Providers\MediaServiceProvider::class,
         Hadihosseini88\Discount\Providers\DiscountServiceProvider::class,
         Hadihosseini88\Ticket\Providers\TicketServiceProvider::class,
+        Hadihosseini88\Comment\Providers\CommentServiceProvider::class,
 
 
     ],

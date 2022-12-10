@@ -15,6 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Media" isTestSource="false" packagePrefix="Hadihosseini88\Media\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Discount/src" isTestSource="false" packagePrefix="Hadihosseini88\Discount\" />
       <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Ticket/src" isTestSource="false" packagePrefix="Hadihosseini88\Ticket\" />
+      <sourceFolder url="file://$MODULE_DIR$/modules/Hadihosseini88/Comment/src" isTestSource="false" packagePrefix="Hadihosseini88\Comment\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
