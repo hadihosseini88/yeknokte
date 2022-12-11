@@ -2,7 +2,6 @@
 
 namespace Hadihosseini88\Ticket\Providers;
 
-use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\Ticket\Models\Reply;
 use Hadihosseini88\Ticket\Models\Ticket;
 use Hadihosseini88\Ticket\Policies\ReplyPolicy;

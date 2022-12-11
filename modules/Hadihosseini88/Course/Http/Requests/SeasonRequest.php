@@ -2,10 +2,7 @@
 
 namespace Hadihosseini88\Course\Http\Requests;
 
-use Hadihosseini88\Course\Models\Course;
-use Hadihosseini88\Course\Rules\ValidTeacher;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 
 class SeasonRequest extends FormRequest

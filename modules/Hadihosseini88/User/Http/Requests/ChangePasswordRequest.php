@@ -3,7 +3,6 @@
 namespace Hadihosseini88\User\Http\Requests;
 
 use Hadihosseini88\User\Rules\ValidPassword;
-use Hadihosseini88\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ChangePasswordRequest extends FormRequest

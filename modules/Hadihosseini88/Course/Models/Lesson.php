@@ -3,7 +3,6 @@
 namespace Hadihosseini88\Course\Models;
 
 use Hadihosseini88\Media\Models\Media;
-use Hadihosseini88\Media\Services\MediaFileService;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\URL;

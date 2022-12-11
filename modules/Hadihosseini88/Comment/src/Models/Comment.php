@@ -4,7 +4,6 @@ namespace Hadihosseini88\Comment\Models;
 
 use Hadihosseini88\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\Self_;
 
 class Comment extends Model
 {
@@ -28,6 +27,16 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

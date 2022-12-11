@@ -5,10 +5,7 @@ namespace Hadihosseini88\User\Notifications;
 use Hadihosseini88\User\Mail\ResetPasswordRequestMail;
 use Hadihosseini88\User\Services\VerifyCodeService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-
-use function url;
 
 class ResetPasswordRequestNotification extends Notification
 {

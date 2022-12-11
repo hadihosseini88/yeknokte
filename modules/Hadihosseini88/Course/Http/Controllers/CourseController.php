@@ -11,12 +11,9 @@ use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Course\Repositories\LessonRepo;
 use Hadihosseini88\Media\Services\MediaFileService;
 use Hadihosseini88\Payment\Gateways\Gateway;
-use Hadihosseini88\Payment\Repositories\PaymentRepo;
 use Hadihosseini88\Payment\Services\PaymentService;
 use Hadihosseini88\RolePermissions\Models\Permission;
-use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Repositories\UserRepo;
-use phpDocumentor\Reflection\Types\True_;
 
 class CourseController extends Controller
 {

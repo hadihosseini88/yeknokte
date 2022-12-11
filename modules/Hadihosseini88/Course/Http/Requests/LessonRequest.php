@@ -2,12 +2,9 @@
 
 namespace Hadihosseini88\Course\Http\Requests;
 
-use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Rules\ValidSeason;
-use Hadihosseini88\Course\Rules\ValidTeacher;
 use Hadihosseini88\Media\Services\MediaFileService;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 
 class LessonRequest extends FormRequest

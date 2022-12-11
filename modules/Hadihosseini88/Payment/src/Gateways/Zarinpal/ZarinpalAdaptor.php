@@ -4,9 +4,7 @@ namespace Hadihosseini88\Payment\Gateways\Zarinpal;
 
 use Hadihosseini88\Payment\Contracts\GatewayContract;
 use Hadihosseini88\Payment\Models\Payment;
-use Hadihosseini88\Payment\Repositories\PaymentRepo;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isNull;
 
 class ZarinpalAdaptor implements GatewayContract
 {

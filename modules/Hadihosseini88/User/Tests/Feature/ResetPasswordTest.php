@@ -2,12 +2,8 @@
 
 namespace Hadihosseini88\User\Tests\Feature;
 
-use Hadihosseini88\User\Models\User;
-use Hadihosseini88\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use function auth;
 use function route;
 
 class ResetPasswordTest extends TestCase

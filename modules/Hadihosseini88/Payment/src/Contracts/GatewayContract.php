@@ -3,7 +3,6 @@
 namespace Hadihosseini88\Payment\Contracts;
 
 use Hadihosseini88\Payment\Models\Payment;
-use Illuminate\Http\Request;
 
 interface GatewayContract
 {

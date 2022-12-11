@@ -2,7 +2,6 @@
 
 namespace Hadihosseini88\Payment\Policies;
 
-use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

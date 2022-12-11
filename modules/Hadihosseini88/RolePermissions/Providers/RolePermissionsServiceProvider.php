@@ -2,10 +2,10 @@
 
 namespace Hadihosseini88\RolePermissions\Providers;
 
+use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\RolePermissions\Policies\RolePermissionPolicy;
-use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 

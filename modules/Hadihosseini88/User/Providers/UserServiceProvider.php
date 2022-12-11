@@ -7,9 +7,9 @@ use Hadihosseini88\User\Database\Seeds\UsersTableSeeder;
 use Hadihosseini88\User\Http\Middleware\StoreUserIp;
 use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Policies\UserPolicy;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 
 class UserServiceProvider extends ServiceProvider

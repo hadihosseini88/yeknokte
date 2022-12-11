@@ -4,15 +4,12 @@ namespace Hadihosseini88\Payment\Providers;
 
 use Hadihosseini88\Payment\Gateways\Gateway;
 use Hadihosseini88\Payment\Gateways\Zarinpal\ZarinpalAdaptor;
-use Hadihosseini88\Payment\Models\Payment;
 use Hadihosseini88\Payment\Models\Settlement;
-use Hadihosseini88\Payment\Policies\PaymentPolicy;
 use Hadihosseini88\Payment\Policies\SettlementPolicy;
-use Hadihosseini88\Payment\Providers\EventServiceProvider;
 use Hadihosseini88\RolePermissions\Models\Permission;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class PaymentServiceProvider extends ServiceProvider
 {

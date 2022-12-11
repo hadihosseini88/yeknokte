@@ -3,7 +3,7 @@
 namespace Hadihosseini88\Course\Models;
 
 use Hadihosseini88\Category\Models\Category;
-use Hadihosseini88\Comment\Models\Comment;
+use Hadihosseini88\Comment\Traits\HasComments;
 use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\Discount\Models\Discount;
 use Hadihosseini88\Discount\Repositories\DiscountRepo;
@@ -16,9 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    /**
-     * @var mixed
-     */
+    use HasComments;
 
     protected $guarded = [];
 
@@ -69,16 +67,6 @@ class Course extends Model
     public function tickets()
     {
         return $this->morphMany(Ticket::class, 'ticketable');
-    }
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    public function approvedComments()
-    {
-        return $this->morphMany(Comment::class, 'commentable')->where('status', Comment::STATUS_APPROVED);
     }
 
     public function payments()
@@ -200,4 +188,6 @@ class Course extends Model
 
         return $links;
     }
+
+
 }

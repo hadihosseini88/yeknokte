@@ -3,7 +3,6 @@
 namespace Hadihosseini88\User\Http\Requests;
 
 use Hadihosseini88\RolePermissions\Models\Permission;
-use Hadihosseini88\RolePermissions\Models\Role;
 use Hadihosseini88\User\Rules\ValidPassword;
 use Illuminate\Foundation\Http\FormRequest;
 

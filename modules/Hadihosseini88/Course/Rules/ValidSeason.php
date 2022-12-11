@@ -3,7 +3,6 @@
 namespace Hadihosseini88\Course\Rules;
 
 use Hadihosseini88\Course\Repositories\SeasonRepo;
-use Hadihosseini88\User\Repositories\UserRepo;
 use Illuminate\Contracts\Validation\Rule;
 
 class ValidSeason implements Rule

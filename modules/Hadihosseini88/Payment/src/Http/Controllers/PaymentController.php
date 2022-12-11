@@ -4,8 +4,6 @@ namespace Hadihosseini88\Payment\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-
-use Carbon\CarbonPeriod;
 use Hadihosseini88\Payment\Events\PaymentWasSuccessful;
 use Hadihosseini88\Payment\Gateways\Gateway;
 use Hadihosseini88\Payment\Models\Payment;

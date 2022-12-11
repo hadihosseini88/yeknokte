@@ -2,7 +2,6 @@
 
 namespace Hadihosseini88\Ticket\Repositories;
 
-use Hadihosseini88\Ticket\Http\Requests\TicketRequest;
 use Hadihosseini88\Ticket\Models\Ticket;
 use Illuminate\Database\Eloquent\Model;
 

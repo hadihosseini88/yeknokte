@@ -5,14 +5,12 @@ namespace Hadihosseini88\Course\Tests\Feature;
 use Hadihosseini88\Category\Models\Category;
 use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Models\Lesson;
-use Hadihosseini88\Course\Models\Season;
 use Hadihosseini88\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class LessonTest extends TestCase

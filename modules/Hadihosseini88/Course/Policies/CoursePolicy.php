@@ -2,7 +2,6 @@
 
 namespace Hadihosseini88\Course\Policies;
 
-use Hadihosseini88\Course\Repositories\CourseRepo;
 use Hadihosseini88\RolePermissions\Models\Permission;
 use Hadihosseini88\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;

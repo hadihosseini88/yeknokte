@@ -2,8 +2,6 @@
 
 namespace Hadihosseini88\Discount\Listeners;
 
-use function PHPUnit\Framework\isNull;
-
 class UpdateUsedDiscountsForPayment
 {
     /**

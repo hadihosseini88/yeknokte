@@ -22,4 +22,12 @@ class CommentRepo
         ]);
     }
 
+    public function findApproved($id)
+    {
+        return Comment::query()
+            ->where('id',$id)
+            ->where('status', Comment::STATUS_APPROVED)
+            ->first();
+    }
+
 }

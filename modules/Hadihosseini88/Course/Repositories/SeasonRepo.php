@@ -2,9 +2,7 @@
 
 namespace Hadihosseini88\Course\Repositories;
 
-use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Course\Models\Season;
-use Illuminate\Support\Str;
 
 class SeasonRepo
 {

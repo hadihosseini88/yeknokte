@@ -5,12 +5,9 @@ namespace Hadihosseini88\User\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Hadihosseini88\User\Http\Requests\ResetPasswordVerifyCodeRequest;
 use Hadihosseini88\User\Http\Requests\SendResetPasswordVerifyCodeRequest;
-use Hadihosseini88\User\Http\Requests\VerifyCodeRequest;
-use Hadihosseini88\User\Models\User;
 use Hadihosseini88\User\Repositories\UserRepo;
 use Hadihosseini88\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {

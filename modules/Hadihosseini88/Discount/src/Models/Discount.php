@@ -4,7 +4,6 @@ namespace Hadihosseini88\Discount\Models;
 
 use Hadihosseini88\Course\Models\Course;
 use Hadihosseini88\Payment\Models\Payment;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
