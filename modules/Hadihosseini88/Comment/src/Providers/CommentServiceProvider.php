@@ -25,7 +25,11 @@ class CommentServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        config()->set('sidebar.items.comments',[
+            "icon"=>"i-comments",
+            "title"=>"نظرات",
+            "url"=> route('comments.index'),
+        ]);
     }
 
 }

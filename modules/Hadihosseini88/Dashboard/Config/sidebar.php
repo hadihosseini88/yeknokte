@@ -7,6 +7,7 @@ return [
         'categories' => [],
         'users' => [],
         'role-permissions' => [],
+        'comments' => [],
         'tickets' =>[],
         'payments' => [],
         'my-purchases' => [],

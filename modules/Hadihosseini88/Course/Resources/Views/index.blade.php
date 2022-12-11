@@ -58,10 +58,10 @@
                     <tr role="row">
                         <td><a href="">{{ $loop->index +1 }}</a></td>
                         <td><img src="{{ $course->banner->thumb }}" alt="{{$course->title}}" width="80"></td>
-                        <td><a href="">{{ $course->id }}</a></td>
+                        <td><a href="{{ $course->path() }}">{{ $course->id }}</a></td>
                         <td><a href="">{{ $course->priority ?? '0' }}</a></td>
-                        <td><a href="">{{ $course->title }}</a></td>
-                        <td><a href="">{{ $course->teacher->name }}</a></td>
+                        <td><a href="{{ $course->path() }}">{{ $course->title }}</a></td>
+                        <td><a href="{{ route('users.info', $course->teacher->id) }}">{{ $course->teacher->name }}</a></td>
                         <td>{{ number_format($course->price) }}</td>
                         <td><a href="{{ route('courses.details',$course->id) }}" class="color-2b4a83">مشاهده</a></td>
                         <td><a href="course-transaction.html" class="color-2b4a83">مشاهده</a></td>
