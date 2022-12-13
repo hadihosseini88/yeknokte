@@ -26,7 +26,7 @@
                        </span>
                         <span class="nav-comment-status">
                             <p class="username">کاربر : {{ $ticket->user->name }}</p>
-                            <p class="comment-date">{{ $reply->created_at }} ماه پیش</p>
+                            <p class="comment-date">{{ $ticket->created_at->diffForHumans() }}</p>
                     </span>
                         <div>
 

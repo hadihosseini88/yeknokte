@@ -44,8 +44,13 @@ class TicketRepo
     public function joinUsers()
     {
         $this->query->join('users', 'tickets.user_id', 'users.id')
-            ->select('tickets.*', 'users.id', 'users.email', 'users.name');
+            ->select('tickets.*', 'users.id', 'tickets.id', 'users.email', 'users.name');
         return $this;
+    }
+
+    public function paginate()
+    {
+        return $this->query->paginate();
     }
 
     public function searchEmail($email)
@@ -60,11 +65,6 @@ class TicketRepo
         if (!is_null($name))
             $this->query->where('name', 'like', '%' . $name . '%');
         return $this;
-    }
-
-    public function paginate()
-    {
-        return $this->query->paginate();
     }
 
     public function searchTitle($title)

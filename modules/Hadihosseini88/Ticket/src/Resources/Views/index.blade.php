@@ -63,8 +63,8 @@
                         @if($ticket->status == \Hadihosseini88\Ticket\Models\Ticket::STATUS_CLOSE) class="close-status" @endif >
                         <td><a href="{{ route('tickets.show', $ticket->id) }}">{{ $ticket->id }}</a></td>
                         <td><a href="{{ route('tickets.show', $ticket->id) }}">{{ $ticket->title }}</a></td>
-                        <td><a href="">{{ $ticket->user->name }}</a></td>
-                        <td><a href="">{{ $ticket->user->email }}</a></td>
+                        <td><a href="{{ route('users.info', $ticket->user->id) }}">{{ $ticket->user->name }}</a></td>
+                        <td><a href="{{ route('users.info', $ticket->user->id) }}">{{ $ticket->user->email }}</a></td>
                         <td>{{ \Morilog\Jalali\Jalalian::fromCarbon($ticket->updated_at) }}</td>
                         <td class="{{ $ticket->getStatusCssClass() }}">@lang($ticket->status)</td>
                         <td>

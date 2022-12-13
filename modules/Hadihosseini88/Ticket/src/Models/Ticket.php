@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $guarded = [];
+//    protected $table = 'tickets';
 
     const STATUS_OPEN = 'open';
     const STATUS_CLOSE = 'close';

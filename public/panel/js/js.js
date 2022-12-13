@@ -230,16 +230,16 @@ $('.discounts #discounts-field-1').on('click', function (e) {
     $('#selectCourseContainer').addClass('d-none')
 });
 
-function updateConfirmationStatus(event, route, message, status, fieldClass = 'confirmation_status') {
+function updateConfirmationStatus(event, route, message, status, fieldClass = 'confirmation_status', parent_update = 'tr', target_update ='td.') {
     event.preventDefault();
     if (confirm(message)) {
         $.post(route, {_method: "PATCH", _token: $('meta[name="_token"]').attr('content')})
 
             .done(function (response) {
                 if (status == "تایید شده") {
-                    $(event.target).closest('tr').find('td.' + fieldClass).html("<span class='text-success'>" + status + "</span>");
+                    $(event.target).closest(parent_update).find(target_update + fieldClass).html("<span class='text-success'>" + status + "</span>");
                 } else {
-                    $(event.target).closest('tr').find('td.' + fieldClass).html("<span class='text-error'>" + status + "</span>");
+                    $(event.target).closest(parent_update).find(target_update + fieldClass).html("<span class='text-error'>" + status + "</span>");
                 }
 
 

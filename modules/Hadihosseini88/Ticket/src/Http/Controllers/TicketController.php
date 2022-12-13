@@ -31,9 +31,10 @@ class TicketController extends Controller
         return view('Tickets::index', compact('tickets'));
     }
 
-    public function show($ticket, TicketRepo $ticketRepo)
+    public function show($ticketId, TicketRepo $ticketRepo)
     {
-        $ticket = $ticketRepo->findOrFailWithReplies($ticket);
+
+        $ticket = $ticketRepo->findOrFailWithReplies($ticketId);
         $this->authorize('show', $ticket);
         return view('Tickets::show', compact('ticket'));
     }
