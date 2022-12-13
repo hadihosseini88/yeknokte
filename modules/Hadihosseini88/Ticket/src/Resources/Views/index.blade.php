@@ -25,7 +25,7 @@
         @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_TICKETS)
             <div class="bg-white padding-20">
                 <div class="t-header-search">
-                    <form action="{{ route('tickets.index') }}}}">
+                    <form action="{{ route('tickets.index') }}">
                         <div class="t-header-searchbox font-size-13">
                             <input name="title" value="{{ request()->title }}" type="text"
                                    class="text search-input__box font-size-13"

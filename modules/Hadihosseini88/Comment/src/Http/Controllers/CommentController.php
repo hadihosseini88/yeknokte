@@ -13,7 +13,12 @@ class CommentController extends Controller
 {
     public function index(CommentRepo $repo)
     {
-        $comments = $repo->paginateParents();
+        $comments = $repo
+            ->searchBody(request('body'))
+            ->searchEmail(request('email'))
+            ->searchName(request('name'))
+            ->searchStatus(request('status'))
+            ->paginateParents();
         return view('Comments::index', compact('comments'));
     }
 
