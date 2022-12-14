@@ -1,7 +1,7 @@
 @extends('Dashboard::master')
 
 @section('breadcrumb')
-    <li><a href="{!! route('categories.index') !!}" title="دسته بندی">دسته بندی</a></li>
+    <li><a href="{!! route('categories.index') !!}" class="is-active" title="دسته بندی">دسته بندی</a></li>
 @endsection
 
 @section('content')

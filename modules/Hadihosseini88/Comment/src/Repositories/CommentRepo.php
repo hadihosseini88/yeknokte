@@ -49,8 +49,11 @@ class CommentRepo
 
     public function paginateParents()
     {
-        $this->query->whereNull('comment_id')->withCount('notApprovedComments')->latest()->paginate();
-        return $this;
+        return $this->query
+//            ->whereNull('comment_id')
+//            ->withCount('notApprovedComments')
+            ->latest()->paginate();
+
     }
 
     public function updateStatus($id, string $status)
@@ -87,6 +90,7 @@ class CommentRepo
             $this->query->where('status', '=', $status);
         return $this;
     }
+
 
 
 }

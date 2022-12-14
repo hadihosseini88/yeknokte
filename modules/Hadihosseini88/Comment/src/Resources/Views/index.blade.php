@@ -9,10 +9,14 @@
     <div class="main-content">
         <div class="tab__box">
             <div class="tab__items">
-                <a class="tab__item {{ request()->status == '' ? 'is-active':'' }}" href="{{ route('comments.index') }}"> همه نظرات</a>
-                <a class="tab__item {{ request()->status == 'approved' ? 'is-active':'' }}" href="{{ route('comments.index') }}?status=approved">نظرات تاییده شده</a>
-                <a class="tab__item {{ request()->status == 'new' ? 'is-active':'' }}" href="{{ route('comments.index') }}?status=new">نظرات تاییده نشده</a>
-                <a class="tab__item {{ request()->status == 'rejected' ? 'is-active':'' }}" href="{{ route('comments.index') }}?status=rejected">نظرات رد شده</a>
+                <a class="tab__item {{ request()->status == '' ? 'is-active':'' }}"
+                   href="{{ route('comments.index') }}"> همه نظرات</a>
+                <a class="tab__item {{ request()->status == 'approved' ? 'is-active':'' }}"
+                   href="{{ route('comments.index') }}?status=approved">نظرات تاییده شده</a>
+                <a class="tab__item {{ request()->status == 'new' ? 'is-active':'' }}"
+                   href="{{ route('comments.index') }}?status=new">نظرات تاییده نشده</a>
+                <a class="tab__item {{ request()->status == 'rejected' ? 'is-active':'' }}"
+                   href="{{ route('comments.index') }}?status=rejected">نظرات رد شده</a>
             </div>
         </div>
         <div class="bg-white padding-20">
@@ -23,8 +27,9 @@
                         <div class="t-header-search-content ">
                             <input type="text" name="body" class="text" placeholder="قسمتی از متن">
                             <input type="text" name="email" class="text" placeholder="ایمیل">
-                            <input type="text" name="name" class="text margin-bottom-20" placeholder="نام و نام خانوادگی">
-                            <button type="submit"  class="btn btn-yeknokte_ir">جستجو</button>
+                            <input type="text" name="name" class="text margin-bottom-20"
+                                   placeholder="نام و نام خانوادگی">
+                            <button type="submit" class="btn btn-yeknokte_ir">جستجو</button>
                         </div>
                     </div>
                 </form>
@@ -56,17 +61,20 @@
                         <td>{{ $comment->comments->count() }} ({{ $comment->not_approved_comments_count }} جدید)</td>
                         <td class="commentStatus {{ $comment->getStatusCssClass() }}">@lang($comment->status)</td>
                         <td>
-                            <a href="" onclick="deleteItem(event,'{{ route('comments.destroy', $comment->id) }}')"
-                               class="item-delete mlg-15" title="حذف"></a>
-                            <a href=""
-                               onclick="updateConfirmationStatus(event, '{{ route('comments.reject', $comment->id) }}','آیا از رد این آیتم اطمینان دارید؟','رد شده','commentStatus')"
-                               class="item-reject mlg-15" title="رد"></a>
+                            @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_COMMENTS)
+                                <a href="" onclick="deleteItem(event,'{{ route('comments.destroy', $comment->id) }}')"
+                                   class="item-delete mlg-15" title="حذف"></a>
+                                <a href=""
+                                   onclick="updateConfirmationStatus(event, '{{ route('comments.reject', $comment->id) }}','آیا از رد این آیتم اطمینان دارید؟','رد شده','commentStatus')"
+                                   class="item-reject mlg-15" title="رد"></a>
+                            @endcan
                             <a href="{{ route('comments.show', $comment->id) }}" target="_blank" class="item-eye mlg-15"
                                title="مشاهده"></a>
-                            <a href=""
-                               onclick="updateConfirmationStatus(event, '{{ route('comments.accept', $comment->id) }}','آیا از تایید این آیتم اطمینان دارید؟','تایید شده','commentStatus')"
-                               class="item-confirm mlg-15" title="تایید"></a>
-                            <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
+                            @can(\Hadihosseini88\RolePermissions\Models\Permission::PERMISSION_MANAGE_COMMENTS)
+                                <a href=""
+                                   onclick="updateConfirmationStatus(event, '{{ route('comments.accept', $comment->id) }}','آیا از تایید این آیتم اطمینان دارید؟','تایید شده','commentStatus')"
+                                   class="item-confirm mlg-15" title="تایید"></a>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

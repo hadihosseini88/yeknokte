@@ -6,9 +6,11 @@
             @include('Front::comments.reply', ['commentable'=> $course])
             @foreach($commentable->approvedComments as $comment)
                 <ul class="comment-list-ul">
+                    @auth
                     <div class="div-btn-answer">
                         <button class="btn-answer" onclick="setCommentId({{ $comment->id }})">پاسخ به دیدگاه</button>
                     </div>
+                    @endauth
                     <li class="is-comment">
                         <div class="comment-header">
                             <div class="comment-header-avatar">
@@ -16,7 +18,7 @@
                             </div>
                             <div class="comment-header-detail">
                                 <div class="comment-header-name">کاربر : {{ $comment->user->name }}</div>
-                                <div class="comment-header-date">{{ $comment->created_at }} روز پیش</div>
+                                <div class="comment-header-date">{{ $comment->created_at->diffForHumans() }}</div>
                             </div>
                         </div>
                         <div class="comment-content">
@@ -43,25 +45,6 @@
                         </div>
                     </li>
                     @endforeach
-{{--                    <li class="is-comment">--}}
-{{--                        <div class="comment-header">--}}
-{{--                            <div class="comment-header-avatar">--}}
-{{--                                <img src="img/profile.jpg">--}}
-{{--                            </div>--}}
-{{--                            <div class="comment-header-detail">--}}
-{{--                                <div class="comment-header-name">کاربر : گوگل</div>--}}
-{{--                                <div class="comment-header-date">10 روز پیش</div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="comment-content">--}}
-{{--                            <p>--}}
-{{--                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-{{--                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-{{--                                برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای--}}
-{{--                                کاربردی می باشد.--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
                 </ul>
             @endforeach
         </div>

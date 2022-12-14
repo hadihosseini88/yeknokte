@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
     <li><a href="{!! route('role-permissions.index') !!}" title="نقش های کاربری">نقش های کاربری</a></li>
-    <li><a href="#" title="ویرایش نقش کاربری">ویرایش نقش کاربری</a></li>
+    <li><a href="{{route('role-permissions.edit', $role->id)}}" class="is-active" title="ویرایش نقش کاربری">ویرایش نقش کاربری</a></li>
 @endsection
 
 @section('content')

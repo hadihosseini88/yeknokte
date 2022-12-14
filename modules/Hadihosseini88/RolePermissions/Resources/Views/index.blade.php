@@ -1,7 +1,7 @@
 @extends('Dashboard::master')
 
 @section('breadcrumb')
-    <li><a href="{!! route('role-permissions.index') !!}" title="نقش های کاربری">نقش های کاربری</a></li>
+    <li><a href="{!! route('role-permissions.index') !!}" class="is-active" title="نقش های کاربری">نقش های کاربری</a></li>
 @endsection
 
 @section('content')

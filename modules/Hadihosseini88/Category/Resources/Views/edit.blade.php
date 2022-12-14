@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
     <li><a href="{!! route('categories.index') !!}" title="دسته بندی">دسته بندی</a></li>
-    <li><a href="#" title="ویرایش دسته بندی">ویرایش دسته بندی</a></li>
+    <li><a href="{{route('categories.edit', $category->id)}}" class="is-active" title="ویرایش دسته بندی">ویرایش دسته بندی</a></li>
 @endsection
 
 @section('content')
