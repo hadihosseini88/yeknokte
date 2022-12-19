@@ -16,6 +16,8 @@
         "hadihosseini88/front": "dev-master",
         "hadihosseini88/payment": "dev-master",
         "intervention/image": "^2.7",
+        "kavenegar/laravel-notification": "^1.0",
+        "laravel-notification-channels/telegram": "^2.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "3.0",

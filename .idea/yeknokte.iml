@@ -144,6 +144,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/hadihosseini88/payment" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/morilog/jalali" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-notification-channels/telegram" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kavenegar/php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kavenegar/laravel-notification" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -165,6 +165,8 @@ return [
          * Package Service Providers...
          */
 
+
+
         /*
          * Application Service Providers...
          */
@@ -183,6 +185,7 @@ return [
         Hadihosseini88\Discount\Providers\DiscountServiceProvider::class,
         Hadihosseini88\Ticket\Providers\TicketServiceProvider::class,
         Hadihosseini88\Comment\Providers\CommentServiceProvider::class,
+        Kavenegar\LaravelNotification\KavenegarServiceProvider::class,
 
 
     ],
@@ -236,7 +239,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

@@ -41,30 +41,15 @@ class User extends Authenticatable implements MustVerifyEmail
         ]
     ];
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'mobile'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -148,5 +133,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return \DB::table('courses')
             ->select('course_id')->where('teacher_id',$this->id)
             ->join('course_user','courses.id','=','course_user.course_id')->count();
+    }
+
+    public function routeNotificationForSms()
+    {
+        return $this->mobile; // where `phone` is a field in your users table;
     }
 }

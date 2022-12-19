@@ -22,10 +22,7 @@
             @enderror
             <br>
             <button class="btn i-t">تایید</button>
-            <a class="btn i-t a-btn-danger" href="#" onclick="
-            event.preventDefault();
-            document.getElementById('resend-code').submit();"
-            >ارسال مجدد کدفعالسازی</a>
+            <a class="" href="{{ route('password.sendVerifyCodeEmail') }}?email={{ request('email') }}">ارسال مجدد کدفعالسازی</a>
 
         </div>
         <div class="form-footer">

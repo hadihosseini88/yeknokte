@@ -21,6 +21,11 @@ class DashboardServiceProvider extends ServiceProvider
                 "url"=> route('home')
             ]);
         });
+
+        view()->composer('Dashboard::layouts.header', function ($view){
+            $notifications = auth()->user()->unreadNotifications;
+            return $view->with(compact('notifications'));
+        });
     }
 
 }

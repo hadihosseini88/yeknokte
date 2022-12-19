@@ -4,7 +4,7 @@
 
         <div class="comments-list">
             @include('Front::comments.reply', ['commentable'=> $course])
-            @foreach($commentable->approvedComments as $comment)
+            @foreach($commentable->approvedComments()->latest()->get() as $comment)
                 <ul class="comment-list-ul">
                     @auth
                     <div class="div-btn-answer">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="comment-header-detail">
                                 <div class="comment-header-name">مدیر سایت : {{ $reply->user->name }}</div>
-                                <div class="comment-header-date">{{ $reply->created_at }} روز پیش</div>
+                                <div class="comment-header-date">{{ $reply->created_at->diffForHumans() }}</div>
                             </div>
                         </div>
                         <div class="comment-content">

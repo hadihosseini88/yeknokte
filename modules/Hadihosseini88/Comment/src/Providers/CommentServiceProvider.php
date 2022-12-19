@@ -14,6 +14,8 @@ class CommentServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->register(EventServiceProvider::class);
+
         Route::middleware(['web', 'auth'])
             ->namespace($this->namespace)
             ->group(__DIR__ . '/../Routes/comments_routes.php');

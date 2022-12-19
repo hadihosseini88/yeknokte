@@ -9,7 +9,17 @@
             <a class="notification__icon"></a>
             <div class="dropdown__notification">
                 <div class="content__notification">
-                    <span class="font-size-13">موردی برای نمایش وجود ندارد</span>
+                    @if(count($notifications))
+                        <ul class="notification">
+                        @foreach($notifications as $notification)
+                            <li>
+                                <a href="{{ $notification->data['url'] }}"><span class="font-size-13">{{ $notification->data['message'] }}</span></a>
+                            </li>
+                        @endforeach
+                        </ul>
+                    @else
+                        <span class="font-size-13">موردی برای نمایش وجود ندارد</span>
+                    @endif
                 </div>
             </div>
         </div>

@@ -3,6 +3,9 @@
 namespace Hadihosseini88\Comment\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Hadihosseini88\Comment\Events\CommentApprovedEvent;
+use Hadihosseini88\Comment\Events\CommentRejectedEvent;
+use Hadihosseini88\Comment\Events\CommentSubmittedEvent;
 use Hadihosseini88\Comment\Http\Requests\CommentRequest;
 use Hadihosseini88\Comment\Models\Comment;
 use Hadihosseini88\Comment\Repositories\CommentRepo;
@@ -42,7 +45,8 @@ class CommentController extends Controller
 
     public function store(CommentRequest $request, CommentRepo $repo)
     {
-        $repo->store($request->all());
+        $comment = $repo->store($request->all());
+        event(new CommentSubmittedEvent($comment));
         newFeedback('عملیات موفقیت آمیز', 'دیدگاه شما با موفقیت ثبت گردید.');
         return back();
     }
@@ -51,7 +55,9 @@ class CommentController extends Controller
     public function accept($id, CommentRepo $repo)
     {
         $this->authorize('change_status', Comment::class);
+        $comment = $repo->findOrFail($id);
         if ($repo->updateStatus($id, Comment::STATUS_APPROVED)) {
+            CommentApprovedEvent::dispatch($comment);
             return AjaxResponses::SuccessResponse();
         }
         return AjaxResponses::FailedResponse();
@@ -60,7 +66,9 @@ class CommentController extends Controller
     public function reject($id, CommentRepo $repo)
     {
         $this->authorize('change_status', Comment::class);
+        $comment = $repo->findOrFail($id);
         if ($repo->updateStatus($id, Comment::STATUS_REJECTED)) {
+            CommentRejectedEvent::dispatch($comment);
             return AjaxResponses::SuccessResponse();
         }
         return AjaxResponses::FailedResponse();

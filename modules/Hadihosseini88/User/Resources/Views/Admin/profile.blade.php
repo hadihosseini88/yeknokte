@@ -29,6 +29,8 @@
                              class="text text-left" placeholder="شماره کارت بانکی"></x-input>
                     <x-input value="{{ auth()->user()->shaba }}" name="shaba" class="text text-left" type="text"
                              placeholder="شماره شبا بانکی"></x-input>
+                    <x-input value="{{ auth()->user()->telegram }}" name="telegram" class="text text-left" type="text"
+                             placeholder="ایدی تلگرام"></x-input>
                     <x-input value="{{ auth()->user()->username }}" name="username" class="text text-left" type="text"
                              placeholder="نام کاربری و آدرس پروفایل"></x-input>
                     <p class="input-help text-left margin-bottom-12" dir="ltr">

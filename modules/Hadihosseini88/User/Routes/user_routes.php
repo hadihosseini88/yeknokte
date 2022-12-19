@@ -36,7 +36,7 @@ Route::group([
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showVerifyCodeRequestForm')
         ->name('password.request');
     Route::get('/password/reset/send', 'Auth\ForgotPasswordController@sendVerifyCodeEmail')
-        ->name('password.sendVerifyCodeEmail');
+        ->name('password.sendVerifyCodeEmail')->middleware('throttle:5,10');
     Route::post('/password/reset/check-verify-code', 'Auth\ForgotPasswordController@checkVerifyCode')
         ->name('password.checkVerifyCode')
         ->middleware('throttle:5,1');
