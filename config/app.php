@@ -186,6 +186,7 @@ return [
         Hadihosseini88\Ticket\Providers\TicketServiceProvider::class,
         Hadihosseini88\Comment\Providers\CommentServiceProvider::class,
         Kavenegar\LaravelNotification\KavenegarServiceProvider::class,
+        Hadihosseini88\Slider\Providers\SliderServiceProvider::class,
 
 
     ],

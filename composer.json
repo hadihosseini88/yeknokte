@@ -68,7 +68,8 @@
             "Hadihosseini88\\Media\\": "modules/Hadihosseini88/Media/",
             "Hadihosseini88\\Discount\\": "modules/Hadihosseini88/Discount/src",
             "Hadihosseini88\\Ticket\\": "modules/Hadihosseini88/Ticket/src",
-            "Hadihosseini88\\Comment\\": "modules/Hadihosseini88/Comment/src"
+            "Hadihosseini88\\Comment\\": "modules/Hadihosseini88/Comment/src",
+            "Hadihosseini88\\Slider\\": "modules/Hadihosseini88/Slider/src"
         },
         "classmap": [
             "database/seeds",

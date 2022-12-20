@@ -11,5 +11,5 @@
         @endforeach
     </select>
     <br>
-    <button class="btn btn-yeknokte_ir">اضافه کردن</button>
+    <button class="btn btn-yeknokte_ir">اضافه کردن دسته بندی</button>
 </form>
